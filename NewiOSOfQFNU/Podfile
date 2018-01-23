@@ -4,12 +4,17 @@
 target 'NewiOSOfQFNU' do
   # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
   # use_frameworks!
-    pod 'AFNetworking', '~> 3.0'
-    pod 'MBProgressHUD', '~> 1.0.0'
-    pod 'DJRefresh', '~> 1.0.5'
-    pod 'MJRefresh'
-       pod 'TFHpple', '~> 2.0.0'
-   pod 'NHHUDExtend', '~> 1.0.1'
+  pod 'AFNetworking', '~> 3.0'    #网络必备
+    pod 'MBProgressHUD', '~> 1.0.0'   #提示框
+    pod 'DJRefresh', '~> 1.0.5'  #你的DJ刷新
+    pod 'MJRefresh'      #菊花轮
+
+pod 'TFHpple', '~> 2.0.0' #爬虫
+
+       pod 'Masonry', '~> 1.0.1'        #AutoLayou之友
+       pod 'NHHUDExtend', '~> 1.0.1'   #提示框三连 EX增强
+       
+       pod 'YYKit', '~> 1.0.9'  #重新定义IOS编程，不好用你找我
   # Pods for NewiOSOfQFNU
 
   target 'NewiOSOfQFNUTests' do

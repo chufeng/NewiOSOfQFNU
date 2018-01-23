@@ -70,6 +70,25 @@ NS_INLINE MBProgressHUD *settHUD(UIView *view, NSString *title, BOOL autoHidden)
     hud.customView = [[UIImageView alloc] initWithImage:kLoadImage(@"success.png")];
 }
 
+//这条我自己补的啊
+#pragma mark 显示一些信息
++ (MBProgressHUD *)showMessage:(NSString *)message toView:(UIView *)view {
+    if (view == nil) view = [UIApplication sharedApplication].keyWindow;
+    // 快速显示一个提示信息
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
+    //hud.labelText = message;
+    hud.detailsLabelText = message;
+    hud.detailsLabelFont = [UIFont systemFontOfSize:13.f];
+    
+    // 隐藏时候从父控件中移除
+    hud.removeFromSuperViewOnHide = YES;
+    // YES代表需要蒙版效果
+    hud.dimBackground = NO;
+    
+    hud.userInteractionEnabled = NO;
+    return hud;
+}
+
 
 + (void)showError:(NSString *)error toView:(UIView *)view {
     MBProgressHUD *hud = settHUD(view, error, YES);

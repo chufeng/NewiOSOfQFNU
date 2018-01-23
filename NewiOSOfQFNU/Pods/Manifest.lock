@@ -15,28 +15,36 @@ PODS:
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
   - DJRefresh (1.0.5)
+  - Masonry (1.0.2)
   - MBProgressHUD (1.0.0)
   - MJRefresh (3.1.15.1)
   - NHHUDExtend (1.0.1):
     - MBProgressHUD (~> 1.0.0)
   - TFHpple (2.0.0)
+  - YYKit (1.0.9):
+    - YYKit/no-arc (= 1.0.9)
+  - YYKit/no-arc (1.0.9)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
   - DJRefresh (~> 1.0.5)
+  - Masonry (~> 1.0.1)
   - MBProgressHUD (~> 1.0.0)
   - MJRefresh
   - NHHUDExtend (~> 1.0.1)
   - TFHpple (~> 2.0.0)
+  - YYKit (~> 1.0.9)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   DJRefresh: 32b3776546004faddddc28035442ba15e07c5f1b
+  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJRefresh: 5f8552bc25ca8751c010f621c1098dbdaacbccd6
   NHHUDExtend: 10900daeabebbfb92367199398f56bea9bfc3e88
   TFHpple: a916fe0799eb30aa29b2670d14d5868cdd3a5b81
+  YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: d3e59fea1431a3291d82cfb26886f3aa6b00f8d3
+PODFILE CHECKSUM: 0c8fe675e5351d2786c952559ab104643b1f711f
 
 COCOAPODS: 1.3.1

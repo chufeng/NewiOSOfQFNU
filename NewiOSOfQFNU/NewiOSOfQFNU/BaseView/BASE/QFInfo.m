@@ -10,7 +10,7 @@
 #import "TFHpple.h"
 #import "AFNetworking.h"
 #import "MBProgressHUD.h"
-//#import "MBProgressHUD+NHAdd.h"
+#import "MBProgressHUD+NHAdd.h"
 #import "BaseRequest.h"
 @implementation QFInfo
 
@@ -111,7 +111,7 @@
 
             if (error.code==-1001) {
                 [MBProgressHUD showError:@"接口服务器连接超时，有些功能可能无法正常使用" toView:keywind.rootViewController.view];
-                [MBProgressHUD show]
+                
                 [MBProgressHUD hideHUDForView:keywind.rootViewController.view animated:YES];
 
     

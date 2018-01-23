@@ -7,7 +7,7 @@
 //
 
 #import "ZMRegisterView.h"
-
+#import <MBProgressHUD+NHAdd.h>
 @interface ZMRegisterView()
 
 @property (nonatomic, strong) UIView        *mainView;
@@ -31,7 +31,7 @@
 - (UIView *)mainView{
     if (!_mainView) {
         _mainView = [UIView new];
-        _mainView.backgroundColor = [ZMColor clearColor];
+        _mainView.backgroundColor = [UIColor clearColor];
         [self.scrollView addSubview:_mainView];
         [_mainView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.top.mas_equalTo(0);
@@ -75,7 +75,7 @@
 - (UIButton *)closeButton{
     if (!_closeButton) {
         _closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        UIImage *image = backArrowWhiteIcon;
+        UIImage *image = [UIColor whiteColor];
         [_closeButton setImage:image forState:UIControlStateNormal];
         [self addSubview:_closeButton];
         [self bringSubviewToFront:_closeButton];
@@ -108,10 +108,11 @@
     
     self.userNameField = [[UITextField alloc] init];
     self.userNameField.font = [UIFont systemFontOfSize:15];
-    NSAttributedString *userNameString = [[NSAttributedString alloc] initWithString:@"用户名" attributes:@{NSForegroundColorAttributeName:[ZMColor appLightGrayColor],
+    NSAttributedString *userNameString = [[NSAttributedString alloc] initWithString:@"用户名" attributes:@{NSForegroundColorAttributeName:[UIColor lightGrayColor],
                     NSFontAttributeName: self.userNameField.font}];
+    
     self.userNameField.attributedPlaceholder = userNameString;
-    self.userNameField.textColor = [ZMColor whiteColor];
+    self.userNameField.textColor = [UIColor whiteColor];
     self.userNameField.clearButtonMode=UITextFieldViewModeWhileEditing;
     [self.mainView addSubview:self.userNameField];
     [self.userNameField mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -135,25 +136,25 @@
     self.userNameField.leftViewMode = UITextFieldViewModeAlways;
     
     self.bottomLine1 = [UILabel new];
-    self.bottomLine1.backgroundColor = [ZMColor appLightGrayColor];
+    self.bottomLine1.backgroundColor = [UIColor lightGrayColor];
     [self.mainView addSubview:self.bottomLine1];
     [self.bottomLine1 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(KMarginLeft);
-        make.right.mas_equalTo(-KMarginLeft);
+        make.left.mas_equalTo(20);
+        make.right.mas_equalTo(-12);
         make.height.mas_equalTo(0.5);
         make.top.mas_equalTo(self.userNameField.mas_bottom).with.offset(1);
     }];
     
     self.passwordField = [[UITextField alloc] init];
     self.passwordField.font = [UIFont systemFontOfSize:15];
-    self.passwordField.textColor = [ZMColor whiteColor];
-    NSAttributedString *passwordString = [[NSAttributedString alloc] initWithString:@"密码" attributes:@{NSForegroundColorAttributeName:[ZMColor appLightGrayColor],
+    self.passwordField.textColor = [UIColor whiteColor];
+    NSAttributedString *passwordString = [[NSAttributedString alloc] initWithString:@"密码" attributes:@{NSForegroundColorAttributeName:[UIColor lightGrayColor],
                     NSFontAttributeName:self.userNameField.font}];
     self.passwordField.attributedPlaceholder = passwordString;
     self.passwordField.clearButtonMode=UITextFieldViewModeWhileEditing;
     [self.mainView addSubview:self.passwordField];
     [self.passwordField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(20);
+        make.left.mas_equalTo(12);
         make.right.mas_equalTo(-20);
         make.height.mas_equalTo(50);
         make.top.mas_equalTo(self.userNameField.mas_bottom).with.offset(1);
@@ -173,11 +174,11 @@
     self.passwordField.leftViewMode = UITextFieldViewModeAlways;
     
     self.bottomLine2 = [UILabel new];
-    self.bottomLine2.backgroundColor = [ZMColor appLightGrayColor];
+    self.bottomLine2.backgroundColor = [UIColor lightGrayColor];
     [self.mainView addSubview:self.bottomLine2];
     [self.bottomLine2 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(KMarginLeft);
-        make.right.mas_equalTo(-KMarginLeft);
+        make.left.mas_equalTo(12);
+        make.right.mas_equalTo(-20);
         make.height.mas_equalTo(0.5);
         make.top.mas_equalTo(self.passwordField.mas_bottom).with.offset(1);
     }];
@@ -187,12 +188,12 @@
     self.registerButton.titleLabel.font = [UIFont systemFontOfSize:15];
     self.registerButton.layer.masksToBounds = YES;
     self.registerButton.layer.cornerRadius = 20;
-    self.registerButton.backgroundColor = [ZMColor colorWithHexString:@"#55667D"];
+    self.registerButton.backgroundColor = [UIColor cyanColor];
     [self.registerButton setTitle:@"注册" forState:UIControlStateNormal];
     [self.mainView addSubview:self.registerButton];
     [self.registerButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(KMarginLeft);
-        make.right.mas_equalTo(-KMarginLeft);
+        make.left.mas_equalTo(12);
+        make.right.mas_equalTo(-20);
         make.top.mas_equalTo(self.passwordField.mas_bottom).with.offset(25);
         make.height.mas_equalTo(45);
     }];
@@ -202,11 +203,13 @@
 #pragma mark - 登录
 - (void)clickRegisterButton:(UIButton *)btn{
     if (![self.userNameField.text stringByTrim].length) {
-        [MBProgressHUD showPromptMessage:@"请输入用户名"];
+//        [MBProgressHUD showPromptMessage:@"请输入用户名"];
+                [MBProgressHUD showError:@"请输入用户名" toView:kWindow];
         return;
     }
     if (![self.passwordField.text stringByTrim].length) {
-        [MBProgressHUD showPromptMessage:@"请输入密码"];
+//        [MBProgressHUD showPromptMessage:@"请输入密码"];
+                [MBProgressHUD showError:@"请输入密码" toView:kWindow];
         return;
     }
     NSString *username = self.userNameField.text;
@@ -214,32 +217,32 @@
     
     
     
-    if (username.length && password.length) {
-        AVUser *user = [AVUser user];
-        user.username = username;
-        user.password = password;
-        
-//        //尝试添加头像字段
-//        UIImage *head = [UIImage imageNamed:@"launch_bottom_gacha_logo"];
-//        NSData *headData = UIImagePNGRepresentation(head);
-//        [user setObject:headData forKey:@"thumb"];
-        
-        [MBProgressHUD showMessage:@"正在注册..." toView:self];
-        
-        WEAKSELF;
-        [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-            [MBProgressHUD hideAllHUDsForView:weakSelf animated:YES];
-            [weakSelf endEditing:YES];
-            if (succeeded) {
-                [MBProgressHUD showPromptMessage:@"注册成功,请手动登录"];
-                [weakSelf.viewController.navigationController popViewControllerAnimated:YES];
-            }else if (error){
-                NSDictionary *dic = error.userInfo;
-                NSLog(@"注册失败 %@", error);
-                [MBProgressHUD showPromptMessage:dic[@"error"]];
-            }
-        }];
-    }
+//    if (username.length && password.length) {
+//        AVUser *user = [AVUser user];
+//        user.username = username;
+//        user.password = password;
+//        
+////        //尝试添加头像字段
+////        UIImage *head = [UIImage imageNamed:@"launch_bottom_gacha_logo"];
+////        NSData *headData = UIImagePNGRepresentation(head);
+////        [user setObject:headData forKey:@"thumb"];
+//        
+//        [MBProgressHUD showMessage:@"正在注册..." toView:self];
+//        
+//        WEAKSELF;
+//        [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+//            [MBProgressHUD hideAllHUDsForView:weakSelf animated:YES];
+//            [weakSelf endEditing:YES];
+//            if (succeeded) {
+//                [MBProgressHUD showPromptMessage:@"注册成功,请手动登录"];
+//                [weakSelf.viewController.navigationController popViewControllerAnimated:YES];
+//            }else if (error){
+//                NSDictionary *dic = error.userInfo;
+//                NSLog(@"注册失败 %@", error);
+//                [MBProgressHUD showPromptMessage:dic[@"error"]];
+//            }
+//        }];
+//    }
 }
 
 #pragma mark - 退出页面

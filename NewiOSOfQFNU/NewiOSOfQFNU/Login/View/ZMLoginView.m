@@ -9,7 +9,10 @@
 #import "ZMLoginView.h"
 #import "ZMRegisterViewController.h"
 #import "BaseNavigationController.h"
-
+#import <Masonry.h>
+#import "UIView+extension.h"
+#import <YYKit/YYLabel.h>
+#import <MBProgressHUD+NHAdd.h>
 @interface ZMLoginView()
 
 @property (nonatomic, strong) UIView        *mainView;
@@ -35,12 +38,12 @@
 - (UIView *)mainView{
     if (!_mainView) {
         _mainView = [UIView new];
-        _mainView.backgroundColor = [ZMColor clearColor];
+        _mainView.backgroundColor = [UIColor clearColor];
         [self.scrollView addSubview:_mainView];
         [_mainView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.top.mas_equalTo(0);
-            make.width.mas_equalTo(self.width);
-            make.height.mas_equalTo(self.height + 50);
+            make.width.mas_equalTo(self.frame.size.width);
+            make.height.mas_equalTo(self.frame.size.height + 50);
         }];
     }
     return _mainView;
@@ -54,11 +57,11 @@
         [self insertSubview:_scrollView aboveSubview:self.bgImageView];
         [_scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.top.mas_equalTo(0);
-            make.width.mas_equalTo(self.width);
-            make.height.mas_equalTo(self.height);
+            make.width.mas_equalTo(self.frame.size.width);
+            make.height.mas_equalTo(self.frame.size.height);
         }];
         [_scrollView.superview layoutIfNeeded];
-        _scrollView.contentSize = CGSizeMake(0, _scrollView.height + 1);
+        _scrollView.contentSize = CGSizeMake(0, _scrollView.frame.size.height + 1);
     }
     return _scrollView;
 }
@@ -82,7 +85,7 @@
         UIImage *image = [UIImage imageNamed:@"login_alert_cancel"];
         _closeButton.layer.cornerRadius = 30 * 0.5;
         _closeButton.layer.masksToBounds = YES;
-        _closeButton.layer.borderColor = [ZMColor whiteColor].CGColor;
+        _closeButton.layer.borderColor = [UIColor whiteColor].CGColor;
         _closeButton.layer.borderWidth = 1;
         [_closeButton setImage:image forState:UIControlStateNormal];
         [self addSubview:_closeButton];
@@ -101,7 +104,7 @@
 
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
-        self.backgroundColor = [ZMColor appGraySpaceColor];
+        self.backgroundColor = [UIColor grayColor];
     }
     return self;
 }
@@ -123,11 +126,9 @@
     
     self.userNameField = [[UITextField alloc] init];
     self.userNameField.font = [UIFont systemFontOfSize:15];
-    NSAttributedString *userNameString = [[NSAttributedString alloc] initWithString:@"用户名" attributes:@{NSForegroundColorAttributeName:[ZMColor appLightGrayColor],
-                    NSFontAttributeName:            self.userNameField.font
-                                        }];
+    NSAttributedString *userNameString = [[NSAttributedString alloc] initWithString:@"用户名" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]}];
     self.userNameField.attributedPlaceholder = userNameString;
-    self.userNameField.textColor = [ZMColor whiteColor];
+    self.userNameField.textColor = [UIColor whiteColor];
     self.userNameField.clearButtonMode=UITextFieldViewModeWhileEditing;
     [self.mainView addSubview:self.userNameField];
     [self.userNameField mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -151,19 +152,19 @@
     self.userNameField.leftViewMode = UITextFieldViewModeAlways;
     
     self.bottomLine1 = [UILabel new];
-    self.bottomLine1.backgroundColor = [ZMColor appLightGrayColor];
+    self.bottomLine1.backgroundColor = [UIColor lightGrayColor];
     [self.mainView addSubview:self.bottomLine1];
     [self.bottomLine1 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(KMarginLeft);
-        make.right.mas_equalTo(-KMarginLeft);
+        make.left.mas_equalTo(12);
+        make.right.mas_equalTo(-20);
         make.height.mas_equalTo(0.5);
         make.top.mas_equalTo(self.userNameField.mas_bottom).with.offset(1);
     }];
     
     self.passwordField = [[UITextField alloc] init];
     self.passwordField.font = [UIFont systemFontOfSize:15];
-    self.passwordField.textColor = [ZMColor whiteColor];
-    NSAttributedString *passwordString = [[NSAttributedString alloc] initWithString:@"密码" attributes:@{NSForegroundColorAttributeName:[ZMColor appLightGrayColor],
+    self.passwordField.textColor = [UIColor whiteColor];
+    NSAttributedString *passwordString = [[NSAttributedString alloc] initWithString:@"密码" attributes:@{NSForegroundColorAttributeName:[UIColor lightGrayColor],
                     NSFontAttributeName:self.userNameField.font}];
     self.passwordField.attributedPlaceholder = passwordString;
     self.passwordField.clearButtonMode=UITextFieldViewModeWhileEditing;
@@ -189,11 +190,11 @@
     self.passwordField.leftViewMode = UITextFieldViewModeAlways;
     
     self.bottomLine2 = [UILabel new];
-    self.bottomLine2.backgroundColor = [ZMColor appLightGrayColor];
+    self.bottomLine2.backgroundColor = [UIColor lightGrayColor];
     [self.mainView addSubview:self.bottomLine2];
     [self.bottomLine2 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(KMarginLeft);
-        make.right.mas_equalTo(-KMarginLeft);
+        make.left.mas_equalTo(12);
+        make.right.mas_equalTo(-20);
         make.height.mas_equalTo(0.5);
         make.top.mas_equalTo(self.passwordField.mas_bottom).with.offset(1);
     }];
@@ -202,7 +203,7 @@
     self.forgetPwdLabel = [YYLabel new];
     self.forgetPwdLabel.font = [UIFont systemFontOfSize:13];
     self.forgetPwdLabel.text = @"忘记密码？";
-    self.forgetPwdLabel.textColor = [ZMColor whiteColor];
+    self.forgetPwdLabel.textColor = [UIColor whiteColor];
     [self.mainView addSubview:self.forgetPwdLabel];
     [self.forgetPwdLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.userNameField.mas_left);
@@ -215,7 +216,7 @@
     //注册
     self.registerLabel = [YYLabel new];
     self.registerLabel.font = [UIFont systemFontOfSize:13];
-    self.registerLabel.textColor = [ZMColor whiteColor];
+    self.registerLabel.textColor = [UIColor whiteColor];
     self.registerLabel.text = @"去注册";
     [self.mainView addSubview:self.registerLabel];
     [self.registerLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -234,12 +235,12 @@
     self.loginButton.titleLabel.font = [UIFont systemFontOfSize:15];
     self.loginButton.layer.masksToBounds = YES;
     self.loginButton.layer.cornerRadius = 20;
-    self.loginButton.backgroundColor = [ZMColor colorWithHexString:@"#55667D"];
+    self.loginButton.backgroundColor = [UIColor grayColor];
     [self.loginButton setTitle:@"登录" forState:UIControlStateNormal];
     [self.mainView addSubview:self.loginButton];
     [self.loginButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(KMarginLeft);
-        make.right.mas_equalTo(-KMarginLeft);
+        make.left.mas_equalTo(12);
+        make.right.mas_equalTo(-20);
         make.top.mas_equalTo(self.forgetPwdLabel.mas_bottom).with.offset(25);
         make.height.mas_equalTo(45);
     }];
@@ -248,7 +249,7 @@
     //继续浏览
     self.closeLabel = [YYLabel new];
     self.closeLabel.font = [UIFont systemFontOfSize:13];
-    self.closeLabel.textColor = [ZMColor whiteColor];
+    self.closeLabel.textColor = [UIColor whiteColor];
     self.closeLabel.textAlignment = NSTextAlignmentCenter;
     self.closeLabel.text = @"继续浏览";
     [self.mainView addSubview:self.closeLabel];
@@ -266,11 +267,12 @@
 - (void)clickLoginButton:(UIButton *)btn{
     
     if (![self.userNameField.text stringByTrim].length) {
-        [MBProgressHUD showPromptMessage:@"请输入用户名"];
+        [MBProgressHUD showError:@"请输入用户名" toView:kWindow];
+//                [MBProgressHUD showPromptMessage:@"请输入用户名"];
         return;
     }
     if (![self.passwordField.text stringByTrim].length) {
-        [MBProgressHUD showPromptMessage:@"请输入密码"];
+                [MBProgressHUD showError:@"请输入密码" toView:kWindow];
         return;
     }
     NSLog(@"去登录");
@@ -279,34 +281,38 @@
     WEAKSELF;
     [MBProgressHUD showMessage:@"正在登录..." toView:self];
     if (username.length && password.length) {
-        [AVUser logInWithUsernameInBackground:username password:password block:^(AVUser *user, NSError *error) {
-            [MBProgressHUD hideAllHUDsForView:weakSelf animated:YES];
-            if (error) {
-                NSDictionary *dic = error.userInfo;
-                NSLog(@"登录失败 %@", dic[@"error"]);
-                [MBProgressHUD showPromptMessage:@"用户名和密码不匹配"];
-            } else {
-                [MBProgressHUD showPromptMessage:@"登录成功"];
-                //这里存储 sessionToken，下次直接用sessionToken 登录
-                [[ZMUserInfo shareUserInfo] loadUserInfo:user];
-                [[ZMUserInfo shareUserInfo] saveUserInfoToSandbox];
-                
-                //发送登录成功通知
-                [[NSNotificationCenter defaultCenter] postNotificationName:KLoginStateChangeNotice object:nil];
-                
-                [weakSelf.viewController dismissViewControllerAnimated:YES completion:^{
-                }];
-                
-//                //尝试解析图片,这是自定义属性
-//                NSData *imageStr = [user objectForKey:@"thumb"];
-//                // 将NSData转为UIImage
-//                UIImage *decodedImage = [UIImage imageWithData: imageStr];
-//                if (decodedImage) {
-//                    [ZMUserInfo shareUserInfo].headImage = decodedImage;
-//                }
-//                NSLog(@"%@",decodedImage);
-            }
-        }];
+//        [QFInfo sharedInstance]loginqfnu:<#(NSString *)#> password:<#(NSString *)#>
+        
+        
+        
+//        [AVUser logInWithUsernameInBackground:username password:password block:^(AVUser *user, NSError *error) {
+//            [MBProgressHUD hideAllHUDsForView:weakSelf animated:YES];
+//            if (error) {
+//                NSDictionary *dic = error.userInfo;
+//                NSLog(@"登录失败 %@", dic[@"error"]);
+//                [MBProgressHUD showPromptMessage:@"用户名和密码不匹配"];
+//            } else {
+//                [MBProgressHUD showPromptMessage:@"登录成功"];
+//                //这里存储 sessionToken，下次直接用sessionToken 登录
+//                [[ZMUserInfo shareUserInfo] loadUserInfo:user];
+//                [[ZMUserInfo shareUserInfo] saveUserInfoToSandbox];
+//
+//                //发送登录成功通知
+//                [[NSNotificationCenter defaultCenter] postNotificationName:KLoginStateChangeNotice object:nil];
+//
+//                [weakSelf.viewController dismissViewControllerAnimated:YES completion:^{
+//                }];
+//
+////                //尝试解析图片,这是自定义属性
+////                NSData *imageStr = [user objectForKey:@"thumb"];
+////                // 将NSData转为UIImage
+////                UIImage *decodedImage = [UIImage imageWithData: imageStr];
+////                if (decodedImage) {
+////                    [ZMUserInfo shareUserInfo].headImage = decodedImage;
+////                }
+////                NSLog(@"%@",decodedImage);
+//            }
+//        }];
     }
 }
 

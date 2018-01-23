@@ -8,7 +8,7 @@
 
 #import "ZMLoginViewController.h"
 #import "ZMLoginView.h"
-
+#import <Masonry.h>
 @interface ZMLoginViewController ()
 
 @property (nonatomic, strong) ZMLoginView       *loginView;

@@ -8,7 +8,7 @@
 
 #import "ZMRegisterViewController.h"
 #import "ZMRegisterView.h"
-
+#import <Masonry.h>
 @interface ZMRegisterViewController ()
 
 @property (nonatomic, strong) ZMRegisterView        *mainView;

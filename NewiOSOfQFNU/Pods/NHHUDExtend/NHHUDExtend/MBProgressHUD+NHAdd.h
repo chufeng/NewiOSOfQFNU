@@ -37,7 +37,10 @@ UIKIT_EXTERN CGFloat const delayTime;
 //      所有类方法中有返回本类的，则不会自动消失，返回值为void的都会自动消失(默认值:delayTime)      //
 //*************************************************************************************//
 
-
+/**
+这条我自己补的啊，用来登陆用的
+ */
++ (MBProgressHUD *)showMessage:(NSString *)message toView:(UIView *)view;
 /**
  纯加载图
  */

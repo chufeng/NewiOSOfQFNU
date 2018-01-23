@@ -1,0 +1,87 @@
+//
+//  PrefixHeader.pch
+//  NewiOSOfQFNU
+//
+//  Created by lyngame on 2018/1/23.
+//  Copyright © 2018年 yida. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+#import <Masonry.h>
+#import "QFInfo.h"
+#import "UIView+extension.h"
+#import <YYKit/YYKit.h>
+#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
+#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
+//屏幕宽
+#define SCREEN_W [UIScreen mainScreen].bounds.size.width
+//屏幕高
+#define SCREEN_H [UIScreen mainScreen].bounds.size.height
+
+#define WEAKSELF __weak typeof(self) weakSelf = self
+#define BLOCKSELF __block typeof(self)weakSelf = self
+//常用文字的灰色
+#define TEXT_GRAYCOLOR [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1]
+//视图背景浅灰色
+#define GRAY_COLOR [UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1]
+//自定义颜色
+#define RGB(r,g,b,a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
+//去null
+#define isnull(key,dict) dict[key] == nil || [dict[key] isKindOfClass:[NSNull class]]  || [dict[key] isEqual:[NSNull null]] ? @"" : [NSString stringWithFormat:@"%@",dict[key]]
+//打印运行的方法
+#define NSLogFunc() NSLog(@"%s",__func__)
+//<><><>自定义高效率的 NSLog<><><><><>
+
+#ifdef DEBUG
+#define kLog(...) NSLog(@"%s 第%d行 \n %@\n\n",__func__,__LINE__,[NSString stringWithFormat:__VA_ARGS__])
+#else
+#define kLog(...)
+
+#endif
+#define kDevice_Is_iPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
+
+#define KStatusBarHeight (kDevice_Is_iPhoneX ? 24.f:0.f)
+#define KStatusBarMargin (kDevice_Is_iPhoneX ? 22.f:0.f)
+#define KTabBarHeight    (kDevice_Is_iPhoneX ? 34.f:0.f)
+
+//<><><>设置加载提示框（第三方框架：MBProgressHUD）<><><><><>
+
+// 加载
+#define kShowNetworkActivityIndicator() [UIApplication sharedApplication].networkActivityIndicatorVisible = YES
+// 收起加载
+#define HideNetworkActivityIndicator()      [UIApplication sharedApplication].networkActivityIndicatorVisible = NO
+// 设置加载
+#define NetworkActivityIndicatorVisible(x)  [UIApplication sharedApplication].networkActivityIndicatorVisible = x
+//window对象
+#define kWindow [UIApplication sharedApplication].keyWindow
+
+#define kBackView         for (UIView *item in kWindow.subviews) { \
+if(item.tag == 10000) \
+{ \
+[item removeFromSuperview]; \
+UIView * aView = [[UIView alloc] init]; \
+aView.frame = [UIScreen mainScreen].bounds; \
+aView.tag = 10000; \
+aView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:1]; \
+[kWindow addSubview:aView]; \
+} \
+} \
+//MB，在window层显示
+#define kShowHUDAndActivity kBackView;[MBProgressHUD showHUDAddedTo:kWindow animated:YES];kShowNetworkActivityIndicator()
+#define kHiddenHUD [MBProgressHUD hideAllHUDsForView:kWindow animated:YES]
+
+#define kRemoveBackView         for (UIView *item in kWindow.subviews) { \
+if(item.tag == 10000) \
+{ \
+[UIView animateWithDuration:0.4 animations:^{ \
+item.alpha = 0.0; \
+} completion:^(BOOL finished) { \
+[item removeFromSuperview]; \
+}]; \
+} \
+} \
+//<><><><><><><><><><>显示加载菊花
+//我自己写的，显示的位置
+#define kShowHUD(view) [MBProgressHUD showHUDAddedTo:view animated:YES]
+#endif /* PrefixHeader_pch */
