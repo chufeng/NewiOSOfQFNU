@@ -24,6 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     //藏旧
 //    [self hideBorderInView:self.navigationBar];
 //    //添新

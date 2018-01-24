@@ -21,6 +21,7 @@
     [self addChildVc:[ViewController new] title:@"首页" image:@"tabbar_icon0" selectedImage:@"tabbar_icon0_s"];
         [self addChildVc:[ViewController new] title:@"2" image:@"tabbar_icon0" selectedImage:@"tabbar_icon0_s"];
 }
+
 /**
  *  添加一个子控制器
  *
