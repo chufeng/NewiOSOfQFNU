@@ -9,7 +9,20 @@
 #import "ZMSetupViewCell.h"
 
 @implementation ZMSetupViewCell
-
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    for (UIView *view in self.subviews) {
+        if([view isKindOfClass:[UIScrollView class]]) {
+            ((UIScrollView *)view).delaysContentTouches = NO; // Remove touch delay for iOS 7
+            break;
+        }
+    }
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    self.backgroundView.backgroundColor = [UIColor clearColor];
+    self.contentView.backgroundColor = [UIColor clearColor];
+    self.backgroundColor = [UIColor clearColor];
+    return self;
+}
 - (UIView *)mainView{
     if (!_mainView) {
         self.mainView = [[UIView alloc] init];
@@ -41,12 +54,12 @@
 - (UILabel *)nameLabel{
     if (!_nameLabel) {
         _nameLabel = [UILabel new];
-        _nameLabel.textColor = [ZMColor blackColor];
+        _nameLabel.textColor = [UIColor blackColor];
         _nameLabel.font = [UIFont systemFontOfSize:15];
         [self.mainView addSubview:_nameLabel];
         [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(KMarginLeft);
-            make.right.mas_equalTo(self.arrowImageView.mas_left).with.offset(-KMarginLeft);
+            make.left.mas_equalTo(12);
+            make.right.mas_equalTo(self.arrowImageView.mas_left).with.offset(-12);
             make.centerY.mas_equalTo(self.mainView);
         }];
     }
@@ -56,7 +69,7 @@
 - (UIImageView *)bottomLine{
     if (!_bottomLine) {
         _bottomLine = [UIImageView new];
-        _bottomLine.image = [YYImage imageWithColor:[ZMColor appBottomLineColor]];
+        _bottomLine.image = [YYImage imageWithColor:[UIColor cyanColor]];
         [self.mainView addSubview:_bottomLine];
         [_bottomLine mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.bottom.mas_equalTo(0);
@@ -66,12 +79,7 @@
     return _bottomLine;
 }
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
-    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        
-    }
-    return self;
-}
+
 
 - (void)setShowBottomLine:(BOOL)showBottomLine{
     self.bottomLine.hidden = !showBottomLine;

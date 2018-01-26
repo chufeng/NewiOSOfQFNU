@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - AVOSCloud (8.0.4)
   - DJRefresh (1.0.5)
   - Masonry (1.0.2)
   - MBProgressHUD (1.0.0)
@@ -27,6 +28,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
+  - AVOSCloud (~> 8.0.4)
   - DJRefresh (~> 1.0.5)
   - Masonry (~> 1.0.1)
   - MBProgressHUD (~> 1.0.0)
@@ -37,6 +39,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  AVOSCloud: 645f20b77cdcc0622a45c663c1a5735a17d1df27
   DJRefresh: 32b3776546004faddddc28035442ba15e07c5f1b
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
@@ -45,6 +48,6 @@ SPEC CHECKSUMS:
   TFHpple: a916fe0799eb30aa29b2670d14d5868cdd3a5b81
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 0c8fe675e5351d2786c952559ab104643b1f711f
+PODFILE CHECKSUM: 2632c009b818bc82d2600b664435371cb903ef14
 
 COCOAPODS: 1.3.1

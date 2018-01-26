@@ -6,9 +6,9 @@
 //  Copyright © 2018年 Brance. All rights reserved.
 //
 
-#import "YYTableViewCell.h"
+#import <UIKit/UIKit.h>
 
-@interface ZMSetupViewCell : YYTableViewCell
+@interface ZMSetupViewCell : UITableViewCell
 
 @property (nonatomic, strong) UIView        *mainView;
 @property (nonatomic, strong) UILabel       *nameLabel;

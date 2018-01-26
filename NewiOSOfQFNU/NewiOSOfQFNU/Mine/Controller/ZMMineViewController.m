@@ -31,7 +31,7 @@
 
 - (void)setupNavView{
     [super setupNavView];
-    self.navView.backgroundColor = [ZMColor clearColor];
+    self.navView.backgroundColor = [UIColor clearColor];
     self.navView.showBottomLabel = NO;
     [self.navView.rightButton setImage:[UIImage imageNamed:@"personal_setting"] forState:UIControlStateNormal];
     [self.navView.rightButton addTarget:self action:@selector(clickSetup) forControlEvents:UIControlEventTouchUpInside];

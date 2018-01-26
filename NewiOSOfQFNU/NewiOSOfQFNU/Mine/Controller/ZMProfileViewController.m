@@ -25,7 +25,7 @@
 
 - (void)setupNavView{
     [super setupNavView];
-    [self.navView.leftButton setImage:backArrowIcon forState:UIControlStateNormal];
+    [self.navView.leftButton setImage:[UIImage imageNamed:@"navigation_back"] forState:UIControlStateNormal];
     [self.navView.centerButton setTitle:@"个人资料" forState:UIControlStateNormal];
 }
 

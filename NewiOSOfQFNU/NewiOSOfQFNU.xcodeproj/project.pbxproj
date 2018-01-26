@@ -15,7 +15,24 @@
 		2600C1EC2015B50B002A67F8 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2600C1E92015B50B002A67F8 /* BaseNavigationController.m */; };
 		2600C1ED2015B50B002A67F8 /* QFNUMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2600C1EB2015B50B002A67F8 /* QFNUMainViewController.m */; };
 		2600C1F32015D688002A67F8 /* like.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2600C1F22015D688002A67F8 /* like.caf */; };
-		26B1E7832016DDA1009CF9FC /* QFInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B1E7822016DDA1009CF9FC /* QFInfo.m */; };
+		26931EC3201B0620009C6E8B /* navigation_back_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26931EC1201B0620009C6E8B /* navigation_back_white@2x.png */; };
+		26931EC4201B0620009C6E8B /* navigation_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26931EC2201B0620009C6E8B /* navigation_back@2x.png */; };
+		26931EE4201B1275009C6E8B /* ZMMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26931ED2201B1275009C6E8B /* ZMMessageView.m */; };
+		26931EE5201B1275009C6E8B /* ZMMineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26931ED4201B1275009C6E8B /* ZMMineView.m */; };
+		26931EE6201B1275009C6E8B /* ZMMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26931ED6201B1275009C6E8B /* ZMMineViewController.m */; };
+		26931EE7201B1275009C6E8B /* ZMProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26931ED8201B1275009C6E8B /* ZMProfileView.m */; };
+		26931EE8201B1275009C6E8B /* ZMProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26931EDA201B1275009C6E8B /* ZMProfileViewController.m */; };
+		26931EE9201B1275009C6E8B /* ZMSetupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26931EDC201B1275009C6E8B /* ZMSetupView.m */; };
+		26931EEA201B1275009C6E8B /* ZMSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26931EDE201B1275009C6E8B /* ZMSetupViewController.m */; };
+		26931EEB201B1275009C6E8B /* ZMProfileViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26931EE1201B1275009C6E8B /* ZMProfileViewCell.m */; };
+		26931EEC201B1275009C6E8B /* ZMSetupViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26931EE3201B1275009C6E8B /* ZMSetupViewCell.m */; };
+		26931EEF201B242F009C6E8B /* ZMMineLoginViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26931EED201B242E009C6E8B /* ZMMineLoginViewCell.m */; };
+		26931EF6201B24C3009C6E8B /* YYTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26931EF0201B24C2009C6E8B /* YYTableViewCell.m */; };
+		26931EF7201B24C3009C6E8B /* ZMColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 26931EF1201B24C2009C6E8B /* ZMColor.m */; };
+		26931EF8201B24C3009C6E8B /* YYTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26931EF4201B24C2009C6E8B /* YYTableView.m */; };
+		26931EFB201B25BA009C6E8B /* ZMUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 26931EFA201B25B9009C6E8B /* ZMUserInfo.m */; };
+		26931EFE201B2661009C6E8B /* ZMBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26931EFC201B2660009C6E8B /* ZMBaseModel.m */; };
+		26931F02201B2714009C6E8B /* UIImage+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 26931F01201B2713009C6E8B /* UIImage+Common.m */; };
 		26B1E78920171958009CF9FC /* BaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B1E78720171958009CF9FC /* BaseRequest.m */; };
 		26B1E797201726B5009CF9FC /* ZMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B1E78F201726B5009CF9FC /* ZMLoginViewController.m */; };
 		26B1E798201726B5009CF9FC /* ZMRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B1E791201726B5009CF9FC /* ZMRegisterViewController.m */; };
@@ -68,8 +85,41 @@
 		2600C1EA2015B50B002A67F8 /* QFNUMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QFNUMainViewController.h; sourceTree = "<group>"; };
 		2600C1EB2015B50B002A67F8 /* QFNUMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QFNUMainViewController.m; sourceTree = "<group>"; };
 		2600C1F22015D688002A67F8 /* like.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = like.caf; sourceTree = "<group>"; };
+		26931EC1201B0620009C6E8B /* navigation_back_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigation_back_white@2x.png"; sourceTree = "<group>"; };
+		26931EC2201B0620009C6E8B /* navigation_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigation_back@2x.png"; sourceTree = "<group>"; };
+		26931ED1201B1275009C6E8B /* ZMMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMMessageView.h; sourceTree = "<group>"; };
+		26931ED2201B1275009C6E8B /* ZMMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMMessageView.m; sourceTree = "<group>"; };
+		26931ED3201B1275009C6E8B /* ZMMineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMMineView.h; sourceTree = "<group>"; };
+		26931ED4201B1275009C6E8B /* ZMMineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMMineView.m; sourceTree = "<group>"; };
+		26931ED5201B1275009C6E8B /* ZMMineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMMineViewController.h; sourceTree = "<group>"; };
+		26931ED6201B1275009C6E8B /* ZMMineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMMineViewController.m; sourceTree = "<group>"; };
+		26931ED7201B1275009C6E8B /* ZMProfileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMProfileView.h; sourceTree = "<group>"; };
+		26931ED8201B1275009C6E8B /* ZMProfileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMProfileView.m; sourceTree = "<group>"; };
+		26931ED9201B1275009C6E8B /* ZMProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMProfileViewController.h; sourceTree = "<group>"; };
+		26931EDA201B1275009C6E8B /* ZMProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMProfileViewController.m; sourceTree = "<group>"; };
+		26931EDB201B1275009C6E8B /* ZMSetupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMSetupView.h; sourceTree = "<group>"; };
+		26931EDC201B1275009C6E8B /* ZMSetupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMSetupView.m; sourceTree = "<group>"; };
+		26931EDD201B1275009C6E8B /* ZMSetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMSetupViewController.h; sourceTree = "<group>"; };
+		26931EDE201B1275009C6E8B /* ZMSetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMSetupViewController.m; sourceTree = "<group>"; };
+		26931EE0201B1275009C6E8B /* ZMProfileViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMProfileViewCell.h; sourceTree = "<group>"; };
+		26931EE1201B1275009C6E8B /* ZMProfileViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMProfileViewCell.m; sourceTree = "<group>"; };
+		26931EE2201B1275009C6E8B /* ZMSetupViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMSetupViewCell.h; sourceTree = "<group>"; };
+		26931EE3201B1275009C6E8B /* ZMSetupViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMSetupViewCell.m; sourceTree = "<group>"; };
+		26931EED201B242E009C6E8B /* ZMMineLoginViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMMineLoginViewCell.m; sourceTree = "<group>"; };
+		26931EEE201B242E009C6E8B /* ZMMineLoginViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMMineLoginViewCell.h; sourceTree = "<group>"; };
+		26931EF0201B24C2009C6E8B /* YYTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYTableViewCell.m; sourceTree = "<group>"; };
+		26931EF1201B24C2009C6E8B /* ZMColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMColor.m; sourceTree = "<group>"; };
+		26931EF2201B24C2009C6E8B /* YYTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYTableViewCell.h; sourceTree = "<group>"; };
+		26931EF3201B24C2009C6E8B /* ZMColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMColor.h; sourceTree = "<group>"; };
+		26931EF4201B24C2009C6E8B /* YYTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYTableView.m; sourceTree = "<group>"; };
+		26931EF5201B24C2009C6E8B /* YYTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYTableView.h; sourceTree = "<group>"; };
+		26931EF9201B25B9009C6E8B /* ZMUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMUserInfo.h; sourceTree = "<group>"; };
+		26931EFA201B25B9009C6E8B /* ZMUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMUserInfo.m; sourceTree = "<group>"; };
+		26931EFC201B2660009C6E8B /* ZMBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMBaseModel.m; sourceTree = "<group>"; };
+		26931EFD201B2661009C6E8B /* ZMBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMBaseModel.h; sourceTree = "<group>"; };
+		26931F00201B2713009C6E8B /* UIImage+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Common.h"; sourceTree = "<group>"; };
+		26931F01201B2713009C6E8B /* UIImage+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Common.m"; sourceTree = "<group>"; };
 		26B1E7812016DDA0009CF9FC /* QFInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QFInfo.h; sourceTree = "<group>"; };
-		26B1E7822016DDA1009CF9FC /* QFInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QFInfo.m; sourceTree = "<group>"; };
 		26B1E78720171958009CF9FC /* BaseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseRequest.m; sourceTree = "<group>"; };
 		26B1E78820171958009CF9FC /* BaseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseRequest.h; sourceTree = "<group>"; };
 		26B1E78A20171CB1009CF9FC /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -198,17 +248,19 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		2600C1BA20158D48002A67F8 /* Mine */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Mine;
-			path = NewiOSOfQFNU/Mine;
-			sourceTree = "<group>";
-		};
 		2600C1CC20158D49002A67F8 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				26931EFD201B2661009C6E8B /* ZMBaseModel.h */,
+				26931EFC201B2660009C6E8B /* ZMBaseModel.m */,
+				26931EF9201B25B9009C6E8B /* ZMUserInfo.h */,
+				26931EFA201B25B9009C6E8B /* ZMUserInfo.m */,
+				26931EF5201B24C2009C6E8B /* YYTableView.h */,
+				26931EF4201B24C2009C6E8B /* YYTableView.m */,
+				26931EF2201B24C2009C6E8B /* YYTableViewCell.h */,
+				26931EF0201B24C2009C6E8B /* YYTableViewCell.m */,
+				26931EF3201B24C2009C6E8B /* ZMColor.h */,
+				26931EF1201B24C2009C6E8B /* ZMColor.m */,
 			);
 			name = Tool;
 			path = NewiOSOfQFNU/Tool;
@@ -237,7 +289,6 @@
 				26B1E78820171958009CF9FC /* BaseRequest.h */,
 				26B1E78720171958009CF9FC /* BaseRequest.m */,
 				26B1E7812016DDA0009CF9FC /* QFInfo.h */,
-				26B1E7822016DDA1009CF9FC /* QFInfo.m */,
 				2600C1E82015B50B002A67F8 /* BaseNavigationController.h */,
 				2600C1E92015B50B002A67F8 /* BaseNavigationController.m */,
 				2600C1EA2015B50B002A67F8 /* QFNUMainViewController.h */,
@@ -249,10 +300,66 @@
 		2600C1F12015D688002A67F8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				26931EC1201B0620009C6E8B /* navigation_back_white@2x.png */,
+				26931EC2201B0620009C6E8B /* navigation_back@2x.png */,
 				2600C1F22015D688002A67F8 /* like.caf */,
 			);
 			name = Resources;
 			path = NewiOSOfQFNU/Resources;
+			sourceTree = "<group>";
+		};
+		26931ECF201B1275009C6E8B /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				26931ED0201B1275009C6E8B /* Controller */,
+				26931EDF201B1275009C6E8B /* View */,
+			);
+			name = Mine;
+			path = NewiOSOfQFNU/Mine;
+			sourceTree = "<group>";
+		};
+		26931ED0201B1275009C6E8B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				26931ED1201B1275009C6E8B /* ZMMessageView.h */,
+				26931ED2201B1275009C6E8B /* ZMMessageView.m */,
+				26931ED3201B1275009C6E8B /* ZMMineView.h */,
+				26931ED4201B1275009C6E8B /* ZMMineView.m */,
+				26931ED5201B1275009C6E8B /* ZMMineViewController.h */,
+				26931ED6201B1275009C6E8B /* ZMMineViewController.m */,
+				26931ED7201B1275009C6E8B /* ZMProfileView.h */,
+				26931ED8201B1275009C6E8B /* ZMProfileView.m */,
+				26931ED9201B1275009C6E8B /* ZMProfileViewController.h */,
+				26931EDA201B1275009C6E8B /* ZMProfileViewController.m */,
+				26931EDB201B1275009C6E8B /* ZMSetupView.h */,
+				26931EDC201B1275009C6E8B /* ZMSetupView.m */,
+				26931EDD201B1275009C6E8B /* ZMSetupViewController.h */,
+				26931EDE201B1275009C6E8B /* ZMSetupViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		26931EDF201B1275009C6E8B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				26931EEE201B242E009C6E8B /* ZMMineLoginViewCell.h */,
+				26931EED201B242E009C6E8B /* ZMMineLoginViewCell.m */,
+				26931EE0201B1275009C6E8B /* ZMProfileViewCell.h */,
+				26931EE1201B1275009C6E8B /* ZMProfileViewCell.m */,
+				26931EE2201B1275009C6E8B /* ZMSetupViewCell.h */,
+				26931EE3201B1275009C6E8B /* ZMSetupViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		26931EFF201B2713009C6E8B /* other(第三方) */ = {
+			isa = PBXGroup;
+			children = (
+				26931F00201B2713009C6E8B /* UIImage+Common.h */,
+				26931F01201B2713009C6E8B /* UIImage+Common.m */,
+			);
+			name = "other(第三方)";
+			path = "NewiOSOfQFNU/other(第三方)";
 			sourceTree = "<group>";
 		};
 		26B1E78C201726B5009CF9FC /* Login */ = {
@@ -290,12 +397,13 @@
 		26C6DB5120104971006BE6FE = {
 			isa = PBXGroup;
 			children = (
-				26B1E78C201726B5009CF9FC /* Login */,
+				26931EFF201B2713009C6E8B /* other(第三方) */,
 				2600C1F12015D688002A67F8 /* Resources */,
+				26B1E78C201726B5009CF9FC /* Login */,
+				26931ECF201B1275009C6E8B /* Mine */,
 				2600C19B20158D47002A67F8 /* AboutUs(关于我们) */,
 				2600C1AA20158D48002A67F8 /* BaseView */,
 				2600C1AB20158D48002A67F8 /* CConsult(校园资讯) */,
-				2600C1BA20158D48002A67F8 /* Mine */,
 				2600C1CC20158D49002A67F8 /* Tool */,
 				26C6DB5C20104972006BE6FE /* NewiOSOfQFNU */,
 				26C6DB7520104973006BE6FE /* NewiOSOfQFNUTests */,
@@ -484,6 +592,8 @@
 				2600C1CF20158D49002A67F8 /* AboutUsView.xib in Resources */,
 				2600C1F32015D688002A67F8 /* like.caf in Resources */,
 				26C6DB6520104972006BE6FE /* Main.storyboard in Resources */,
+				26931EC3201B0620009C6E8B /* navigation_back_white@2x.png in Resources */,
+				26931EC4201B0620009C6E8B /* navigation_back@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -577,6 +687,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-NewiOSOfQFNU/Pods-NewiOSOfQFNU-resources.sh",
+				"${PODS_ROOT}/AVOSCloud/AVOS/AVOSCloud/AVOSCloud_Art.inc",
 				"${PODS_ROOT}/DJRefresh/DJRefresh/DJRefresh.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 			);
@@ -659,23 +770,38 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26931F02201B2714009C6E8B /* UIImage+Common.m in Sources */,
 				26B1E799201726B5009CF9FC /* ZMLoginView.m in Sources */,
+				26931EFB201B25BA009C6E8B /* ZMUserInfo.m in Sources */,
 				2600C1ED2015B50B002A67F8 /* QFNUMainViewController.m in Sources */,
 				26B1E797201726B5009CF9FC /* ZMLoginViewController.m in Sources */,
 				26C6DB6220104972006BE6FE /* ViewController.m in Sources */,
 				26B1E78920171958009CF9FC /* BaseRequest.m in Sources */,
+				26931EE6201B1275009C6E8B /* ZMMineViewController.m in Sources */,
+				26931EEF201B242F009C6E8B /* ZMMineLoginViewCell.m in Sources */,
 				2600C1CE20158D49002A67F8 /* AboutUsView.m in Sources */,
 				26C6DB6D20104972006BE6FE /* main.m in Sources */,
 				2600C1D220158D49002A67F8 /* QFNUCConsultController.m in Sources */,
+				26931EE5201B1275009C6E8B /* ZMMineView.m in Sources */,
+				26931EEA201B1275009C6E8B /* ZMSetupViewController.m in Sources */,
+				26931EFE201B2661009C6E8B /* ZMBaseModel.m in Sources */,
 				26B1E79D2017279F009CF9FC /* ZMViewController.m in Sources */,
-				26B1E7832016DDA1009CF9FC /* QFInfo.m in Sources */,
 				26B1E798201726B5009CF9FC /* ZMRegisterViewController.m in Sources */,
 				26B1E79A201726B5009CF9FC /* ZMRegisterView.m in Sources */,
+				26931EE9201B1275009C6E8B /* ZMSetupView.m in Sources */,
+				26931EE7201B1275009C6E8B /* ZMProfileView.m in Sources */,
 				26C6DB5F20104972006BE6FE /* AppDelegate.m in Sources */,
+				26931EF7201B24C3009C6E8B /* ZMColor.m in Sources */,
+				26931EEB201B1275009C6E8B /* ZMProfileViewCell.m in Sources */,
 				26B1E7A0201727E0009CF9FC /* ZMNavView.m in Sources */,
 				2600C1EC2015B50B002A67F8 /* BaseNavigationController.m in Sources */,
+				26931EF6201B24C3009C6E8B /* YYTableViewCell.m in Sources */,
+				26931EE8201B1275009C6E8B /* ZMProfileViewController.m in Sources */,
 				2600C1CD20158D49002A67F8 /* QFNUAboutUsController.m in Sources */,
+				26931EE4201B1275009C6E8B /* ZMMessageView.m in Sources */,
+				26931EF8201B24C3009C6E8B /* YYTableView.m in Sources */,
 				26B1E7A3201730C0009CF9FC /* UIView+extension.m in Sources */,
+				26931EEC201B1275009C6E8B /* ZMSetupViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

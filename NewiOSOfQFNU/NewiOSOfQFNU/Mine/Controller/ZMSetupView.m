@@ -8,7 +8,9 @@
 
 #import "ZMSetupView.h"
 #import "ZMSetupViewCell.h"
-
+#import "YYTableView.h"
+#import "ZMColor.h"
+#import "ZMUserInfo.h"
 @interface ZMSetupView()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) YYTableView       *tableView;
@@ -93,7 +95,7 @@
 
 #pragma mark - 退出登录
 - (void)clickLoginOut{
-    [AVUser logOut];
+//    [AVUser logOut];
     [[ZMUserInfo shareUserInfo] loginOut];
     [[NSNotificationCenter defaultCenter] postNotificationName:KLoginStateChangeNotice object:nil];
     [self.viewController.navigationController popViewControllerAnimated:YES];

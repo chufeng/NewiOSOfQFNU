@@ -10,6 +10,8 @@
 #define PrefixHeader_pch
 #import <Masonry.h>
 #import "QFInfo.h"
+#import "ZMColor.h"
+#import <MBProgressHUD/MBProgressHUD.h>
 #import "UIView+extension.h"
 #import <YYKit/YYKit.h>
 #define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
@@ -81,7 +83,17 @@ item.alpha = 0.0; \
 }]; \
 } \
 } \
+
+
+/** 广播用通知 */
+/** 登录状态改变（登录退出） */
+#define KLoginStateChangeNotice     @"KLoginStateChangeNotice"
+/** 更新用户资料 */
+#define KUpdateUserInfoNotice       @"KUpdateUserInfoNotice"
+
 //<><><><><><><><><><>显示加载菊花
 //我自己写的，显示的位置
 #define kShowHUD(view) [MBProgressHUD showHUDAddedTo:view animated:YES]
 #endif /* PrefixHeader_pch */
+
+
