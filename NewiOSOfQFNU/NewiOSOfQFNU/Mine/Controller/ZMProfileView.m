@@ -9,7 +9,8 @@
 #import "ZMProfileView.h"
 #import "ZMProfileViewCell.h"
 #import "UIImage+Common.h"
-
+#import <AVCloud.h>
+#import "ZMUserInfo.h"
 @interface ZMProfileView()<UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UIActionSheetDelegate,UINavigationControllerDelegate,UITextViewDelegate>
 
 @property (nonatomic, strong) UITableView       *tableView;
@@ -37,7 +38,7 @@
         _signTextView.textColor = [ZMColor appSupportColor];
         _signTextView.delegate = self;
         _signTextView.size = CGSizeMake(kScreenWidth-24, 140);
-        _signTextView.x = KMarginLeft;
+        _signTextView.x = 12;
         _signTextView.y = 10;
         [self placeText];
     }
@@ -96,7 +97,7 @@
     self.thumbImageView.userInteractionEnabled = YES;
     self.thumbImageView.layer.masksToBounds = YES;
     self.thumbImageView.layer.cornerRadius = 80 * 0.5;
-    self.thumbImageView.image = placeholderAvatarImage;
+    self.thumbImageView.image = [UIImage imageNamed:@"login_alert_cancel"];
     
     //获取缩略图
     AVFile *file = [AVFile fileWithURL:[ZMUserInfo shareUserInfo].thumb];
@@ -341,8 +342,8 @@
     [[AVUser currentUser] setObject:@(sex) forKey:@"sex"];
     [[AVUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded) {
-            [MBProgressHUD showPromptMessage:@"更新资料成功"];
-            [[ZMUserInfo shareUserInfo] loadUserInfo: [AVUser currentUser]];
+//            [MBProgressHUD showPromptMessage:@"更新资料成功"];
+//            [[ZMUserInfo shareUserInfo] loadUserInfo: [AVUser currentUser]];
             //发送通知
             [[NSNotificationCenter defaultCenter] postNotificationName:KUpdateUserInfoNotice object:nil];
             [self.tableView reloadData];
@@ -365,8 +366,8 @@
             [[AVUser currentUser] setObject:file.url forKey:@"thumb"];
             [[AVUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
                 if (succeeded) {
-                    [MBProgressHUD showPromptMessage:@"上传成功"];
-                    [[ZMUserInfo shareUserInfo] loadUserInfo: [AVUser currentUser]];
+//                    [MBProgressHUD showPromptMessage:@"上传成功"];
+//                    [[ZMUserInfo shareUserInfo] loadUserInfo: [AVUser currentUser]];
                     //发送通知
                     [[NSNotificationCenter defaultCenter] postNotificationName:KUpdateUserInfoNotice object:nil];
                 }
@@ -411,33 +412,33 @@
         _emailField = textField;
     }];
     
-    UIAlertAction *determineAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        NSLog(@"确定=%@",_emailField.text);
-        
-        //首先验证用户的邮箱合法性，更新用户资料
-        if ([ZMHelpUtil checkMailInput:_emailField.text]) {
-            AVUser *user = [AVUser currentUser];
-            user.email = _emailField.text;
-            [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-                if (succeeded) {
-                    [MBProgressHUD showPromptMessage:@"请求邮件发送成功，请查收"];
-                    //弹出验证框提示是否已经验证
-                    [self isVerifiedEmail];
-                }else{
-                    [MBProgressHUD showPromptMessage:@"更新用户资料失败，请重试"];
-                }
-            }];
-        }else{
-            [MBProgressHUD showPromptMessage:@"请输入正确的邮箱"];
-        }
-        
-    }];
+//    UIAlertAction *determineAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//        NSLog(@"确定=%@",_emailField.text);
+//
+//        //首先验证用户的邮箱合法性，更新用户资料
+//        if ([ZMHelpUtil checkMailInput:_emailField.text]) {
+//            AVUser *user = [AVUser currentUser];
+//            user.email = _emailField.text;
+//            [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+//                if (succeeded) {
+//                    [MBProgressHUD showPromptMessage:@"请求邮件发送成功，请查收"];
+//                    //弹出验证框提示是否已经验证
+//                    [self isVerifiedEmail];
+//                }else{
+//                    [MBProgressHUD showPromptMessage:@"更新用户资料失败，请重试"];
+//                }
+//            }];
+//        }else{
+//            [MBProgressHUD showPromptMessage:@"请输入正确的邮箱"];
+//        }
+//
+//    }];
     
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         
     }];
     
-    [actionSheetController addAction:determineAction];
+//    [actionSheetController addAction:determineAction];
     [actionSheetController addAction:cancelAction];
     
     [self.viewController presentViewController:actionSheetController animated:YES completion:nil];
@@ -479,7 +480,7 @@
         [[AVUser currentUser] setObject:textView.text forKey:@"signature"];
         [[AVUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if (succeeded) {
-                [MBProgressHUD showPromptMessage:@"更新资料成功"];
+//                [MBProgressHUD showPromptMessage:@"更新资料成功"];
                 [[ZMUserInfo shareUserInfo] loadUserInfo: [AVUser currentUser]];
                 //发送通知
                 [[NSNotificationCenter defaultCenter] postNotificationName:KUpdateUserInfoNotice object:nil];

@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "QFNUMainViewController.h"
+#import "ZMUserInfo.h"
 @interface AppDelegate ()
 @property (nonatomic, strong) QFNUMainViewController *mainViewController;
 @end
@@ -22,6 +23,14 @@
     self.mainViewController = vc;
     self.mainViewController.selectedIndex = 1;
     self.window.rootViewController = vc;
+    //启用数据存储模块
+    [AVOSCloud setApplicationId:@"omd1ftqwhek2RvKXA0cSuzOL-gzGzoHsz" clientKey:@"4dGjoA81tGcs4J9s96efgW8d"];
+    [AVAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    [AVOSCloud setAllLogsEnabled:YES];
+    
+    //此处加载用户sessionToken
+    [[ZMUserInfo shareUserInfo] loadUserInfoFromSandbox];
     return YES;
 }
 

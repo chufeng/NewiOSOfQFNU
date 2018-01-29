@@ -46,10 +46,10 @@
 - (void)loadUserInfoFromSandbox;
 
 /** 解析用户信息 */
-//- (void)loadUserInfo:(AVObject *)user;
+- (void)loadUserInfo:(AVObject *)user;
 
 /** 更新用户信息 */
-//- (void)updateUserInfo:(AVObject *)user;
+- (void)updateUserInfo:(AVObject *)user;
 
 - (void)loginOut;
 

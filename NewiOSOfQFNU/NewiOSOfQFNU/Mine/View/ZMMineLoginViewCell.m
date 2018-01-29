@@ -9,6 +9,8 @@
 #import "ZMMineLoginViewCell.h"
 #import "BaseNavigationController.h"
 #import "ZMProfileViewController.h"
+#import "ZMRegisterViewController.h"
+#import "ZMLoginViewController.h"
 #import "ZMUserInfo.h"
 @implementation ZMMineLoginViewCell
 
@@ -91,7 +93,7 @@
         self.loginView.lineLabel1.hidden = NO;
         self.loginView.lineLabel2.hidden = NO;
     }else{
-        self.profileView.thumbImageView.image = placeholderAvatarImage;
+        self.profileView.thumbImageView.image = [UIImage imageNamed:@"icon_female"];
         self.profileView.nickNameLabel.text = @"未登录";
         self.profileView.sexImageView.hidden = YES;
         self.profileView.signLabel.text = @"GACHA一下，突破异次元";
@@ -486,7 +488,7 @@
 - (void)clickButton:(UIButton *)btn{
     //NSInteger tag = btn.tag;
     NSString *string = btn.titleLabel.text;
-    [MBProgressHUD showPromptMessage:string];
+//    [MBProgressHUD show:string];
 }
 
 @end

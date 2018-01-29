@@ -45,7 +45,7 @@
         _nameLabel.font = [UIFont systemFontOfSize:15];
         [self.mainView addSubview:_nameLabel];
         [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(KMarginLeft);
+            make.left.mas_equalTo(12);
             make.centerY.mas_equalTo(self.mainView);
         }];
     }

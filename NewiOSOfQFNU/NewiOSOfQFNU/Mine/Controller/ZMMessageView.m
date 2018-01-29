@@ -7,8 +7,8 @@
 //
 
 #import "ZMMessageView.h"
-#import "ZMMessageViewCell.h"
-
+//#import "ZMMessageViewCell.h"
+#import "YYTableView.h"
 @interface ZMMessageView()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) YYTableView    *tableView;
@@ -49,15 +49,15 @@
     return 50;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    ZMMessageViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ZMMessageViewCell"];
-    if (!cell) {
-        cell = [[ZMMessageViewCell alloc] initWithStyle:0 reuseIdentifier:@"ZMMessageViewCell"];
-    }
-    cell.iconImageView.image = [UIImage imageNamed:[self.imageArray objectAtIndex:indexPath.row]];
-    cell.nameLabel.text = [self.dataArray objectAtIndex:indexPath.row];
-    cell.showBottomLine = YES;
-    return cell;
-}
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    ZMMessageViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ZMMessageViewCell"];
+//    if (!cell) {
+//        cell = [[ZMMessageViewCell alloc] initWithStyle:0 reuseIdentifier:@"ZMMessageViewCell"];
+//    }
+//    cell.iconImageView.image = [UIImage imageNamed:[self.imageArray objectAtIndex:indexPath.row]];
+//    cell.nameLabel.text = [self.dataArray objectAtIndex:indexPath.row];
+//    cell.showBottomLine = YES;
+//    return cell;
+//}
 
 @end

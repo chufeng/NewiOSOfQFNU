@@ -48,30 +48,30 @@ static ZMUserInfo *_userInfo;
     self.sessionToken = [[NSUserDefaults standardUserDefaults] objectForKey:userSessionToken];
 }
 
-//- (void)loadUserInfo:(AVObject *)user{
-//    if (user) {
-//        self.userId =       user.objectId;
-//        self.sessionToken = ((AVUser *)user).sessionToken;
-//        self.userName =     ((AVUser *)user).username;
-//        self.email =        ((AVUser *)user).email;
-//        self.emailVerfied = [user[@"emailVerified"] boolValue];
-//        self.thumb =        user[@"thumb"];
-//        self.sex =          [user[@"sex"] integerValue];
-//        self.signature =    user[@"signature"];
-//    }
-//}
+- (void)loadUserInfo:(AVObject *)user{
+    if (user) {
+        self.userId =       user.objectId;
+        self.sessionToken = ((AVUser *)user).sessionToken;
+        self.userName =     ((AVUser *)user).username;
+        self.email =        ((AVUser *)user).email;
+        self.emailVerfied = [user[@"emailVerified"] boolValue];
+        self.thumb =        user[@"thumb"];
+        self.sex =          [user[@"sex"] integerValue];
+        self.signature =    user[@"signature"];
+    }
+}
 
-//- (void)updateUserInfo:(AVObject *)user{
-//    if ([user isKindOfClass:[AVObject class]]) {
-//        self.userId =   user[@"objectId"];
-//        self.userName = user[@"username"];
-//        self.email =    user[@"email"];
-//        self.emailVerfied = [user[@"emailVerified"] boolValue];
-//        self.thumb =    user[@"thumb"];
-//        self.sex =      [user[@"sex"] integerValue];
-//        self.signature =    user[@"signature"];
-//    }
-//}
+- (void)updateUserInfo:(AVObject *)user{
+    if ([user isKindOfClass:[AVObject class]]) {
+        self.userId =   user[@"objectId"];
+        self.userName = user[@"username"];
+        self.email =    user[@"email"];
+        self.emailVerfied = [user[@"emailVerified"] boolValue];
+        self.thumb =    user[@"thumb"];
+        self.sex =      [user[@"sex"] integerValue];
+        self.signature =    user[@"signature"];
+    }
+}
 
 - (void)loginOut{
     self.userId = nil;

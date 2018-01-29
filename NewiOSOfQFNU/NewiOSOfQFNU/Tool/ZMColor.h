@@ -15,7 +15,7 @@
 
 
 /** app主题颜色 */
--(UIColor *)appMainColor;
++(UIColor *)appMainColor;
 
 /** 文本灰色 （导航标题颜色） */
 +(UIColor *)appNavTitleGrayColor;
