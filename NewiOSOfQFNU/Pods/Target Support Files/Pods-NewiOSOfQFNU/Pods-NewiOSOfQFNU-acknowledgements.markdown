@@ -255,6 +255,10 @@ SOFTWARE.
 
 
 
+## LeanCloudFeedback
+
+Copyright 2015 LeanCloud, Inc. See https://leancloud.cn/terms.html
+
 ## MBProgressHUD
 
 Copyright © 2009-2016 Matej Bukovinski

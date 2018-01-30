@@ -15,6 +15,7 @@ pod 'TFHpple', '~> 2.0.0' #爬虫
        pod 'NHHUDExtend', '~> 1.0.1'   #提示框三连 EX增强
        pod 'AVOSCloud', '~> 8.0.4'  #云后台
        pod 'YYKit', '~> 1.0.9'  #重新定义IOS编程，不好用你找我
+       pod 'LeanCloudFeedback', '~> 0.1.2' #用户反馈
   # Pods for NewiOSOfQFNU
 
   target 'NewiOSOfQFNUTests' do

@@ -86,11 +86,27 @@ EOM
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "${PODS_ROOT}/AVOSCloud/AVOS/AVOSCloud/AVOSCloud_Art.inc"
   install_resource "${PODS_ROOT}/DJRefresh/DJRefresh/DJRefresh.bundle"
+  install_resource "${PODS_ROOT}/LeanCloudFeedback/LeanCloudFeedback/resources/feedback_add_image@2x.png"
+  install_resource "${PODS_ROOT}/LeanCloudFeedback/LeanCloudFeedback/resources/feedback_back@2x.png"
+  install_resource "${PODS_ROOT}/LeanCloudFeedback/LeanCloudFeedback/resources/feedback_bg_1@2x.png"
+  install_resource "${PODS_ROOT}/LeanCloudFeedback/LeanCloudFeedback/resources/feedback_bg_2@2x.png"
+  install_resource "${PODS_ROOT}/LeanCloudFeedback/LeanCloudFeedback/resources/feedback_btn@2x.png"
+  install_resource "${PODS_ROOT}/LeanCloudFeedback/LeanCloudFeedback/resources/feedback_btn_new@2x.png"
+  install_resource "${PODS_ROOT}/LeanCloudFeedback/LeanCloudFeedback/resources/feedback_warning@2x.png"
+  install_resource "${PODS_ROOT}/LeanCloudFeedback/LeanCloudFeedback/resources/LeanCloudFeedback.strings"
   install_resource "${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "${PODS_ROOT}/AVOSCloud/AVOS/AVOSCloud/AVOSCloud_Art.inc"
   install_resource "${PODS_ROOT}/DJRefresh/DJRefresh/DJRefresh.bundle"
+  install_resource "${PODS_ROOT}/LeanCloudFeedback/LeanCloudFeedback/resources/feedback_add_image@2x.png"
+  install_resource "${PODS_ROOT}/LeanCloudFeedback/LeanCloudFeedback/resources/feedback_back@2x.png"
+  install_resource "${PODS_ROOT}/LeanCloudFeedback/LeanCloudFeedback/resources/feedback_bg_1@2x.png"
+  install_resource "${PODS_ROOT}/LeanCloudFeedback/LeanCloudFeedback/resources/feedback_bg_2@2x.png"
+  install_resource "${PODS_ROOT}/LeanCloudFeedback/LeanCloudFeedback/resources/feedback_btn@2x.png"
+  install_resource "${PODS_ROOT}/LeanCloudFeedback/LeanCloudFeedback/resources/feedback_btn_new@2x.png"
+  install_resource "${PODS_ROOT}/LeanCloudFeedback/LeanCloudFeedback/resources/feedback_warning@2x.png"
+  install_resource "${PODS_ROOT}/LeanCloudFeedback/LeanCloudFeedback/resources/LeanCloudFeedback.strings"
   install_resource "${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle"
 fi
 
