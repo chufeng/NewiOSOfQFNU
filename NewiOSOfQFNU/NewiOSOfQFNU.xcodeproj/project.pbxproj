@@ -198,8 +198,7 @@
 				2600C19C20158D47002A67F8 /* Controller */,
 				2600C19F20158D47002A67F8 /* View */,
 			);
-			name = "AboutUs(关于我们)";
-			path = "NewiOSOfQFNU/AboutUs(关于我们)";
+			path = "AboutUs(关于我们)";
 			sourceTree = "<group>";
 		};
 		2600C19C20158D47002A67F8 /* Controller */ = {
@@ -226,8 +225,7 @@
 			children = (
 				2600C1E72015B50B002A67F8 /* BASE */,
 			);
-			name = BaseView;
-			path = NewiOSOfQFNU/BaseView;
+			path = BaseView;
 			sourceTree = "<group>";
 		};
 		2600C1AB20158D48002A67F8 /* CConsult(校园资讯) */ = {
@@ -235,8 +233,7 @@
 			children = (
 				2600C1AC20158D48002A67F8 /* Controller */,
 			);
-			name = "CConsult(校园资讯)";
-			path = "NewiOSOfQFNU/CConsult(校园资讯)";
+			path = "CConsult(校园资讯)";
 			sourceTree = "<group>";
 		};
 		2600C1AC20158D48002A67F8 /* Controller */ = {
@@ -262,8 +259,7 @@
 				26931EF3201B24C2009C6E8B /* ZMColor.h */,
 				26931EF1201B24C2009C6E8B /* ZMColor.m */,
 			);
-			name = Tool;
-			path = NewiOSOfQFNU/Tool;
+			path = Tool;
 			sourceTree = "<group>";
 		};
 		2600C1E22015AF25002A67F8 /* Frameworks */ = {
@@ -304,8 +300,7 @@
 				26931EC2201B0620009C6E8B /* navigation_back@2x.png */,
 				2600C1F22015D688002A67F8 /* like.caf */,
 			);
-			name = Resources;
-			path = NewiOSOfQFNU/Resources;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		26931ECF201B1275009C6E8B /* Mine */ = {
@@ -314,8 +309,7 @@
 				26931ED0201B1275009C6E8B /* Controller */,
 				26931EDF201B1275009C6E8B /* View */,
 			);
-			name = Mine;
-			path = NewiOSOfQFNU/Mine;
+			path = Mine;
 			sourceTree = "<group>";
 		};
 		26931ED0201B1275009C6E8B /* Controller */ = {
@@ -358,8 +352,7 @@
 				26931F00201B2713009C6E8B /* UIImage+Common.h */,
 				26931F01201B2713009C6E8B /* UIImage+Common.m */,
 			);
-			name = "other(第三方)";
-			path = "NewiOSOfQFNU/other(第三方)";
+			path = "other(第三方)";
 			sourceTree = "<group>";
 		};
 		26B1E78C201726B5009CF9FC /* Login */ = {
@@ -368,8 +361,7 @@
 				26B1E78D201726B5009CF9FC /* Controller */,
 				26B1E792201726B5009CF9FC /* View */,
 			);
-			name = Login;
-			path = NewiOSOfQFNU/Login;
+			path = Login;
 			sourceTree = "<group>";
 		};
 		26B1E78D201726B5009CF9FC /* Controller */ = {
@@ -397,14 +389,6 @@
 		26C6DB5120104971006BE6FE = {
 			isa = PBXGroup;
 			children = (
-				26931EFF201B2713009C6E8B /* other(第三方) */,
-				2600C1F12015D688002A67F8 /* Resources */,
-				26B1E78C201726B5009CF9FC /* Login */,
-				26931ECF201B1275009C6E8B /* Mine */,
-				2600C19B20158D47002A67F8 /* AboutUs(关于我们) */,
-				2600C1AA20158D48002A67F8 /* BaseView */,
-				2600C1AB20158D48002A67F8 /* CConsult(校园资讯) */,
-				2600C1CC20158D49002A67F8 /* Tool */,
 				26C6DB5C20104972006BE6FE /* NewiOSOfQFNU */,
 				26C6DB7520104973006BE6FE /* NewiOSOfQFNUTests */,
 				26C6DB8020104973006BE6FE /* NewiOSOfQFNUUITests */,
@@ -427,6 +411,14 @@
 		26C6DB5C20104972006BE6FE /* NewiOSOfQFNU */ = {
 			isa = PBXGroup;
 			children = (
+				26931EFF201B2713009C6E8B /* other(第三方) */,
+				2600C1F12015D688002A67F8 /* Resources */,
+				26B1E78C201726B5009CF9FC /* Login */,
+				26931ECF201B1275009C6E8B /* Mine */,
+				2600C19B20158D47002A67F8 /* AboutUs(关于我们) */,
+				2600C1AA20158D48002A67F8 /* BaseView */,
+				2600C1AB20158D48002A67F8 /* CConsult(校园资讯) */,
+				2600C1CC20158D49002A67F8 /* Tool */,
 				26C6DB5D20104972006BE6FE /* AppDelegate.h */,
 				26C6DB5E20104972006BE6FE /* AppDelegate.m */,
 				26C6DB6020104972006BE6FE /* ViewController.h */,

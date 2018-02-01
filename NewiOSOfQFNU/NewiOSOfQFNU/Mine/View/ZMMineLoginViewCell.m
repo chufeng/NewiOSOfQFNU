@@ -11,6 +11,7 @@
 #import "ZMProfileViewController.h"
 #import "ZMRegisterViewController.h"
 #import "ZMLoginViewController.h"
+#import <LeanCloudFeedback/LeanCloudFeedback.h>
 #import "ZMUserInfo.h"
 @implementation ZMMineLoginViewCell
 
@@ -444,7 +445,7 @@
 #pragma mark - UI初始化
 - (void)setupUI{
 
-    NSArray *textArray = @[@"我的话题",@"我的订阅",@"我的连载",@"我的G单",@"我要印周边",@"草稿箱"];
+    NSArray *textArray = @[@"我的话题",@"我的订阅",@"我的连载",@"我的G单",@"用户反馈",@"关于我们"];
     NSArray *imageArray = @[@"personal_center_mytopic",
                            @"personal_subscribe",
                            @"personal_serial",
@@ -488,6 +489,11 @@
 - (void)clickButton:(UIButton *)btn{
     //NSInteger tag = btn.tag;
     NSString *string = btn.titleLabel.text;
+    if ([string isEqualToString:@"用户反馈"]){
+        LCUserFeedbackAgent *agent = [LCUserFeedbackAgent sharedInstance];
+        //    [agent showConversations:self title:nil contact:@"goodman@leancloud.cn"];
+        [agent showConversations:kWindow.rootViewController title:nil contact:nil];
+    }
 //    [MBProgressHUD show:string];
 }
 
