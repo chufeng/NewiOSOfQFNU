@@ -20,6 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addChildVc:[ViewController new] title:@"首页" image:@"tabbar_icon0" selectedImage:@"tabbar_icon0_s"];
+     [self addChildVc:[ViewController new] title:@"首页" image:@"tabbar_icon1" selectedImage:@"tabbar_icon1_s"];
     [self addChildVc:[ZMMineViewController new] title:@"我的" image:@"tabbar_icon3" selectedImage:@"tabbar_icon3_s"];
 }
 

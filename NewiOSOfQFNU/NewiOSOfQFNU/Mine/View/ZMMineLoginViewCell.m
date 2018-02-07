@@ -13,6 +13,7 @@
 #import "ZMLoginViewController.h"
 #import <LeanCloudFeedback/LeanCloudFeedback.h>
 #import "ZMUserInfo.h"
+#import "QFNUAboutUsController.h"
 @implementation ZMMineLoginViewCell
 
 - (UIView *)mainView{
@@ -488,12 +489,34 @@
 #pragma mark - 按钮
 - (void)clickButton:(UIButton *)btn{
     //NSInteger tag = btn.tag;
-    NSString *string = btn.titleLabel.text;
-    if ([string isEqualToString:@"用户反馈"]){
-        LCUserFeedbackAgent *agent = [LCUserFeedbackAgent sharedInstance];
+        NSArray *textArray = @[@"我的话题",@"我的订阅",@"我的连载",@"我的G单",@"用户反馈",@"关于我们"];
+    int index = [textArray  indexOfObject:btn.titleLabel.text];
+    
+    switch (index) {
+        case 4:{
+       LCUserFeedbackAgent *agent = [LCUserFeedbackAgent sharedInstance];
         //    [agent showConversations:self title:nil contact:@"goodman@leancloud.cn"];
-        [agent showConversations:kWindow.rootViewController title:nil contact:nil];
+            [agent showConversations:kWindow.rootViewController title:nil contact:nil];
+            
+        }
+            break;
+        case 5:
+        {
+        QFNUAboutUsController *vc = [[QFNUAboutUsController alloc] init];
+//            BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:vc];
+            [self.viewController.navigationController pushViewController:vc animated:true];
+//            [self.viewController presentViewController:nav animated:YES completion:^{
+//            }];
+//            [kWindow.rootViewController.navigationController pushViewController: animated:vc animated:TRUE];
+        }
+            break;
+            
+        default:
+            break;
     }
+//    if ([string isEqualToString:@"用户反馈"]){
+//
+//    }
 //    [MBProgressHUD show:string];
 }
 

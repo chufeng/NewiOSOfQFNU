@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface QFNUAboutUsController : UIViewController
+#import "ZMViewController.h"
+@interface QFNUAboutUsController : ZMViewController
 
 @end
