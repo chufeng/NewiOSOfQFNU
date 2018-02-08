@@ -10,7 +10,7 @@ target 'NewiOSOfQFNU' do
     pod 'MJRefresh'      #菊花轮
 
 pod 'TFHpple', '~> 2.0.0' #爬虫
-
+pod 'YCXMenu', '~> 0.0.11' #CF网页用的下拉菜单
        pod 'Masonry', '~> 1.0.1'        #AutoLayou之友
        pod 'NHHUDExtend', '~> 1.0.1'   #提示框三连 EX增强
        pod 'AVOSCloud', '~> 8.0.4'  #云后台

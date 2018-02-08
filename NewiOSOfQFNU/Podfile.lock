@@ -24,6 +24,7 @@ PODS:
   - NHHUDExtend (1.0.1):
     - MBProgressHUD (~> 1.0.0)
   - TFHpple (2.0.0)
+  - YCXMenu (0.0.11)
   - YYKit (1.0.9):
     - YYKit/no-arc (= 1.0.9)
   - YYKit/no-arc (1.0.9)
@@ -38,6 +39,7 @@ DEPENDENCIES:
   - MJRefresh
   - NHHUDExtend (~> 1.0.1)
   - TFHpple (~> 2.0.0)
+  - YCXMenu (~> 0.0.11)
   - YYKit (~> 1.0.9)
 
 SPEC CHECKSUMS:
@@ -50,8 +52,9 @@ SPEC CHECKSUMS:
   MJRefresh: 5f8552bc25ca8751c010f621c1098dbdaacbccd6
   NHHUDExtend: 10900daeabebbfb92367199398f56bea9bfc3e88
   TFHpple: a916fe0799eb30aa29b2670d14d5868cdd3a5b81
+  YCXMenu: 6003bcd20d8ac72e3eb3c442c97ed21948c6dc1f
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 60e0066937ba51e50002d6b5d3b1b974f28ab72a
+PODFILE CHECKSUM: c761cd1b677963643817c0fbe7ffdf136ff1db9b
 
 COCOAPODS: 1.3.1
