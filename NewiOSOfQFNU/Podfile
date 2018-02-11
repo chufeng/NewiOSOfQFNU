@@ -8,7 +8,7 @@ target 'NewiOSOfQFNU' do
     pod 'MBProgressHUD', '~> 1.0.0'   #提示框
     pod 'DJRefresh', '~> 1.0.5'  #你的DJ刷新
     pod 'MJRefresh'      #菊花轮
-
+    pod 'SPPageMenu', '~> 2.5.3' #分页菜单
 pod 'TFHpple', '~> 2.0.0' #爬虫
 pod 'YCXMenu', '~> 0.0.11' #CF网页用的下拉菜单
        pod 'Masonry', '~> 1.0.1'        #AutoLayou之友

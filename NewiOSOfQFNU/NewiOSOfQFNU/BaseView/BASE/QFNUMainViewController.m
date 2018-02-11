@@ -12,6 +12,7 @@
 #import "ZMMineViewController.h"
 #import "BaseNavigationController.h"
 #import "MainController.h"
+#import "QFNUCConsultController.h"
 @interface QFNUMainViewController ()
 
 @end
@@ -21,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addChildVc:[MainController new] title:@"首页" image:@"tabbar_icon0" selectedImage:@"tabbar_icon0_s"];
-     [self addChildVc:[ViewController new] title:@"首页" image:@"tabbar_icon1" selectedImage:@"tabbar_icon1_s"];
+     [self addChildVc:[QFNUCConsultController new] title:@"资讯" image:@"tabbar_icon1" selectedImage:@"tabbar_icon1_s"];
     [self addChildVc:[ZMMineViewController new] title:@"我的" image:@"tabbar_icon3" selectedImage:@"tabbar_icon3_s"];
 }
 
