@@ -20,6 +20,16 @@
 @synthesize token;
 
 ;
+#pragma mark - 是否为游客
++(void)saveTourist:(BOOL)isTourist{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    [defaults setBool:isTourist forKey:@"KisTourist"];
+    [defaults synchronize];
+}
++(BOOL)isTourist{
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    return [defaults boolForKey:@"KisTourist"];
+}
 /**
  单例方法
  可以调用全程，整个程序生命周期调用一个QFInfo的任何东西

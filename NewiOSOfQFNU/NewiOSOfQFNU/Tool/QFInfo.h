@@ -17,6 +17,8 @@
 @property (nonatomic, strong) NSString *Lt;
 
 + (QFInfo *)sharedInstance;//单例方法
++(void)saveTourist:(BOOL)isTourist;
++(BOOL)isTourist;
 -(void)save:(NSString *)user password:(NSString *)passWord token:(NSString *)Token;
 -(NSString *)getCooke;
 -(NSString *)getUser;

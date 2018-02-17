@@ -21,6 +21,7 @@
 #import "MainButtonModel.h"
 #import "MainButtonView.h"
 #import <MJRefresh/MJRefresh.h>
+#import <MBProgressHUD+NHAdd.h>
 //#import "UIViewController+LGSideMenuController.h"
 //#import "LGSideMainViewController.h"
 //#import "QFInfo.h"
@@ -355,6 +356,11 @@ CGFloat barheight;
 
 - (void)mTableView:(TQMultistageTableView *)mTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if ([QFInfo isTourist]) {
+        [MBProgressHUD showError:@"游客请登录" toView:self.view];
+//                [MBProgressHUD showError:@"请输入用户名" toView:kWindow];
+        return;
+    }
     NSLog(@"didSelectRow ----%ld,%ld",(long)indexPath.section,(long)indexPath.row);
     if (indexPath.section == 0 && indexPath.row== 0 ) {
          [self webviewtext:@"http://202.194.188.19/userInfo.jsp"];
