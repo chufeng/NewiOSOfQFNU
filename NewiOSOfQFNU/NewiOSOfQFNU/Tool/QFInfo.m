@@ -20,13 +20,13 @@
 @synthesize token;
 
 ;
-#pragma mark - 是否为游客
+#pragma mark - 是否为游客  YES就不是
 +(void)saveTourist:(BOOL)isTourist{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     [defaults setBool:isTourist forKey:@"KisTourist"];
     [defaults synchronize];
 }
-+(BOOL)isTourist{
++(BOOL)NotIsTourist{
     NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
     return [defaults boolForKey:@"KisTourist"];
 }

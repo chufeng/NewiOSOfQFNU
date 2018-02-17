@@ -356,7 +356,7 @@ CGFloat barheight;
 
 - (void)mTableView:(TQMultistageTableView *)mTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([QFInfo isTourist]) {
+    if (![QFInfo NotIsTourist]) {
         [MBProgressHUD showError:@"游客请登录" toView:self.view];
 //                [MBProgressHUD showError:@"请输入用户名" toView:kWindow];
         return;

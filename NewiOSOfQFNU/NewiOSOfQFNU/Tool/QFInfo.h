@@ -18,7 +18,7 @@
 
 + (QFInfo *)sharedInstance;//单例方法
 +(void)saveTourist:(BOOL)isTourist;
-+(BOOL)isTourist;
++(BOOL)NotIsTourist;
 -(void)save:(NSString *)user password:(NSString *)passWord token:(NSString *)Token;
 -(NSString *)getCooke;
 -(NSString *)getUser;
