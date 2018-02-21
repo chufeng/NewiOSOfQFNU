@@ -12,6 +12,7 @@
 #import <Masonry.h>
 #import "UIView+extension.h"
 #import <YYKit/YYLabel.h>
+#import <TFHpple/TFHpple.h>
 #import <MBProgressHUD+NHAdd.h>
 @interface ZMLoginView()
 
@@ -115,7 +116,7 @@
     [self mainView];
     WEAKSELF;
     self.logoImageView = [UIImageView new];
-    UIImage *logoImage = [UIImage imageNamed:@"login_header"];
+    UIImage *logoImage = [UIImage imageNamed:@"qfnulogo"];
     self.logoImageView.image = logoImage;
     [self.mainView addSubview:self.logoImageView];
     [self.logoImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -126,7 +127,7 @@
     
     self.userNameField = [[UITextField alloc] init];
     self.userNameField.font = [UIFont systemFontOfSize:15];
-    NSAttributedString *userNameString = [[NSAttributedString alloc] initWithString:@"用户名" attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]}];
+    NSAttributedString *userNameString = [[NSAttributedString alloc] initWithString:@"用户名" attributes:@{NSForegroundColorAttributeName:[ZMColor appLightGrayColor],NSFontAttributeName:            self.userNameField.font}];
     self.userNameField.attributedPlaceholder = userNameString;
     self.userNameField.textColor = [UIColor whiteColor];
     self.userNameField.clearButtonMode=UITextFieldViewModeWhileEditing;
@@ -164,7 +165,7 @@
     self.passwordField = [[UITextField alloc] init];
     self.passwordField.font = [UIFont systemFontOfSize:15];
     self.passwordField.textColor = [UIColor whiteColor];
-    NSAttributedString *passwordString = [[NSAttributedString alloc] initWithString:@"密码" attributes:@{NSForegroundColorAttributeName:[UIColor lightGrayColor],
+    NSAttributedString *passwordString = [[NSAttributedString alloc] initWithString:@"密码" attributes:@{NSForegroundColorAttributeName:[ZMColor appLightGrayColor],
                     NSFontAttributeName:self.userNameField.font}];
     self.passwordField.attributedPlaceholder = passwordString;
     self.passwordField.clearButtonMode=UITextFieldViewModeWhileEditing;
@@ -214,21 +215,21 @@
     };
     
     //注册
-    self.registerLabel = [YYLabel new];
-    self.registerLabel.font = [UIFont systemFontOfSize:13];
-    self.registerLabel.textColor = [UIColor whiteColor];
-    self.registerLabel.text = @"去注册";
-    [self.mainView addSubview:self.registerLabel];
-    [self.registerLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(self.userNameField.mas_right);
-        make.top.mas_equalTo(self.passwordField.mas_bottom).with.offset(20);
-    }];
-    self.registerLabel.textTapAction = ^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
-        NSLog(@"点击了注册");
-        //如果在弹出模态框之前没有包装导航控制器，这里是不会push成功的
-        ZMRegisterViewController *vc = [[ZMRegisterViewController alloc] init];
-        [weakSelf.viewController.navigationController pushViewController:vc animated:YES];
-    };
+//    self.registerLabel = [YYLabel new];
+//    self.registerLabel.font = [UIFont systemFontOfSize:13];
+//    self.registerLabel.textColor = [UIColor whiteColor];
+//    self.registerLabel.text = @"去注册";
+//    [self.mainView addSubview:self.registerLabel];
+//    [self.registerLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.right.mas_equalTo(self.userNameField.mas_right);
+//        make.top.mas_equalTo(self.passwordField.mas_bottom).with.offset(20);
+//    }];
+//    self.registerLabel.textTapAction = ^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
+//        NSLog(@"点击了注册");
+//        //如果在弹出模态框之前没有包装导航控制器，这里是不会push成功的
+//        ZMRegisterViewController *vc = [[ZMRegisterViewController alloc] init];
+//        [weakSelf.viewController.navigationController pushViewController:vc animated:YES];
+//    };
     
     //登录
     self.loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -281,6 +282,127 @@
     WEAKSELF;
     [MBProgressHUD showMessage:@"正在登录..." toView:self];
     if (username.length && password.length) {
+         NSDictionary* dic=[[NSDictionary alloc]init];
+        NSString *Lt=[[NSString alloc]init];
+        NSString *urlstring=@"http://ids.qfnu.edu.cn/authserver/login?service=http%3A%2F%2F202.194.188.19%2Fcaslogin.jsp";
+        NSData *htmlData=[[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:urlstring]];
+        TFHpple *xpathParser=[[TFHpple alloc]initWithXMLData:htmlData];
+        NSArray *dataArray=[xpathParser searchWithXPathQuery:@"//input"];
+        for (TFHppleElement *hppleElement in dataArray){
+            if ([[hppleElement objectForKey:@"name"] isEqualToString:@"lt"]) {
+                NSLog(@"%@",[hppleElement objectForKey:@"value"]);
+                Lt=[[NSString alloc]init];
+                Lt=[hppleElement objectForKey:@"value"];
+                NSLog(@"Lt:%@",Lt);
+            }
+        }
+//        if (ischeck) {
+            dic = @{@"username":_userNameField.textField.text,
+                    @"password":_passwordField.textField.text,
+                    @"lt":Lt,
+//                    @"captchaResponse":_captchaField.textField.text,
+                    @"execution":@"e1s1",
+                    @"_eventId":@"submit",
+                    @"submit":@"%%E7%%99%%BB%%E5%%BD%%95"
+                    };
+//        }else{
+//            dic = @{@"username":_userNameField.textField.text,
+//                    @"password":_passwordField.textField.text,
+//                    @"lt":Lt,
+//                    @"execution":@"e1s1",
+//                    @"_eventId":@"submit",
+//                    @"submit":@"%%E7%%99%%BB%%E5%%BD%%95"
+//                    };
+        }
+        
+        
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        manager.requestSerializer = [AFHTTPRequestSerializer serializer];//请求
+        manager.responseSerializer = [AFHTTPResponseSerializer serializer];//响应
+        [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+        manager.requestSerializer.timeoutInterval = 7.f;
+        [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+        [manager POST:urlstring parameters:dic progress:^(NSProgress * _Nonnull uploadProgress) {
+            
+        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            NSHTTPURLResponse * responses = (NSHTTPURLResponse *)task.response;
+            NSLog(@"str:%@",responses.URL);
+            TFHpple *xpathParser=[[TFHpple alloc]initWithHTMLData:responseObject];
+            NSString *isLogin=[NSString stringWithFormat:@"%@",responses.URL];
+            if ([isLogin isEqualToString:@"http://ids.qfnu.edu.cn/authserver/login?service=http%3A%2F%2F202.194.188.19%2Fcaslogin.jsp"]) {
+                NSLog(@"登陆失败");
+                //一开始让我清cookie我是拒绝的，但是学校登陆系统里面的Lt，在登陆失败的时候，网页里获取的Lt会更新，但是我查了下，会更新的居然只有我这边！学校那边没更新！只能清cookie让学校认为我是新人了。
+                NSHTTPCookieStorage *cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+                NSArray *_tmpArray = [NSArray arrayWithArray:[cookieJar cookies]];
+                for (id obj in _tmpArray) {
+                    [cookieJar deleteCookie:obj];
+                }
+                
+                //刷新验证码
+                
+                NSData* imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://ids.qfnu.edu.cn/authserver/captcha.html"]];
+                UIImage* resultImage = [UIImage imageWithData: imageData];
+                _imageview.image=resultImage;
+                
+                
+                [button failedAnimationWithCompletion:^{
+                    
+                    [self didPresentControllerButtonTouch];
+                }];
+                [MBProgressHUD showError:@"1.用户名或密码错误,2.服务器连接失败" toView:self.view];
+                //            UIAlertView * alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"1.用户名或密码错误,2.服务器连接失败" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                //            [alert show];
+                
+            }
+            if([isLogin isEqualToString:@"http://202.194.188.19/caslogin.jsp"]){
+                NSLog(@"登陆成功");
+                [[QFInfo sharedInstance] SaveCookie];
+                [button succeedAnimationWithCompletion:^{
+                    [self didPresentControllerButtonTouch];
+                }];
+                [self didPresentControllerButtonTouch];
+                [[QFInfo sharedInstance]loginqfnu:_userNameField.textField.text password:_passwordField.textField.text];
+                
+                
+                
+                
+            }
+            
+            
+            NSArray *dataArray=[xpathParser searchWithXPathQuery:@"//title"];
+            for (TFHppleElement *hppleElement in dataArray){
+                
+                NSLog(@"title:%@",hppleElement.text);
+                
+            }
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            //清cookie
+            NSHTTPCookieStorage *cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+            NSArray *_tmpArray = [NSArray arrayWithArray:[cookieJar cookies]];
+            for (id obj in _tmpArray) {
+                [cookieJar deleteCookie:obj];
+            }
+            //刷新验证码
+            
+            NSData* imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://ids.qfnu.edu.cn/authserver/captcha.html"]];
+            UIImage* resultImage = [UIImage imageWithData: imageData];
+            _imageview.image=resultImage;
+            
+            [button failedAnimationWithCompletion:^{
+                
+                [self didPresentControllerButtonTouch];
+            }];
+            if (error.code==-1001) {
+                [MBProgressHUD showError:@"校园服务器连接超时，提示：在访问高峰期会导致此情况" toView:self.view];
+                //            UIAlertView * alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"校园服务器连接超时，提示：在访问高峰期会导致此情况" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                //            [alert show];
+                
+            }else{
+                [MBProgressHUD showError:@"服务器连接失败" toView:self.view];
+                //            UIAlertView * alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"服务器连接失败" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                //            [alert show];
+            }
+        }];
 //        [QFInfo sharedInstance]loginqfnu:<#(NSString *)#> password:<#(NSString *)#>
         
         

@@ -54,6 +54,10 @@
 		26B1E7A0201727E0009CF9FC /* ZMNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B1E79F201727E0009CF9FC /* ZMNavView.m */; };
 		26B1E7A3201730C0009CF9FC /* UIView+extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B1E7A1201730BF009CF9FC /* UIView+extension.m */; };
 		26B1E7A420173909009CF9FC /* ZMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B1E79B2017279F009CF9FC /* ZMViewController.m */; };
+		26BF9990203D071D00F09C14 /* icon_telephone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26BF998D203D071C00F09C14 /* icon_telephone@2x.png */; };
+		26BF9991203D071D00F09C14 /* login_bg_640X1136@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26BF998E203D071D00F09C14 /* login_bg_640X1136@2x.png */; };
+		26BF9992203D071D00F09C14 /* icon_lock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26BF998F203D071D00F09C14 /* icon_lock@2x.png */; };
+		26BF9994203D122500F09C14 /* qfnulogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 26BF9993203D122400F09C14 /* qfnulogo.png */; };
 		26C6DB5F20104972006BE6FE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C6DB5E20104972006BE6FE /* AppDelegate.m */; };
 		26C6DB6220104972006BE6FE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C6DB6120104972006BE6FE /* ViewController.m */; };
 		26C6DB6520104972006BE6FE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26C6DB6320104972006BE6FE /* Main.storyboard */; };
@@ -171,6 +175,10 @@
 		26B1E79F201727E0009CF9FC /* ZMNavView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMNavView.m; sourceTree = "<group>"; };
 		26B1E7A1201730BF009CF9FC /* UIView+extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+extension.m"; sourceTree = "<group>"; };
 		26B1E7A2201730C0009CF9FC /* UIView+extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+extension.h"; sourceTree = "<group>"; };
+		26BF998D203D071C00F09C14 /* icon_telephone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_telephone@2x.png"; sourceTree = "<group>"; };
+		26BF998E203D071D00F09C14 /* login_bg_640X1136@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_bg_640X1136@2x.png"; sourceTree = "<group>"; };
+		26BF998F203D071D00F09C14 /* icon_lock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_lock@2x.png"; sourceTree = "<group>"; };
+		26BF9993203D122400F09C14 /* qfnulogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qfnulogo.png; sourceTree = "<group>"; };
 		26C6DB5A20104972006BE6FE /* NewiOSOfQFNU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewiOSOfQFNU.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26C6DB5D20104972006BE6FE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		26C6DB5E20104972006BE6FE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -335,6 +343,10 @@
 		2600C1F12015D688002A67F8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				26BF9993203D122400F09C14 /* qfnulogo.png */,
+				26BF998F203D071D00F09C14 /* icon_lock@2x.png */,
+				26BF998D203D071C00F09C14 /* icon_telephone@2x.png */,
+				26BF998E203D071D00F09C14 /* login_bg_640X1136@2x.png */,
 				26E11A23202AED3E0042737E /* login_alert_cancel@2x.png */,
 				26931EC1201B0620009C6E8B /* navigation_back_white@2x.png */,
 				26931EC2201B0620009C6E8B /* navigation_back@2x.png */,
@@ -687,12 +699,16 @@
 			files = (
 				26C6DB6A20104972006BE6FE /* LaunchScreen.storyboard in Resources */,
 				26C6DB6720104972006BE6FE /* Assets.xcassets in Resources */,
+				26BF9992203D071D00F09C14 /* icon_lock@2x.png in Resources */,
+				26BF9991203D071D00F09C14 /* login_bg_640X1136@2x.png in Resources */,
 				2600C1CF20158D49002A67F8 /* AboutUsView.xib in Resources */,
 				26E11A24202AED3E0042737E /* login_alert_cancel@2x.png in Resources */,
 				264D74E3202BEAFB0018D236 /* MainButtonData.plist in Resources */,
+				26BF9994203D122500F09C14 /* qfnulogo.png in Resources */,
 				2600C1F32015D688002A67F8 /* like.caf in Resources */,
 				26C6DB6520104972006BE6FE /* Main.storyboard in Resources */,
 				26931EC3201B0620009C6E8B /* navigation_back_white@2x.png in Resources */,
+				26BF9990203D071D00F09C14 /* icon_telephone@2x.png in Resources */,
 				26931EC4201B0620009C6E8B /* navigation_back@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1089,6 +1105,7 @@
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/NewiOSOfQFNU/PrefixHeader.pch";
 				INFOPLIST_FILE = NewiOSOfQFNU/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRIVATE_HEADERS_FOLDER_PATH = "$(CONTENTS_FOLDER_PATH)/PrefixHeader";
 				PRODUCT_BUNDLE_IDENTIFIER = yida.NewiOSOfQFNU;
@@ -1111,6 +1128,7 @@
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/NewiOSOfQFNU/PrefixHeader.pch";
 				INFOPLIST_FILE = NewiOSOfQFNU/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRIVATE_HEADERS_FOLDER_PATH = "$(CONTENTS_FOLDER_PATH)/PrefixHeader";
 				PRODUCT_BUNDLE_IDENTIFIER = yida.NewiOSOfQFNU;

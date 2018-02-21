@@ -28,7 +28,12 @@
     [AVAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     [AVOSCloud setAllLogsEnabled:YES];
-    
+    [AVAnalytics updateOnlineConfigWithBlock:^(NSDictionary *dict, NSError *error) {
+        if (error == nil) {
+            // 从 dict 中读取参数，dict["k1"] 值应该为 v1
+            NSLog(@"dict:%@",dict);
+        }
+    }];
     //此处加载用户sessionToken
     [[ZMUserInfo shareUserInfo] loadUserInfoFromSandbox];
     return YES;
