@@ -10,9 +10,12 @@
 #import "ZMRegisterViewController.h"
 #import "BaseNavigationController.h"
 #import <Masonry.h>
+
 #import "UIView+extension.h"
 #import <YYKit/YYLabel.h>
 #import <TFHpple/TFHpple.h>
+#import <AFNetworking.h>
+#import <AFNetworking/AFURLSessionManager.h>
 #import <MBProgressHUD+NHAdd.h>
 @interface ZMLoginView()
 
@@ -296,9 +299,10 @@
                 NSLog(@"Lt:%@",Lt);
             }
         }
+
 //        if (ischeck) {
-            dic = @{@"username":_userNameField.textField.text,
-                    @"password":_passwordField.textField.text,
+            dic = @{@"username":self.userNameField.text,
+                    @"password":self.passwordField.text,
                     @"lt":Lt,
 //                    @"captchaResponse":_captchaField.textField.text,
                     @"execution":@"e1s1",
@@ -313,7 +317,7 @@
 //                    @"_eventId":@"submit",
 //                    @"submit":@"%%E7%%99%%BB%%E5%%BD%%95"
 //                    };
-        }
+        
         
         
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -337,44 +341,57 @@
                 for (id obj in _tmpArray) {
                     [cookieJar deleteCookie:obj];
                 }
-                
+            }
                 //刷新验证码
                 
-                NSData* imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://ids.qfnu.edu.cn/authserver/captcha.html"]];
-                UIImage* resultImage = [UIImage imageWithData: imageData];
-                _imageview.image=resultImage;
-                
-                
-                [button failedAnimationWithCompletion:^{
+                //                NSData* imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://ids.qfnu.edu.cn/authserver/captcha.html"]];
+                //                UIImage* resultImage = [UIImage imageWithData: imageData];
+                //                _imageview.image=resultImage;
+                //
+                //
+                //                [button failedAnimationWithCompletion:^{
+                //
+                //                    [self didPresentControllerButtonTouch];
+                //                }];
+                //                [MBProgressHUD showError:@"1.用户名或密码错误,2.服务器连接失败" toView:self.view];
+                //                //            UIAlertView * alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"1.用户名或密码错误,2.服务器连接失败" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                //                //            [alert show];
+                //
+                //            }
+                if([isLogin isEqualToString:@"http://202.194.188.19/caslogin.jsp"]){
+                    NSLog(@"登陆成功");
+                    [MBProgressHUD hideHUDForView:self];
+                                  [MBProgressHUD showError:@"登陆成功" toView:self];
+                                    [[QFInfo sharedInstance]save:self.userNameField.text password:self.passwordField.text token:@""];
+                    [[QFInfo sharedInstance]loginqfnu:self.userNameField.text password:self.passwordField.text];
+                                        [[QFInfo sharedInstance] SaveCookie];
                     
-                    [self didPresentControllerButtonTouch];
-                }];
-                [MBProgressHUD showError:@"1.用户名或密码错误,2.服务器连接失败" toView:self.view];
-                //            UIAlertView * alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"1.用户名或密码错误,2.服务器连接失败" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-                //            [alert show];
+                    
+                    [QFInfo saveTourist:YES];
                 
-            }
-            if([isLogin isEqualToString:@"http://202.194.188.19/caslogin.jsp"]){
-                NSLog(@"登陆成功");
-                [[QFInfo sharedInstance] SaveCookie];
-                [button succeedAnimationWithCompletion:^{
-                    [self didPresentControllerButtonTouch];
-                }];
-                [self didPresentControllerButtonTouch];
-                [[QFInfo sharedInstance]loginqfnu:_userNameField.textField.text password:_passwordField.textField.text];
+                    [weakSelf.viewController dismissViewControllerAnimated:YES completion:^{
+                                        }];
+
+                    //                [button succeedAnimationWithCompletion:^{
+                    //                    [self didPresentControllerButtonTouch];
+                    //                }];
+                    //                [self didPresentControllerButtonTouch];
+                    //                [[QFInfo sharedInstance]loginqfnu:_userNameField.textField.text password:_passwordField.textField.text];
+                    
+                    
+                    
+                    
+                }
                 
                 
-                
-                
-            }
+                NSArray *dataArray=[xpathParser searchWithXPathQuery:@"//title"];
+                for (TFHppleElement *hppleElement in dataArray){
+                    
+                    NSLog(@"title:%@",hppleElement.text);
+                    
+                }
             
-            
-            NSArray *dataArray=[xpathParser searchWithXPathQuery:@"//title"];
-            for (TFHppleElement *hppleElement in dataArray){
-                
-                NSLog(@"title:%@",hppleElement.text);
-                
-            }
+        
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             //清cookie
             NSHTTPCookieStorage *cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
@@ -386,56 +403,60 @@
             
             NSData* imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://ids.qfnu.edu.cn/authserver/captcha.html"]];
             UIImage* resultImage = [UIImage imageWithData: imageData];
-            _imageview.image=resultImage;
+            //            _imageview.image=resultImage;
             
-            [button failedAnimationWithCompletion:^{
-                
-                [self didPresentControllerButtonTouch];
-            }];
+            //            [button failedAnimationWithCompletion:^{
+            //
+            //                [self didPresentControllerButtonTouch];
+            //            }];
             if (error.code==-1001) {
-                [MBProgressHUD showError:@"校园服务器连接超时，提示：在访问高峰期会导致此情况" toView:self.view];
+                [MBProgressHUD hideHUDForView:self];
+                [MBProgressHUD showError:@"校园服务器连接超时，提示：在访问高峰期会导致此情况" toView:kWindow];
                 //            UIAlertView * alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"校园服务器连接超时，提示：在访问高峰期会导致此情况" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
                 //            [alert show];
                 
             }else{
-                [MBProgressHUD showError:@"服务器连接失败" toView:self.view];
+                [MBProgressHUD hideHUDForView:self];
+                [MBProgressHUD showError:@"服务器连接失败" toView:kWindow];
                 //            UIAlertView * alert=[[UIAlertView alloc]initWithTitle:@"提示" message:@"服务器连接失败" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
                 //            [alert show];
             }
+//        }
+//        }
+        //        [QFInfo sharedInstance]loginqfnu:<#(NSString *)#> password:<#(NSString *)#>
+        
+        
+        
+        //        [AVUser logInWithUsernameInBackground:username password:password block:^(AVUser *user, NSError *error) {
+        //            [MBProgressHUD hideAllHUDsForView:weakSelf animated:YES];
+        //            if (error) {
+        //                NSDictionary *dic = error.userInfo;
+        //                NSLog(@"登录失败 %@", dic[@"error"]);
+        //                [MBProgressHUD showPromptMessage:@"用户名和密码不匹配"];
+        //            } else {
+        //                //这里存储 sessionToken，下次直接用sessionToken 登录
+        //                [[ZMUserInfo shareUserInfo] loadUserInfo:user];
+        //                [[ZMUserInfo shareUserInfo] saveUserInfoToSandbox];
+        //
+        //                //发送登录成功通知
+        //                [[NSNotificationCenter defaultCenter] postNotificationName:KLoginStateChangeNotice object:nil];
+        //
+        //                [weakSelf.viewController dismissViewControllerAnimated:YES completion:^{
+        //                }];
+        //
+        ////                //尝试解析图片,这是自定义属性
+        ////                NSData *imageStr = [user objectForKey:@"thumb"];
+        ////                // 将NSData转为UIImage
+        ////                UIImage *decodedImage = [UIImage imageWithData: imageStr];
+        ////                if (decodedImage) {
+        ////                    [ZMUserInfo shareUserInfo].headImage = decodedImage;
+        ////                }
+        ////                NSLog(@"%@",decodedImage);
+        //            }
+        //        }];
         }];
-//        [QFInfo sharedInstance]loginqfnu:<#(NSString *)#> password:<#(NSString *)#>
-        
-        
-        
-//        [AVUser logInWithUsernameInBackground:username password:password block:^(AVUser *user, NSError *error) {
-//            [MBProgressHUD hideAllHUDsForView:weakSelf animated:YES];
-//            if (error) {
-//                NSDictionary *dic = error.userInfo;
-//                NSLog(@"登录失败 %@", dic[@"error"]);
-//                [MBProgressHUD showPromptMessage:@"用户名和密码不匹配"];
-//            } else {
-//                [MBProgressHUD showPromptMessage:@"登录成功"];
-//                //这里存储 sessionToken，下次直接用sessionToken 登录
-//                [[ZMUserInfo shareUserInfo] loadUserInfo:user];
-//                [[ZMUserInfo shareUserInfo] saveUserInfoToSandbox];
-//
-//                //发送登录成功通知
-//                [[NSNotificationCenter defaultCenter] postNotificationName:KLoginStateChangeNotice object:nil];
-//
-//                [weakSelf.viewController dismissViewControllerAnimated:YES completion:^{
-//                }];
-//
-////                //尝试解析图片,这是自定义属性
-////                NSData *imageStr = [user objectForKey:@"thumb"];
-////                // 将NSData转为UIImage
-////                UIImage *decodedImage = [UIImage imageWithData: imageStr];
-////                if (decodedImage) {
-////                    [ZMUserInfo shareUserInfo].headImage = decodedImage;
-////                }
-////                NSLog(@"%@",decodedImage);
-//            }
-//        }];
-    }
+
+}
 }
 
 #pragma mark - 退出页面

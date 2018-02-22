@@ -70,7 +70,7 @@ NS_INLINE MBProgressHUD *settHUD(UIView *view, NSString *title, BOOL autoHidden)
     hud.customView = [[UIImageView alloc] initWithImage:kLoadImage(@"success.png")];
 }
 
-//这条我自己补的啊
+//这条我自己补的啊--chufeng
 #pragma mark 显示一些信息
 + (MBProgressHUD *)showMessage:(NSString *)message toView:(UIView *)view {
     if (view == nil) view = [UIApplication sharedApplication].keyWindow;

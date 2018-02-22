@@ -43,7 +43,10 @@
     });
     return sharedManagerInstance;
 }
-//保存用户名密码
+//
+/**
+保存用户名密码
+ */
 - (void)save:(NSString *)user password:(NSString *)passWord token:(NSDictionary *)Token{
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     
@@ -52,7 +55,10 @@
     [ud setObject:passWord forKey:@"password"];
     [ud synchronize];
 }
-//调用用户名，没有就是空
+/**
+调用用户名，没有就是空
+ */
+	
 -(NSString *)getUser{
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     NSString *us=@"";
@@ -61,7 +67,12 @@
     }
     return us;
 }
-//调用cookie，没有就是空
+
+/**
+ 调用cookie，没有就是空
+
+ @return cookie
+ */
 -(NSString *)getCooke{
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     NSString *iscooke=@"";
@@ -70,7 +81,12 @@
     }
     return iscooke;
 }
-//调用密码，没有就是空
+//
+/**
+ 调用密码，没有就是空
+
+ @return 密码
+ */
 -(NSString *)getPassword{
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     NSString *ps=@"";
@@ -79,6 +95,12 @@
     }
     return ps;
 }
+
+/**
+ 获取token列表
+
+ @return token列表
+ */
 -(NSDictionary *)getToken{
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     NSDictionary *tk=nil;
@@ -87,6 +109,13 @@
     }
     return tk;
 }
+
+/**
+ 登陆孔学长的后台，用来获得token以获取课表之列的方便方法
+
+ @param username 用户的用户名
+ @param password 用户的密码
+ */
 -(void)loginqfnu:(NSString *)username password:(NSString *)password{
     NSLog(@"登录的账号是：%@",username);
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -134,6 +163,11 @@
         }];
 }
 
+/**
+ 重登用
+
+ @param retry 重登次数（int）
+ */
 -(void)ReLogin:(NSInteger)retry{
 
     if (retry<6) {
@@ -236,7 +270,13 @@
     
     }
 
-//获取课程
+//
+
+/**
+ 获取课程
+
+ @return 课程的字典
+ */
 -(NSDictionary *)getCourse{
     NSUserDefaults *gcou = [NSUserDefaults standardUserDefaults];
     NSDictionary *cou;
@@ -247,6 +287,12 @@
     
 }
 //保存课程
+
+/**
+ 保存课程
+
+ @param course 课程字典
+ */
 -(void)savaCourse:(NSDictionary *)course{
     NSLog(@"====================保存课程====================");
     NSUserDefaults *cou = [NSUserDefaults standardUserDefaults];
@@ -256,6 +302,12 @@
 }
 
 //获取考勤人员
+
+/**
+ 获取考勤人员
+
+ @return 考勤人员
+ */
 -(NSString *)getclassUser{
     NSUserDefaults *gcu = [NSUserDefaults standardUserDefaults];
     NSString *cu;
@@ -266,12 +318,22 @@
     
 }
 //保存考勤人员
+
+/**
+ 保存考勤人员
+
+ @param classUser 考勤人员
+ */
 -(void)classUser:(NSDictionary *)classUser{
     NSLog(@"====================保存考勤人员====================");
     NSUserDefaults *cu = [NSUserDefaults standardUserDefaults];
     [cu setObject:classUser forKey:@"course"];
     [cu synchronize];
 }
+
+/**
+ 保存网页缓存
+ */
 -(void)SaveCookie
 {
     NSLog(@"====================保存cookie====================");
@@ -286,6 +348,10 @@
     
     [userDefaults setObject: cookiesData forKey: @"cookie"];
 }
+
+/**
+ 提取网络缓存并且自动设置到网络
+ */
 - (void)setCoookie
 {
     NSLog(@"============再取出保存的cookie重新设置cookie===============");
