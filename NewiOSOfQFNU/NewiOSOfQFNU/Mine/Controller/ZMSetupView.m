@@ -28,7 +28,7 @@
 }
 
 - (void)setupUI{
-    self.dataArray = @[@"清除缓存",@"关于GACHA",@"服务条款",@"意见反馈",@"评价我们"];
+    self.dataArray = @[@"清除缓存",@"关于我们",@"服务条款",@"意见反馈",@"评价我们"];
     _tableView = [[YYTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     _tableView.backgroundColor = [ZMColor appGraySpaceColor];
     _tableView.dataSource = self;

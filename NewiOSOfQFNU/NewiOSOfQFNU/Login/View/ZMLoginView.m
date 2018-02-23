@@ -10,7 +10,7 @@
 #import "ZMRegisterViewController.h"
 #import "BaseNavigationController.h"
 #import <Masonry.h>
-
+#import "CFWebViewController.h"
 #import "UIView+extension.h"
 #import <YYKit/YYLabel.h>
 #import <TFHpple/TFHpple.h>
@@ -27,6 +27,7 @@
 @property (nonatomic, strong) UIImageView   *logoImageView;
 @property (nonatomic, strong) UITextField   *userNameField;
 @property (nonatomic, strong) UITextField   *passwordField;
+@property (nonatomic, strong) UITextField   *captchaField;
 @property (nonatomic, strong) YYLabel       *forgetPwdLabel;
 @property (nonatomic, strong) YYLabel       *registerLabel;
 @property (nonatomic, strong) UIButton      *loginButton;
@@ -114,18 +115,19 @@
 }
 
 - (void)setupUI{
+        [self addNoticeForKeyboard];
     [self closeButton];
     [self bgImageView];
     [self mainView];
     WEAKSELF;
     self.logoImageView = [UIImageView new];
-    UIImage *logoImage = [UIImage imageNamed:@"qfnulogo"];
+    UIImage *logoImage = [UIImage imageNamed:@"logoschool"];
     self.logoImageView.image = logoImage;
     [self.mainView addSubview:self.logoImageView];
     [self.logoImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(logoImage.size);
         make.centerX.mas_equalTo(self.mainView);
-        make.top.mas_equalTo(CGRectGetMaxY(self.closeButton.frame) + 40);
+        make.top.mas_equalTo(CGRectGetMaxY(self.closeButton.frame) + 20);
     }];
     
     self.userNameField = [[UITextField alloc] init];
@@ -139,7 +141,7 @@
         make.left.mas_equalTo(20);
         make.right.mas_equalTo(-20);
         make.height.mas_equalTo(50);
-        make.top.mas_equalTo(self.logoImageView.mas_bottom).with.offset(60);
+        make.top.mas_equalTo(self.logoImageView.mas_bottom).with.offset(10);
     }];
     UIView *userNameMainView = [UIView new];
     
@@ -203,6 +205,44 @@
         make.top.mas_equalTo(self.passwordField.mas_bottom).with.offset(1);
     }];
 
+
+    self.captchaField = [[UITextField alloc] init];
+    self.captchaField.font = [UIFont systemFontOfSize:15];
+    self.captchaField.textColor = [UIColor whiteColor];
+    NSAttributedString *captchaString = [[NSAttributedString alloc] initWithString:@"验证码" attributes:@{NSForegroundColorAttributeName:[ZMColor appLightGrayColor],
+                                                                                                       NSFontAttributeName:self.userNameField.font}];
+    self.captchaField.attributedPlaceholder = captchaString;
+    self.captchaField.clearButtonMode=UITextFieldViewModeWhileEditing;
+    [self.mainView addSubview:self.self.captchaField];
+    [self.captchaField mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(20);
+        make.right.mas_equalTo(-60);
+        make.height.mas_equalTo(50);
+        make.top.mas_equalTo(self.userNameField.mas_bottom).with.offset(1);
+    }];
+    UIView *captchaMainView = [UIView new];
+    UIImageView *captchaView = [UIImageView new];
+    UIImage *captchaLeftView = [UIImage imageNamed:@"icon_lock"];
+    captchaView.image = captchaLeftView;
+    captchaView.size = captchaLeftView.size;
+    captchaView.x = 0;
+    captchaView.y = 0;
+    captchaView.size = CGSizeMake(captchaLeftView.size.width + 10, captchaLeftView.size.height);
+    [captchaMainView addSubview:captchaView];
+
+    self.captchaField.leftView = captchaMainView;
+    self.captchaField.leftViewMode = UITextFieldViewModeAlways;
+
+//    self.bottomLine2 = [UILabel new];
+//    self.bottomLine2.backgroundColor = [UIColor lightGrayColor];
+//    [self.mainView addSubview:self.bottomLine2];
+//    [self.bottomLine2 mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.mas_equalTo(12);
+//        make.right.mas_equalTo(-20);
+//        make.height.mas_equalTo(0.5);
+//        make.top.mas_equalTo(self.passwordField.mas_bottom).with.offset(1);
+//    }];
+    
     //忘记密码
     self.forgetPwdLabel = [YYLabel new];
     self.forgetPwdLabel.font = [UIFont systemFontOfSize:13];
@@ -215,6 +255,8 @@
     }];
     self.forgetPwdLabel.textTapAction = ^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
         NSLog(@"点击了忘记密码");
+        CFWebViewController *webview=[[CFWebViewController alloc]initWithUrl:[NSURL URLWithString:@"http://ids.qfnu.edu.cn/authserver/getBackPasswordMainPage.do"]];
+        [kWindow.rootViewController.navigationController pushViewController:webview animated:YES];
     };
     
     //注册
@@ -239,7 +281,7 @@
     self.loginButton.titleLabel.font = [UIFont systemFontOfSize:15];
     self.loginButton.layer.masksToBounds = YES;
     self.loginButton.layer.cornerRadius = 20;
-    self.loginButton.backgroundColor = [UIColor grayColor];
+    self.loginButton.backgroundColor = [ZMColor colorWithHexString:@"#55667D"];
     [self.loginButton setTitle:@"登录" forState:UIControlStateNormal];
     [self.mainView addSubview:self.loginButton];
     [self.loginButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -458,7 +500,49 @@
 
 }
 }
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self endEditing:YES];
+}
+#pragma mark - 键盘通知
+- (void)addNoticeForKeyboard {
+    
+    //注册键盘出现的通知
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification object:nil];
+    //注册键盘消失的通知
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
+}
+///键盘显示事件
+- (void) keyboardWillShow:(NSNotification *)notification {
+    //获取键盘高度，在不同设备上，以及中英文下是不同的
+    CGFloat kbHeight = [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
+    
+    //计算出键盘顶端到inputTextView panel底端的距离(加上自定义的缓冲距离INTERVAL_KEYBOARD)
+    CGFloat offset = (SCREEN_H - (125+ SCREEN_H/12)+_passwordField.frame.size.height+self.loginButton.frame.size.height+10) - (self.frame.size.height - kbHeight);
+    // 取得键盘的动画时间，这样可以在视图上移的时候更连贯
+    double duration = [[notification.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    
+    //将视图上移计算好的偏移
+    if(offset > 0) {
+        [UIView animateWithDuration:duration animations:^{
+            self.frame = CGRectMake(0.0f, -offset, self.frame.size.width, self.frame.size.height);
+        }];
+    }
+}
 
+///键盘消失事件
+- (void) keyboardWillHide:(NSNotification *)notify {
+    // 键盘动画时间
+    double duration = [[notify.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    
+    //视图下沉恢复原状
+    [UIView animateWithDuration:duration animations:^{
+        self.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+    }];
+}
 #pragma mark - 退出页面
 - (void)clickLoginOut:(UIButton *)btn{
     btn.enabled = NO;

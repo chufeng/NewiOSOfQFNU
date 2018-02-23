@@ -97,7 +97,7 @@
     [self mainView];
     WEAKSELF;
     self.logoImageView = [UIImageView new];
-    UIImage *logoImage = [UIImage imageNamed:@"qfnulogo"];
+    UIImage *logoImage = [UIImage imageNamed:@"logoschool"];
     self.logoImageView.image = logoImage;
     [self.mainView addSubview:self.logoImageView];
     [self.logoImageView mas_makeConstraints:^(MASConstraintMaker *make) {

@@ -45,6 +45,7 @@
 		26931EFB201B25BA009C6E8B /* ZMUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 26931EFA201B25B9009C6E8B /* ZMUserInfo.m */; };
 		26931EFE201B2661009C6E8B /* ZMBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26931EFC201B2660009C6E8B /* ZMBaseModel.m */; };
 		26931F02201B2714009C6E8B /* UIImage+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 26931F01201B2713009C6E8B /* UIImage+Common.m */; };
+		2696CAEA203FB27F00885D5E /* logoschool.png in Resources */ = {isa = PBXBuildFile; fileRef = 2696CAE9203FB27E00885D5E /* logoschool.png */; };
 		26B1E78920171958009CF9FC /* BaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B1E78720171958009CF9FC /* BaseRequest.m */; };
 		26B1E797201726B5009CF9FC /* ZMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B1E78F201726B5009CF9FC /* ZMLoginViewController.m */; };
 		26B1E798201726B5009CF9FC /* ZMRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B1E791201726B5009CF9FC /* ZMRegisterViewController.m */; };
@@ -158,6 +159,7 @@
 		26931EFD201B2661009C6E8B /* ZMBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMBaseModel.h; sourceTree = "<group>"; };
 		26931F00201B2713009C6E8B /* UIImage+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Common.h"; sourceTree = "<group>"; };
 		26931F01201B2713009C6E8B /* UIImage+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Common.m"; sourceTree = "<group>"; };
+		2696CAE9203FB27E00885D5E /* logoschool.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoschool.png; sourceTree = "<group>"; };
 		26B1E78720171958009CF9FC /* BaseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseRequest.m; sourceTree = "<group>"; };
 		26B1E78820171958009CF9FC /* BaseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseRequest.h; sourceTree = "<group>"; };
 		26B1E78A20171CB1009CF9FC /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -343,6 +345,7 @@
 		2600C1F12015D688002A67F8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2696CAE9203FB27E00885D5E /* logoschool.png */,
 				26BF9993203D122400F09C14 /* qfnulogo.png */,
 				26BF998F203D071D00F09C14 /* icon_lock@2x.png */,
 				26BF998D203D071C00F09C14 /* icon_telephone@2x.png */,
@@ -707,6 +710,7 @@
 				26BF9994203D122500F09C14 /* qfnulogo.png in Resources */,
 				2600C1F32015D688002A67F8 /* like.caf in Resources */,
 				26C6DB6520104972006BE6FE /* Main.storyboard in Resources */,
+				2696CAEA203FB27F00885D5E /* logoschool.png in Resources */,
 				26931EC3201B0620009C6E8B /* navigation_back_white@2x.png in Resources */,
 				26BF9990203D071D00F09C14 /* icon_telephone@2x.png in Resources */,
 				26931EC4201B0620009C6E8B /* navigation_back@2x.png in Resources */,

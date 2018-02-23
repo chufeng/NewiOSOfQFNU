@@ -98,7 +98,7 @@
         self.profileView.thumbImageView.image = [UIImage imageNamed:@"icon_female"];
         self.profileView.nickNameLabel.text = @"未登录";
         self.profileView.sexImageView.hidden = YES;
-        self.profileView.signLabel.text = @"GACHA一下，突破异次元";
+        self.profileView.signLabel.text = @"少年（女），不出发前往汪星吗？";
         self.loginView.loginButton.hidden = NO;
         self.loginView.registerButton.hidden = NO;
         self.loginView.mainView.hidden = YES;

@@ -94,7 +94,7 @@
     if (!_lineLabel) {
         //底部分割线
         UILabel *lineLabel = [[UILabel alloc] init];
-        lineLabel.backgroundColor = [UIColor cyanColor];
+        lineLabel.backgroundColor = [ZMColor colorWithHexString:@"0xDCDCDC" alpha:1.0];
         self.lineLabel = lineLabel;
         [self.mainView addSubview:lineLabel];
         [self.lineLabel mas_makeConstraints:^(MASConstraintMaker *make) {
