@@ -17,8 +17,10 @@
 #import <AFNetworking.h>
 #import <AFNetworking/AFURLSessionManager.h>
 #import <MBProgressHUD+NHAdd.h>
-@interface ZMLoginView()
-
+@interface ZMLoginView()<UITextFieldDelegate>
+{
+        NSString *iscaptcha;
+}
 @property (nonatomic, strong) UIView        *mainView;
 @property (nonatomic, strong) UIScrollView  *scrollView;
 @property (nonatomic, strong) UIImageView   *bgImageView;
@@ -131,6 +133,7 @@
     }];
     
     self.userNameField = [[UITextField alloc] init];
+    self.userNameField.delegate=self;
     self.userNameField.font = [UIFont systemFontOfSize:15];
     NSAttributedString *userNameString = [[NSAttributedString alloc] initWithString:@"用户名" attributes:@{NSForegroundColorAttributeName:[ZMColor appLightGrayColor],NSFontAttributeName:            self.userNameField.font}];
     self.userNameField.attributedPlaceholder = userNameString;
@@ -168,6 +171,7 @@
     }];
     
     self.passwordField = [[UITextField alloc] init];
+    self.passwordField.delegate=self;
     self.passwordField.font = [UIFont systemFontOfSize:15];
     self.passwordField.textColor = [UIColor whiteColor];
     NSAttributedString *passwordString = [[NSAttributedString alloc] initWithString:@"密码" attributes:@{NSForegroundColorAttributeName:[ZMColor appLightGrayColor],
@@ -214,6 +218,7 @@
     self.captchaField.attributedPlaceholder = captchaString;
     self.captchaField.clearButtonMode=UITextFieldViewModeWhileEditing;
     [self.mainView addSubview:self.self.captchaField];
+    self.captchaField.hidden=YES;
     [self.captchaField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(20);
         make.right.mas_equalTo(-60);
@@ -223,7 +228,7 @@
     UIView *captchaMainView = [UIView new];
     UIImageView *captchaView = [UIImageView new];
     UIImage *captchaLeftView = [UIImage imageNamed:@"icon_lock"];
-    captchaView.image = captchaLeftView;
+//    captchaView.image = captchaLeftView;
     captchaView.size = captchaLeftView.size;
     captchaView.x = 0;
     captchaView.y = 0;
@@ -311,7 +316,7 @@
 
 #pragma mark - 登录
 - (void)clickLoginButton:(UIButton *)btn{
-    
+    BOOL *ischeck=FALSE;
     if (![self.userNameField.text stringByTrim].length) {
         [MBProgressHUD showError:@"请输入用户名" toView:kWindow];
 //                [MBProgressHUD showPromptMessage:@"请输入用户名"];
@@ -320,6 +325,15 @@
     if (![self.passwordField.text stringByTrim].length) {
                 [MBProgressHUD showError:@"请输入密码" toView:kWindow];
         return;
+    }
+    
+    if([self checkcaptcha]){
+        ischeck=TRUE;
+        if ([self isBlankString:self.captchaField.text]) {
+            [MBProgressHUD showError:@"请输入验证码" toView:self];
+            return;
+        }
+        
     }
     NSLog(@"去登录");
     NSString *username = self.userNameField.text;
@@ -528,11 +542,59 @@
     //将视图上移计算好的偏移
     if(offset > 0) {
         [UIView animateWithDuration:duration animations:^{
-            self.frame = CGRectMake(0.0f, -offset, self.frame.size.width, self.frame.size.height);
+            self.mainView.frame = CGRectMake(0.0f, -offset, self.frame.size.width, self.frame.size.height);
         }];
     }
 }
-
+#pragma mark -UITextFieldDelegate
+- ( void )textFieldDidBeginEditing:( UITextField*)textField{
+    
+}
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if (textField.tag==1){
+        [_passwordField becomeFirstResponder];
+    }else{
+        [self endEditing:YES];
+    }
+    return YES;
+}
+- ( void )textFieldDidEndEditing:( UITextField *)textField{
+    if(textField.tag==1){
+        [self checkcaptcha];
+        
+        
+    }
+}
+-(BOOL)checkcaptcha{
+    
+    NSString *urlstring=[NSString stringWithFormat:@"http://ids.qfnu.edu.cn/authserver/needCaptcha.html?username=%@",self.userNameField.text];
+    NSData *htmlData=[[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:urlstring]];
+    iscaptcha=[[NSString alloc]initWithData:htmlData encoding:NSUTF8StringEncoding];
+    
+    
+    
+    NSLog(@"是否需要验证码:%@",iscaptcha);
+    CGFloat offset=_captchaField.frame.size.height;
+    // 取得键盘的动画时间，这样可以在视图上移的时候更连贯
+    if([iscaptcha isEqualToString:@"true\n"]){
+        //将视图上移计算好的增加了验证码的偏移
+        if(offset > 0) {
+            [UIView animateWithDuration:0.3 animations:^{
+                self.userNameField.frame = CGRectMake(0.0f, SCREEN_H - (205+ SCREEN_H/12)-offset-40, self.userNameField.frame.size.width, self.userNameField.frame.size.height);
+                self.passwordField.frame = CGRectMake(0.0f, SCREEN_H - (125+ SCREEN_H/12)-offset-40, self.passwordField.frame.size.width, self.passwordField.frame.size.height);
+                self.bottomLine2.frame = CGRectMake(0.0f, SCREEN_H - (125+ SCREEN_H/12)-offset-40, self.bottomLine2.frame.size.width, self.bottomLine2.frame.size.height);
+                                self.bottomLine1.frame = CGRectMake(0.0f, SCREEN_H - (125+ SCREEN_H/12)-offset-40, self.bottomLine1.frame.size.width, self.bottomLine1.frame.size.height);
+                //                    显示验证码
+                self.captchaField.hidden=NO;
+//                _imageview.hidden=NO;
+            }];
+            
+        }
+        return YES;
+    }
+    return NO;
+}
 ///键盘消失事件
 - (void) keyboardWillHide:(NSNotification *)notify {
     // 键盘动画时间
@@ -542,6 +604,21 @@
     [UIView animateWithDuration:duration animations:^{
         self.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
     }];
+}
+/**
+ 检测NSString是否为空
+ */
+-(BOOL)isBlankString:(NSString *)string{
+    
+    if (string == nil)
+    {  return YES; }
+    if (string == NULL)
+    {  return YES;  }
+    if ([string isKindOfClass:[NSNull class]])
+    {  return YES;  }
+    if ([[string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length]==0) {  return YES;
+    }
+    return NO;
 }
 #pragma mark - 退出页面
 - (void)clickLoginOut:(UIButton *)btn{
