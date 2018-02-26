@@ -37,7 +37,7 @@
 
 @property (nonatomic, strong) UILabel       *bottomLine1;
 @property (nonatomic, strong) UILabel       *bottomLine2;
-
+@property (nonatomic, strong) UILabel       *bottomLine3;
 @end
 
 @implementation ZMLoginView
@@ -117,7 +117,7 @@
 }
 
 - (void)setupUI{
-        [self addNoticeForKeyboard];
+    [self addNoticeForKeyboard];
     [self closeButton];
     [self bgImageView];
     [self mainView];
@@ -131,7 +131,7 @@
         make.centerX.mas_equalTo(self.mainView);
         make.top.mas_equalTo(CGRectGetMaxY(self.closeButton.frame) + 20);
     }];
-    
+//    self.logoImageView.fra
     self.userNameField = [[UITextField alloc] init];
     self.userNameField.delegate=self;
     self.userNameField.font = [UIFont systemFontOfSize:15];
@@ -223,7 +223,7 @@
         make.left.mas_equalTo(20);
         make.right.mas_equalTo(-60);
         make.height.mas_equalTo(50);
-        make.top.mas_equalTo(self.userNameField.mas_bottom).with.offset(1);
+        make.top.mas_equalTo(self.passwordField.mas_bottom).with.offset(1);
     }];
     UIView *captchaMainView = [UIView new];
     UIImageView *captchaView = [UIImageView new];
@@ -238,6 +238,16 @@
     self.captchaField.leftView = captchaMainView;
     self.captchaField.leftViewMode = UITextFieldViewModeAlways;
 
+    self.bottomLine3 = [UILabel new];
+    self.bottomLine3.backgroundColor = [UIColor lightGrayColor];
+    [self.mainView addSubview:self.bottomLine3];
+    [self.bottomLine3 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(12);
+        make.right.mas_equalTo(-20);
+        make.height.mas_equalTo(0.5);
+        make.top.mas_equalTo(self.captchaField.mas_bottom).with.offset(1);
+    }];
+    self.bottomLine3.hidden=YES;
 //    self.bottomLine2 = [UILabel new];
 //    self.bottomLine2.backgroundColor = [UIColor lightGrayColor];
 //    [self.mainView addSubview:self.bottomLine2];
@@ -248,21 +258,7 @@
 //        make.top.mas_equalTo(self.passwordField.mas_bottom).with.offset(1);
 //    }];
     
-    //忘记密码
-    self.forgetPwdLabel = [YYLabel new];
-    self.forgetPwdLabel.font = [UIFont systemFontOfSize:13];
-    self.forgetPwdLabel.text = @"忘记密码？";
-    self.forgetPwdLabel.textColor = [UIColor whiteColor];
-    [self.mainView addSubview:self.forgetPwdLabel];
-    [self.forgetPwdLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.userNameField.mas_left);
-        make.top.mas_equalTo(self.passwordField.mas_bottom).with.offset(20);
-    }];
-    self.forgetPwdLabel.textTapAction = ^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
-        NSLog(@"点击了忘记密码");
-        CFWebViewController *webview=[[CFWebViewController alloc]initWithUrl:[NSURL URLWithString:@"http://ids.qfnu.edu.cn/authserver/getBackPasswordMainPage.do"]];
-        [kWindow.rootViewController.navigationController pushViewController:webview animated:YES];
-    };
+
     
     //注册
 //    self.registerLabel = [YYLabel new];
@@ -292,11 +288,25 @@
     [self.loginButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(12);
         make.right.mas_equalTo(-20);
-        make.top.mas_equalTo(self.forgetPwdLabel.mas_bottom).with.offset(25);
+        make.top.mas_equalTo(self.captchaField.mas_bottom).with.offset(20);
         make.height.mas_equalTo(45);
     }];
     [self.loginButton addTarget:self action:@selector(clickLoginButton:) forControlEvents:UIControlEventTouchUpInside];
-    
+    //忘记密码
+    self.forgetPwdLabel = [YYLabel new];
+    self.forgetPwdLabel.font = [UIFont systemFontOfSize:13];
+    self.forgetPwdLabel.text = @"忘记密码？";
+    self.forgetPwdLabel.textColor = [UIColor whiteColor];
+    [self.mainView addSubview:self.forgetPwdLabel];
+    [self.forgetPwdLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.loginButton.mas_left);
+        make.top.mas_equalTo(self.loginButton.mas_bottom).with.offset(20);
+    }];
+    self.forgetPwdLabel.textTapAction = ^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
+        NSLog(@"点击了忘记密码");
+        CFWebViewController *webview=[[CFWebViewController alloc]initWithUrl:[NSURL URLWithString:@"http://ids.qfnu.edu.cn/authserver/getBackPasswordMainPage.do"]];
+        [kWindow.rootViewController.navigationController pushViewController:webview animated:YES];
+    };
     //继续浏览
     self.closeLabel = [YYLabel new];
     self.closeLabel.font = [UIFont systemFontOfSize:13];
@@ -339,7 +349,8 @@
     NSString *username = self.userNameField.text;
     NSString *password = self.passwordField.text;
     WEAKSELF;
-    [MBProgressHUD showMessage:@"正在登录..." toView:self];
+//    [MBProgressHUD showMessage:@"正在登录..." toView:self];
+    [MBProgressHUD showLoadToView:kWindow title:[NSString stringWithFormat:@"正在登录..."]];
     if (username.length && password.length) {
          NSDictionary* dic=[[NSDictionary alloc]init];
         NSString *Lt=[[NSString alloc]init];
@@ -385,12 +396,14 @@
         [manager POST:urlstring parameters:dic progress:^(NSProgress * _Nonnull uploadProgress) {
             
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            kHiddenHUD;
             NSHTTPURLResponse * responses = (NSHTTPURLResponse *)task.response;
             NSLog(@"str:%@",responses.URL);
             TFHpple *xpathParser=[[TFHpple alloc]initWithHTMLData:responseObject];
             NSString *isLogin=[NSString stringWithFormat:@"%@",responses.URL];
             if ([isLogin isEqualToString:@"http://ids.qfnu.edu.cn/authserver/login?service=http%3A%2F%2F202.194.188.19%2Fcaslogin.jsp"]) {
                 NSLog(@"登陆失败");
+                [MBProgressHUD showError:@"登陆失败" toView:self];
                 //一开始让我清cookie我是拒绝的，但是学校登陆系统里面的Lt，在登陆失败的时候，网页里获取的Lt会更新，但是我查了下，会更新的居然只有我这边！学校那边没更新！只能清cookie让学校认为我是新人了。
                 NSHTTPCookieStorage *cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
                 NSArray *_tmpArray = [NSArray arrayWithArray:[cookieJar cookies]];
@@ -449,6 +462,7 @@
             
         
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            kHiddenHUD;
             //清cookie
             NSHTTPCookieStorage *cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
             NSArray *_tmpArray = [NSArray arrayWithArray:[cookieJar cookies]];
@@ -581,12 +595,19 @@
         //将视图上移计算好的增加了验证码的偏移
         if(offset > 0) {
             [UIView animateWithDuration:0.3 animations:^{
-                self.userNameField.frame = CGRectMake(0.0f, SCREEN_H - (205+ SCREEN_H/12)-offset-40, self.userNameField.frame.size.width, self.userNameField.frame.size.height);
+                [self.userNameField mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.left.mas_equalTo(20);
+                    make.right.mas_equalTo(-20);
+                    make.height.mas_equalTo(50);
+                    make.top.mas_equalTo(self.logoImageView.mas_bottom).with.offset(10-offset);
+                }];
+//                self.userNameField.frame = CGRectMake(0.0f, SCREEN_H - (205+ SCREEN_H/12)-offset-40, self.userNameField.frame.size.width, self.userNameField.frame.size.height);
                 self.passwordField.frame = CGRectMake(0.0f, SCREEN_H - (125+ SCREEN_H/12)-offset-40, self.passwordField.frame.size.width, self.passwordField.frame.size.height);
                 self.bottomLine2.frame = CGRectMake(0.0f, SCREEN_H - (125+ SCREEN_H/12)-offset-40, self.bottomLine2.frame.size.width, self.bottomLine2.frame.size.height);
                                 self.bottomLine1.frame = CGRectMake(0.0f, SCREEN_H - (125+ SCREEN_H/12)-offset-40, self.bottomLine1.frame.size.width, self.bottomLine1.frame.size.height);
                 //                    显示验证码
                 self.captchaField.hidden=NO;
+                self.bottomLine3.hidden=NO;
 //                _imageview.hidden=NO;
             }];
             

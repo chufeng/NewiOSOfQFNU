@@ -98,7 +98,7 @@
         self.profileView.thumbImageView.image = [UIImage imageNamed:@"icon_female"];
         self.profileView.nickNameLabel.text = @"未登录";
         self.profileView.sexImageView.hidden = YES;
-        self.profileView.signLabel.text = @"少年（女），不出发前往汪星吗？";
+        self.profileView.signLabel.text = @"曲师人从不留名";
         self.loginView.loginButton.hidden = NO;
         self.loginView.registerButton.hidden = NO;
         self.loginView.mainView.hidden = YES;
@@ -489,7 +489,7 @@
 #pragma mark - 按钮
 - (void)clickButton:(UIButton *)btn{
     //NSInteger tag = btn.tag;
-        NSArray *textArray = @[@"我的话题",@"我的订阅",@"我的连载",@"我的G单",@"用户反馈",@"关于我们"];
+        NSArray *textArray = @[@"我的话题",@"我的订阅",@"我的连载",@"用户反馈",@"关于我们",@"用户注销"];
     int index = [textArray  indexOfObject:btn.titleLabel.text];
     
     switch (index) {
