@@ -405,10 +405,11 @@
 - (void)clickLoginButton:(UIButton *)btn{
     ZMLoginViewController *vc = [[ZMLoginViewController alloc] init];
     //如果登录视图需要push的话就需要包装导航控制器
-    BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:vc];
-    [self.viewController presentViewController:nav animated:YES completion:^{
-        btn.enabled = YES;
-    }];
+//    BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:vc];
+        [self.viewController.navigationController pushViewController:vc animated:YES];
+//    [self.viewController presentViewController:nav animated:YES completion:^{
+//        btn.enabled = YES;
+//    }];
 }
 
 #pragma mark - 跳转注册

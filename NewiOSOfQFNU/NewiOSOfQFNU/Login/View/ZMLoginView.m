@@ -34,6 +34,7 @@
 @property (nonatomic, strong) YYLabel       *registerLabel;
 @property (nonatomic, strong) UIButton      *loginButton;
 @property (nonatomic, strong) YYLabel       *closeLabel;
+@property (strong,nonatomic)UIImageView *imageview;
 
 @property (nonatomic, strong) UILabel       *bottomLine1;
 @property (nonatomic, strong) UILabel       *bottomLine2;
@@ -89,11 +90,11 @@
 - (UIButton *)closeButton{
     if (!_closeButton) {
         _closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        UIImage *image = [UIImage imageNamed:@"login_alert_cancel"];
-        _closeButton.layer.cornerRadius = 30 * 0.5;
-        _closeButton.layer.masksToBounds = YES;
-        _closeButton.layer.borderColor = [UIColor whiteColor].CGColor;
-        _closeButton.layer.borderWidth = 1;
+        UIImage *image = [UIImage imageNamed:@"navigation_back_white"];
+//        _closeButton.layer.cornerRadius = 30 * 0.5;
+//        _closeButton.layer.masksToBounds = YES;
+//        _closeButton.layer.borderColor = [UIColor whiteColor].CGColor;
+//        _closeButton.layer.borderWidth = 1;
         [_closeButton setImage:image forState:UIControlStateNormal];
         [self addSubview:_closeButton];
         [self bringSubviewToFront:_closeButton];
@@ -221,42 +222,58 @@
     self.captchaField.hidden=YES;
     [self.captchaField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(20);
-        make.right.mas_equalTo(-60);
+        make.right.mas_equalTo(-100);
         make.height.mas_equalTo(50);
         make.top.mas_equalTo(self.passwordField.mas_bottom).with.offset(1);
     }];
-    UIView *captchaMainView = [UIView new];
-    UIImageView *captchaView = [UIImageView new];
-    UIImage *captchaLeftView = [UIImage imageNamed:@"icon_lock"];
-//    captchaView.image = captchaLeftView;
-    captchaView.size = captchaLeftView.size;
-    captchaView.x = 0;
-    captchaView.y = 0;
-    captchaView.size = CGSizeMake(captchaLeftView.size.width + 10, captchaLeftView.size.height);
-    [captchaMainView addSubview:captchaView];
-
-    self.captchaField.leftView = captchaMainView;
-    self.captchaField.leftViewMode = UITextFieldViewModeAlways;
-
+    
+    
     self.bottomLine3 = [UILabel new];
     self.bottomLine3.backgroundColor = [UIColor lightGrayColor];
     [self.mainView addSubview:self.bottomLine3];
     [self.bottomLine3 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(12);
-        make.right.mas_equalTo(-20);
+        make.right.mas_equalTo(-220);
         make.height.mas_equalTo(0.5);
         make.top.mas_equalTo(self.captchaField.mas_bottom).with.offset(1);
     }];
-    self.bottomLine3.hidden=YES;
-//    self.bottomLine2 = [UILabel new];
-//    self.bottomLine2.backgroundColor = [UIColor lightGrayColor];
-//    [self.mainView addSubview:self.bottomLine2];
-//    [self.bottomLine2 mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.mas_equalTo(12);
-//        make.right.mas_equalTo(-20);
-//        make.height.mas_equalTo(0.5);
-//        make.top.mas_equalTo(self.passwordField.mas_bottom).with.offset(1);
-//    }];
+    
+    //首先得拿到照片的路径，也就是下边的string参数，转换为NSData型。
+    NSData* imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://ids.qfnu.edu.cn/authserver/captcha.html"]];
+    //然后就是添加照片语句，记得使用imageWithData:方法，不是imageWithName:。
+    
+//    self.imageview.image=resultImage;
+    UIGestureRecognizer *touchimage=[[UIGestureRecognizer alloc]initWithTarget:self action:@selector(touchImage:)];
+    [self.imageview addGestureRecognizer:touchimage];
+//    [self.mainView addSubview:self.imageview];
+   
+    UIView *captcharightView = [UIView new];
+    self.imageview=[[UIImageView alloc]init];
+    self.imageview.userInteractionEnabled=YES;
+    UIImage* resultImage = [UIImage imageWithData: imageData];
+    //    captchaView.image = captchaLeftView;
+    self.imageview.size = resultImage.size;
+    self.imageview.x = 0;
+    self.imageview.y = 0;
+    self.imageview.size = CGSizeMake(resultImage.size.width + 10, resultImage.size.height);
+    [captcharightView addSubview:self.imageview];
+     self.captchaField.rightView=captcharightView;
+    self.captchaField.rightViewMode = UITextFieldViewModeAlways;
+    
+    
+    UIView *captchaMainView = [UIView new];
+    
+    UIImageView *captchaView = [UIImageView new];
+    UIImage *captchaLeftImage = [UIImage imageWithData: imageData];
+    captchaView.image = captchaLeftImage;
+    captchaView.size = captchaLeftImage.size;
+    captchaView.x = 0;
+    captchaView.y = 0;
+    captchaMainView.size = CGSizeMake(captchaLeftImage.size.width + 10, captchaLeftImage.size.height);
+    [captchaMainView addSubview:captchaView];
+    
+    self.captchaField.rightView = captchaMainView;
+    self.captchaField.rightViewMode = UITextFieldViewModeAlways;
     
 
     
@@ -300,12 +317,19 @@
     [self.mainView addSubview:self.forgetPwdLabel];
     [self.forgetPwdLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.loginButton.mas_left);
-        make.top.mas_equalTo(self.loginButton.mas_bottom).with.offset(20);
+        make.top.mas_equalTo(self.loginButton.mas_bottom).with.offset(10);
     }];
     self.forgetPwdLabel.textTapAction = ^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
         NSLog(@"点击了忘记密码");
+
         CFWebViewController *webview=[[CFWebViewController alloc]initWithUrl:[NSURL URLWithString:@"http://ids.qfnu.edu.cn/authserver/getBackPasswordMainPage.do"]];
-        [kWindow.rootViewController.navigationController pushViewController:webview animated:YES];
+        BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:webview];
+        [self.view presentViewController:nav animated:YES completion:^{
+            //        btn.enabled = YES;
+        }];
+//                [self.viewController.navigationController pushViewController:webview animated:YES];
+//        [self.viewController.navigationController setNavigationBarHidden:NO animated:YES];
+//        [kWindow.rootViewController.navigationController pushViewController:webview animated:YES];
     };
     //继续浏览
     self.closeLabel = [YYLabel new];
@@ -316,14 +340,22 @@
     [self.mainView addSubview:self.closeLabel];
     [self.closeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.mainView);
+        
         make.top.mas_equalTo(self.loginButton.mas_bottom).with.offset(25);
     }];
     self.closeLabel.textTapAction = ^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
+        [self.viewController.navigationController popViewControllerAnimated:YES];
         [weakSelf.viewController dismissViewControllerAnimated:YES completion:^{
         }];
     };
 }
-
+-(void)touchImage:(UIGestureRecognizer *)gest{
+    NSData* imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://ids.qfnu.edu.cn/authserver/captcha.html"]];
+    
+    UIImage* resultImage = [UIImage imageWithData: imageData];
+    _imageview.image=resultImage;
+    
+}
 #pragma mark - 登录
 - (void)clickLoginButton:(UIButton *)btn{
     BOOL *ischeck=FALSE;
@@ -437,7 +469,7 @@
                     
                     
                     [QFInfo saveTourist:YES];
-                
+                [self.viewController.navigationController popViewControllerAnimated:YES];
                     [weakSelf.viewController dismissViewControllerAnimated:YES completion:^{
                                         }];
 
@@ -644,6 +676,7 @@
 #pragma mark - 退出页面
 - (void)clickLoginOut:(UIButton *)btn{
     btn.enabled = NO;
+        [self.viewController.navigationController popViewControllerAnimated:YES];
     [self.viewController dismissViewControllerAnimated:YES completion:^{
         
     }];

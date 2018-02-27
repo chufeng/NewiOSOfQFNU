@@ -96,6 +96,7 @@
 #pragma mark - 退出登录
 - (void)clickLoginOut{
 //    [AVUser logOut];
+    
     [[ZMUserInfo shareUserInfo] loginOut];
     [[NSNotificationCenter defaultCenter] postNotificationName:KLoginStateChangeNotice object:nil];
     [self.viewController.navigationController popViewControllerAnimated:YES];

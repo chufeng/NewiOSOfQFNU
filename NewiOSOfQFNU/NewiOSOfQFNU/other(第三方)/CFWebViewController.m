@@ -317,7 +317,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(InfoNotificationAction:) name:@"relogin" object:nil];
     //重试次数
     static ReCount=0;
-
+    if ([webView.request.URL.absoluteString isEqualToString:@"http://ids.qfnu.edu.cn/authserver/getBackPasswordMainPage.do"]) {
+        
+        return ;
+    }
 //    [webView stringByEvaluatingJavaScriptFromString:@"document.cookie='down_close=down_close'"];
 //    [webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('close_down').style.display='none';"];
     if ([webView.request.URL.absoluteString isEqualToString:@"http://m.5read.com/4581"]||[webView.request.URL.absoluteString isEqualToString:@"http://m.5read.com/157"]) {
