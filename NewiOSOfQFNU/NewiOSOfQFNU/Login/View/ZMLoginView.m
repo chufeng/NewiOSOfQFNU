@@ -324,7 +324,7 @@
 
         CFWebViewController *webview=[[CFWebViewController alloc]initWithUrl:[NSURL URLWithString:@"http://ids.qfnu.edu.cn/authserver/getBackPasswordMainPage.do"]];
         BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:webview];
-        [self.view presentViewController:nav animated:YES completion:^{
+        [self.viewController presentViewController:nav animated:YES completion:^{
             //        btn.enabled = YES;
         }];
 //                [self.viewController.navigationController pushViewController:webview animated:YES];
