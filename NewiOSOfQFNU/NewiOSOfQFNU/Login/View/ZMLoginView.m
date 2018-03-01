@@ -20,6 +20,7 @@
 @interface ZMLoginView()<UITextFieldDelegate>
 {
         NSString *iscaptcha;
+    UIView *captchaMainView;
 }
 @property (nonatomic, strong) UIView        *mainView;
 @property (nonatomic, strong) UIScrollView  *scrollView;
@@ -237,31 +238,21 @@
         make.height.mas_equalTo(0.5);
         make.top.mas_equalTo(self.captchaField.mas_bottom).with.offset(1);
     }];
-    
+    self.bottomLine3.hidden=YES;
     //首先得拿到照片的路径，也就是下边的string参数，转换为NSData型。
     NSData* imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://ids.qfnu.edu.cn/authserver/captcha.html"]];
     //然后就是添加照片语句，记得使用imageWithData:方法，不是imageWithName:。
     
 //    self.imageview.image=resultImage;
     UIGestureRecognizer *touchimage=[[UIGestureRecognizer alloc]initWithTarget:self action:@selector(touchImage:)];
+    
     [self.imageview addGestureRecognizer:touchimage];
 //    [self.mainView addSubview:self.imageview];
    
-    UIView *captcharightView = [UIView new];
-    self.imageview=[[UIImageView alloc]init];
-    self.imageview.userInteractionEnabled=YES;
-    UIImage* resultImage = [UIImage imageWithData: imageData];
-    //    captchaView.image = captchaLeftView;
-    self.imageview.size = resultImage.size;
-    self.imageview.x = 0;
-    self.imageview.y = 0;
-    self.imageview.size = CGSizeMake(resultImage.size.width + 10, resultImage.size.height);
-    [captcharightView addSubview:self.imageview];
-     self.captchaField.rightView=captcharightView;
-    self.captchaField.rightViewMode = UITextFieldViewModeAlways;
+
     
     
-    UIView *captchaMainView = [UIView new];
+    captchaMainView = [UIView new];
     
     UIImageView *captchaView = [UIImageView new];
     UIImage *captchaLeftImage = [UIImage imageWithData: imageData];
@@ -309,28 +300,28 @@
         make.height.mas_equalTo(45);
     }];
     [self.loginButton addTarget:self action:@selector(clickLoginButton:) forControlEvents:UIControlEventTouchUpInside];
-    //忘记密码
-    self.forgetPwdLabel = [YYLabel new];
-    self.forgetPwdLabel.font = [UIFont systemFontOfSize:13];
-    self.forgetPwdLabel.text = @"忘记密码？";
-    self.forgetPwdLabel.textColor = [UIColor whiteColor];
-    [self.mainView addSubview:self.forgetPwdLabel];
-    [self.forgetPwdLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.loginButton.mas_left);
-        make.top.mas_equalTo(self.loginButton.mas_bottom).with.offset(10);
-    }];
-    self.forgetPwdLabel.textTapAction = ^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
-        NSLog(@"点击了忘记密码");
-
-        CFWebViewController *webview=[[CFWebViewController alloc]initWithUrl:[NSURL URLWithString:@"http://ids.qfnu.edu.cn/authserver/getBackPasswordMainPage.do"]];
-        BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:webview];
-        [self.viewController presentViewController:nav animated:YES completion:^{
-            //        btn.enabled = YES;
-        }];
+//    //忘记密码
+//    self.forgetPwdLabel = [YYLabel new];
+//    self.forgetPwdLabel.font = [UIFont systemFontOfSize:13];
+//    self.forgetPwdLabel.text = @"忘记密码？";
+//    self.forgetPwdLabel.textColor = [UIColor whiteColor];
+//    [self.mainView addSubview:self.forgetPwdLabel];
+//    [self.forgetPwdLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.mas_equalTo(self.loginButton.mas_left);
+//        make.top.mas_equalTo(self.loginButton.mas_bottom).with.offset(10);
+//    }];
+//    self.forgetPwdLabel.textTapAction = ^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
+//        NSLog(@"点击了忘记密码");
+//
+//        CFWebViewController *webview=[[CFWebViewController alloc]initWithUrl:[NSURL URLWithString:@"http://ids.qfnu.edu.cn/authserver/getBackPasswordMainPage.do"]];
+//        BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:webview];
+////        [self.viewController presentViewController:nav animated:YES completion:^{
+////                    btn.enabled = YES;
+////        }];
 //                [self.viewController.navigationController pushViewController:webview animated:YES];
-//        [self.viewController.navigationController setNavigationBarHidden:NO animated:YES];
-//        [kWindow.rootViewController.navigationController pushViewController:webview animated:YES];
-    };
+////        [self.viewController.navigationController setNavigationBarHidden:YES animated:YES];
+////        [kWindow.rootViewController.navigationController pushViewController:webview animated:YES];
+//    };
     //继续浏览
     self.closeLabel = [YYLabel new];
     self.closeLabel.font = [UIFont systemFontOfSize:13];
@@ -354,7 +345,7 @@
     
     UIImage* resultImage = [UIImage imageWithData: imageData];
     _imageview.image=resultImage;
-    
+    [captchaMainView addSubview:_imageview];
 }
 #pragma mark - 登录
 - (void)clickLoginButton:(UIButton *)btn{
@@ -370,7 +361,7 @@
     }
     
     if([self checkcaptcha]){
-        ischeck=TRUE;
+        ischeck=YES;
         if ([self isBlankString:self.captchaField.text]) {
             [MBProgressHUD showError:@"请输入验证码" toView:self];
             return;
@@ -399,24 +390,24 @@
             }
         }
 
-//        if (ischeck) {
+        if (ischeck) {
             dic = @{@"username":self.userNameField.text,
                     @"password":self.passwordField.text,
                     @"lt":Lt,
-//                    @"captchaResponse":_captchaField.textField.text,
+                    @"captchaResponse":self.captchaField.text,
                     @"execution":@"e1s1",
                     @"_eventId":@"submit",
                     @"submit":@"%%E7%%99%%BB%%E5%%BD%%95"
                     };
-//        }else{
-//            dic = @{@"username":_userNameField.textField.text,
-//                    @"password":_passwordField.textField.text,
-//                    @"lt":Lt,
-//                    @"execution":@"e1s1",
-//                    @"_eventId":@"submit",
-//                    @"submit":@"%%E7%%99%%BB%%E5%%BD%%95"
-//                    };
-        
+        }else{
+            dic = @{@"username":self.userNameField.text,
+                    @"password":self.passwordField.text,
+                    @"lt":Lt,
+                    @"execution":@"e1s1",
+                    @"_eventId":@"submit",
+                    @"submit":@"%%E7%%99%%BB%%E5%%BD%%95"
+                    };
+        }
         
         
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -444,10 +435,17 @@
                 }
             }
                 //刷新验证码
-                
-                //                NSData* imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://ids.qfnu.edu.cn/authserver/captcha.html"]];
-                //                UIImage* resultImage = [UIImage imageWithData: imageData];
-                //                _imageview.image=resultImage;
+                  dispatch_async(dispatch_get_main_queue(), ^{
+                                NSData* imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://ids.qfnu.edu.cn/authserver/captcha.html"]];
+                      UIImageView *captchaView = [UIImageView new];
+                      UIImage *captchaLeftImage = [UIImage imageWithData: imageData];
+                      captchaView.image = captchaLeftImage;
+                      captchaView.size = captchaLeftImage.size;
+                      captchaView.x = 0;
+                      captchaView.y = 0;
+                      captchaMainView.size = CGSizeMake(captchaLeftImage.size.width + 10, captchaLeftImage.size.height);
+                      [captchaMainView addSubview:captchaView];
+                  });
                 //
                 //
                 //                [button failedAnimationWithCompletion:^{
@@ -505,8 +503,8 @@
             
             NSData* imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://ids.qfnu.edu.cn/authserver/captcha.html"]];
             UIImage* resultImage = [UIImage imageWithData: imageData];
-            //            _imageview.image=resultImage;
-            
+                        self.imageview.image=resultImage;
+            [captchaMainView addSubview:_imageview];
             //            [button failedAnimationWithCompletion:^{
             //
             //                [self didPresentControllerButtonTouch];
@@ -627,16 +625,16 @@
         //将视图上移计算好的增加了验证码的偏移
         if(offset > 0) {
             [UIView animateWithDuration:0.3 animations:^{
-                [self.userNameField mas_makeConstraints:^(MASConstraintMaker *make) {
-                    make.left.mas_equalTo(20);
-                    make.right.mas_equalTo(-20);
-                    make.height.mas_equalTo(50);
-                    make.top.mas_equalTo(self.logoImageView.mas_bottom).with.offset(10-offset);
-                }];
-//                self.userNameField.frame = CGRectMake(0.0f, SCREEN_H - (205+ SCREEN_H/12)-offset-40, self.userNameField.frame.size.width, self.userNameField.frame.size.height);
-                self.passwordField.frame = CGRectMake(0.0f, SCREEN_H - (125+ SCREEN_H/12)-offset-40, self.passwordField.frame.size.width, self.passwordField.frame.size.height);
-                self.bottomLine2.frame = CGRectMake(0.0f, SCREEN_H - (125+ SCREEN_H/12)-offset-40, self.bottomLine2.frame.size.width, self.bottomLine2.frame.size.height);
-                                self.bottomLine1.frame = CGRectMake(0.0f, SCREEN_H - (125+ SCREEN_H/12)-offset-40, self.bottomLine1.frame.size.width, self.bottomLine1.frame.size.height);
+//                [self.userNameField mas_makeConstraints:^(MASConstraintMaker *make) {
+//                    make.left.mas_equalTo(20);
+//                    make.right.mas_equalTo(-20);
+//                    make.height.mas_equalTo(50);
+//                    make.top.mas_equalTo(self.logoImageView.mas_bottom).with.offset(10-offset);
+//                }];
+////                self.userNameField.frame = CGRectMake(0.0f, SCREEN_H - (205+ SCREEN_H/12)-offset-40, self.userNameField.frame.size.width, self.userNameField.frame.size.height);
+//                self.passwordField.frame = CGRectMake(0.0f, SCREEN_H - (125+ SCREEN_H/12)-offset-40, self.passwordField.frame.size.width, self.passwordField.frame.size.height);
+//                self.bottomLine2.frame = CGRectMake(0.0f, SCREEN_H - (125+ SCREEN_H/12)-offset-40, self.bottomLine2.frame.size.width, self.bottomLine2.frame.size.height);
+//                                self.bottomLine1.frame = CGRectMake(0.0f, SCREEN_H - (125+ SCREEN_H/12)-offset-40, self.bottomLine1.frame.size.width, self.bottomLine1.frame.size.height);
                 //                    显示验证码
                 self.captchaField.hidden=NO;
                 self.bottomLine3.hidden=NO;
