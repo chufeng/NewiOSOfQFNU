@@ -244,8 +244,8 @@
     //然后就是添加照片语句，记得使用imageWithData:方法，不是imageWithName:。
     
 //    self.imageview.image=resultImage;
-    UIGestureRecognizer *touchimage=[[UIGestureRecognizer alloc]initWithTarget:self action:@selector(touchImage:)];
-    
+    UIGestureRecognizer *touchimage=[[UIGestureRecognizer alloc]initWithTarget:self action:@selector(touchImageview)];
+    self.imageview.userInteractionEnabled = YES;
     [self.imageview addGestureRecognizer:touchimage];
 //    [self.mainView addSubview:self.imageview];
    
@@ -340,12 +340,19 @@
         }];
     };
 }
--(void)touchImage:(UIGestureRecognizer *)gest{
-    NSData* imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://ids.qfnu.edu.cn/authserver/captcha.html"]];
-    
-    UIImage* resultImage = [UIImage imageWithData: imageData];
-    _imageview.image=resultImage;
-    [captchaMainView addSubview:_imageview];
+-(void)touchImageview:(UIGestureRecognizer *)gest{
+    //刷新验证码
+
+        NSData* imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://ids.qfnu.edu.cn/authserver/captcha.html"]];
+        UIImageView *captchaView = [UIImageView new];
+        UIImage *captchaLeftImage = [UIImage imageWithData: imageData];
+        captchaView.image = captchaLeftImage;
+        captchaView.size = captchaLeftImage.size;
+        captchaView.x = 0;
+        captchaView.y = 0;
+        captchaMainView.size = CGSizeMake(captchaLeftImage.size.width + 10, captchaLeftImage.size.height);
+        [captchaMainView addSubview:captchaView];
+
 }
 #pragma mark - 登录
 - (void)clickLoginButton:(UIButton *)btn{
@@ -500,15 +507,17 @@
                 [cookieJar deleteCookie:obj];
             }
             //刷新验证码
-            
-            NSData* imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://ids.qfnu.edu.cn/authserver/captcha.html"]];
-            UIImage* resultImage = [UIImage imageWithData: imageData];
-                        self.imageview.image=resultImage;
-            [captchaMainView addSubview:_imageview];
-            //            [button failedAnimationWithCompletion:^{
-            //
-            //                [self didPresentControllerButtonTouch];
-            //            }];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSData* imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://ids.qfnu.edu.cn/authserver/captcha.html"]];
+                UIImageView *captchaView = [UIImageView new];
+                UIImage *captchaLeftImage = [UIImage imageWithData: imageData];
+                captchaView.image = captchaLeftImage;
+                captchaView.size = captchaLeftImage.size;
+                captchaView.x = 0;
+                captchaView.y = 0;
+                captchaMainView.size = CGSizeMake(captchaLeftImage.size.width + 10, captchaLeftImage.size.height);
+                [captchaMainView addSubview:captchaView];
+            });
             if (error.code==-1001) {
                 [MBProgressHUD hideHUDForView:self];
                 [MBProgressHUD showError:@"校园服务器连接超时，提示：在访问高峰期会导致此情况" toView:kWindow];

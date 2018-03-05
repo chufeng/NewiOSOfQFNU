@@ -9,6 +9,7 @@
 #import "CFWebViewController.h"
 #import "NJKWebViewProgress.h"
 #import "NJKWebViewProgressView.h"
+#import "AppDelegate.h"
 #import "YCXMenu.h"
 //#import "UIViewController+LGSideMenuController.h"
 #define boundsWidth self.view.bounds.size.width
@@ -67,10 +68,16 @@
     }
     return self;
 }
+-(BOOL)shouldAutorotate{
+    return YES;
+}
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    
+    AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    appDelegate.allowRotation = YES;//(以上2行代码,可以理解为打开横屏开关)
+//    [self setNewOrientation:YES];//调用转屏代码
+
     self.title = @"";
     self.view.backgroundColor = [UIColor whiteColor];
     
@@ -79,11 +86,33 @@
     
     self.webView.delegate = self.progressProxy;
     [self.view addSubview:self.webView];
+    [self.webView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.bottom.and.right.equalTo(self.view).insets(UIEdgeInsetsMake(10, 10, 10, 10));
+    }];
     [self.webView loadRequest:[NSURLRequest requestWithURL:self.url]];
 
 
     [self.navigationController.navigationBar addSubview:self.progressView];
     // Do any additional setup after loading the view.
+}
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    appDelegate.allowRotation = NO;//关闭横屏仅允许竖屏
+    [self setNewOrientation:NO];
+}
+- (void)setNewOrientation:(BOOL)fullscreen{
+    if (fullscreen) {
+        NSNumber *resetOrientationTarget = [NSNumber numberWithInt:UIInterfaceOrientationUnknown];
+        [[UIDevice currentDevice] setValue:resetOrientationTarget forKey:@"orientation"];
+        NSNumber *orientationTarget = [NSNumber numberWithInt:UIInterfaceOrientationLandscapeRight];
+        [[UIDevice currentDevice] setValue:orientationTarget forKey:@"orientation"];
+    }else{
+        NSNumber *resetOrientationTarget = [NSNumber numberWithInt:UIInterfaceOrientationUnknown];
+        [[UIDevice currentDevice] setValue:resetOrientationTarget forKey:@"orientation"];
+        NSNumber *orientationTarget = [NSNumber numberWithInt:UIInterfaceOrientationPortrait];
+        [[UIDevice currentDevice] setValue:orientationTarget forKey:@"orientation"];
+    }
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
@@ -381,6 +410,7 @@
 -(UIWebView*)webView{
     if (!_webView) {
         _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+
         _webView.delegate = (id)self;
         _webView.scalesPageToFit = YES;
         _webView.backgroundColor = [UIColor whiteColor];

@@ -12,15 +12,66 @@
 #import "ZMMineViewController.h"
 #import "BaseNavigationController.h"
 #import "MainController.h"
+#import "AppDelegate.h"
 #import "QFNUCConsultController.h"
+#import "CFWebViewController.h"
 @interface QFNUMainViewController ()
 
 @end
 
 @implementation QFNUMainViewController
-	
+
+
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    if ([[self presentingVC] isKindOfClass:[CFWebViewController class]]) {
+        return (1 << UIInterfaceOrientationPortrait) | (1 << UIInterfaceOrientationPortraitUpsideDown)
+        | (1 << UIInterfaceOrientationLandscapeRight) | (1 << UIInterfaceOrientationLandscapeLeft);
+    }
+    return UIInterfaceOrientationMaskPortrait;
+}
+- (void)setSelectedViewController:(UIViewController *)selectedViewController {
+    [super setSelectedViewController:selectedViewController];
+    UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
+    if (self.selectedIndex ==1 && UIDeviceOrientationIsLandscape(orientation)) {
+        // 由于属性 orientation是只读的, 所以采用以下方法实现
+        if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
+            SEL selector =NSSelectorFromString(@"setOrientation:");
+            NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];
+            [invocation setSelector:selector];
+            [invocation setTarget:[UIDevice currentDevice]];
+            int val =UIInterfaceOrientationPortrait;
+            [invocation setArgument:&val atIndex:2];
+            [invocation invoke];
+        }
+    }
+}
+- (UIViewController *)presentingVC{
+    UIWindow * window = [[UIApplication sharedApplication] keyWindow];
+    if (window.windowLevel != UIWindowLevelNormal){
+        NSArray *windows = [[UIApplication sharedApplication] windows];
+        for(UIWindow * tmpWin in windows){
+            if (tmpWin.windowLevel == UIWindowLevelNormal){
+                window = tmpWin;
+                break;
+            }
+        }
+    }
+    UIViewController *result = window.rootViewController;
+    while (result.presentedViewController) {
+        result = result.presentedViewController;
+    }
+    if ([result isKindOfClass:[UITabBarController class]]) {
+        result = [(UITabBarController *)result selectedViewController];
+    }
+    if ([result isKindOfClass:[UINavigationController class]]) {
+        result = [(UINavigationController *)result topViewController];
+    }
+    return result;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     [self addChildVc:[MainController new] title:@"首页" image:@"tabbar_icon0" selectedImage:@"tabbar_icon0_s"];
      [self addChildVc:[QFNUCConsultController new] title:@"资讯" image:@"tabbar_icon1" selectedImage:@"tabbar_icon1_s"];
     [self addChildVc:[ZMMineViewController new] title:@"我的" image:@"tabbar_icon3" selectedImage:@"tabbar_icon3_s"];

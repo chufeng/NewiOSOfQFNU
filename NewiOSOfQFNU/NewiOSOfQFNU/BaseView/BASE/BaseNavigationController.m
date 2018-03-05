@@ -7,7 +7,7 @@
 //
 
 #import "BaseNavigationController.h"
-
+#import "CFWebViewController.h"
 @interface BaseNavigationController ()
 @property (strong, nonatomic) UIView *bottomNavLine;
 @end

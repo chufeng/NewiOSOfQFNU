@@ -36,7 +36,17 @@
     }];
     //此处加载用户sessionToken
     [[ZMUserInfo shareUserInfo] loadUserInfoFromSandbox];
+    //取出cookie，没有就不取。
+    [[QFInfo sharedInstance]setCoookie];
     return YES;
+}
+- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(nullable UIWindow *)window{
+    if (_allowRotation == YES) {   // 如果属性值为YES,仅允许屏幕向左旋转,否则仅允许竖屏
+        return  (1 << UIInterfaceOrientationPortrait) | (1 << UIInterfaceOrientationPortraitUpsideDown)
+        | (1 << UIInterfaceOrientationLandscapeRight) | (1 << UIInterfaceOrientationLandscapeLeft);  // 这里是屏幕要旋转的方向
+    }else{
+        return (UIInterfaceOrientationMaskPortrait);
+    }
 }
 
 
