@@ -93,13 +93,13 @@ CGFloat barheight;
 
     UIView* content = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_scrollView.frame), SCREEN_W, 80)];
     barheight = CGRectGetMaxY(content.frame);
+  
 
     UIImageView* qiqiu = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"balloon.png"]];
     qiqiu.frame = CGRectMake(0, 1, 50, 76);
-    
     UIView* meiriView = [[UIView alloc]initWithFrame:CGRectMake(60, 0, 80, 20)];
-    UILabel* meiriLable = [[UILabel alloc]initWithFrame:CGRectMake(20, 0, 70, 30)];
-    meiriLable.text = @"每日一言";
+    UILabel* meiriLable = [[UILabel alloc]initWithFrame:CGRectMake(20, 0, 140, 30)];
+    meiriLable.text = @"历史上的今天";
     UIImageView* shuView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"shu.png"]];
     shuView.frame = CGRectMake(0, 0, 8, 30);
     meiriLable.textColor = TEXT_GRAYCOLOR;
@@ -108,7 +108,7 @@ CGFloat barheight;
     [meiriView addSubview:shuView];
 
     
-    UILabel* time = [[UILabel alloc]initWithFrame:CGRectMake(SCREEN_W-100, content.frame.size.height-15, 100, 15)];
+    UILabel* time = [[UILabel alloc]initWithFrame:CGRectMake(SCREEN_W-180, content.frame.size.height-15, 180, 15)];
     time.text = [self gettime];
     time.font = [UIFont systemFontOfSize:12];
     time.textColor = TEXT_GRAYCOLOR;
@@ -164,48 +164,37 @@ CGFloat barheight;
 
 }
 -(NSString*)gettime{
-    NSDate *now                               = [NSDate date];
-    NSCalendar *calendar                      = [NSCalendar currentCalendar];
-    NSUInteger unitFlags                      = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay |NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
-    NSDateComponents *dateComponent           = [calendar components:unitFlags fromDate:now];
-    int y                                     = (short)[dateComponent year];//年
-    int m                                    =(short) [dateComponent month];//月
-    int mou                                    = (short)[dateComponent month];//月
-    int d                                      = (short)[dateComponent day];//日
-    int day                                      = (short)[dateComponent day];//日
-    if(m==1||m==2) {
-        m+=12;
-        y--;
-    }
-    int iWeek=(d+2*m+3*(m+1)/5+y+y/4-y/100+y/400)%7+1;
+    //    NSDate *now                               = [NSDate date];
+    //    NSCalendar *calendar                      = [NSCalendar currentCalendar];
+    //    NSUInteger unitFlags                      = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay |NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
+    //    NSDateComponents *dateComponent           = [calendar components:unitFlags fromDate:now];
+    //    int y                                     = (short)[dateComponent year];//年
+    //    int m                                    =(short) [dateComponent month];//月
+    //    int mou                                    = (short)[dateComponent month];//月
+    //    int d                                      = (short)[dateComponent day];//日
+    //    int day                                      = (short)[dateComponent day];//日
+    //    if(m==1||m==2) {
+    //        m+=12;
+    //        y--;
+    //    }
+
+    NSDate *date = [NSDate date];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *comps;
+    comps =[calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit |NSDayCalendarUnit)
+                       fromDate:date];
+    NSInteger year = [comps year];
+    NSInteger month = [comps month];
+    NSInteger day = [comps day];
+    comps =[calendar components:(NSWeekCalendarUnit | NSWeekdayCalendarUnit |NSWeekdayOrdinalCalendarUnit)
+                       fromDate:date];
+    NSInteger yearWeek = [comps week]; // 今年的第几周
+    NSInteger weekday = [comps weekday]; // 星期几（注意，周日是“1”，周一是“2”。。。。）
+    NSArray *weekstr = [NSArray arrayWithObjects: [NSNull null],  @"日",@"一", @"二", @"三", @"四", @"五", @"六", nil];
     NSString *Week;
-    switch (iWeek) {
-        case 1:
-            Week=@"一";
-            break;
-        case 2:
-            Week=@"二";
-            break;
-        case 3:
-            Week=@"三";
-            break;
-        case 4:
-            Week=@"四";
-            break;
-        case 5:
-            Week=@"五";
-            break;
-        case 6:
-            Week=@"六";
-            break;
-        case 7:
-            Week=@"日";
-            break;
-        default:
-            Week=@"";
-            break;
-    }
-    NSString*str =[NSString stringWithFormat:@"%d月%d日 星期%@",mou,day,Week];
+    Week=[weekstr objectAtIndex:weekday];
+    NSString*str =[NSString stringWithFormat:@"%d月%d日 星期%@，本学期第%d周",month,day,Week,yearWeek-9];//本学期是从2018年第十周开始的。
+    NSLog(@"year:%d month: %d, day: %d,yearweek：%d", year, month, day,yearWeek);
     dayx = day;
     return str;
 
