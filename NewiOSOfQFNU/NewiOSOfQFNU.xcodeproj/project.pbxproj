@@ -27,6 +27,7 @@
 		264D74ED202C1F680018D236 /* NJKWebViewProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 264D74EB202C1F670018D236 /* NJKWebViewProgressView.m */; };
 		264D74F0202C319E0018D236 /* QFInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 264D74EF202C319E0018D236 /* QFInfo.m */; };
 		264D74F2202C35830018D236 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 264D74F1202C35830018D236 /* MessageUI.framework */; };
+		26918E1F2050FE8B004D190C /* HolidayMolde.m in Sources */ = {isa = PBXBuildFile; fileRef = 26918E1E2050FE8B004D190C /* HolidayMolde.m */; };
 		26931EC3201B0620009C6E8B /* navigation_back_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26931EC1201B0620009C6E8B /* navigation_back_white@2x.png */; };
 		26931EC4201B0620009C6E8B /* navigation_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26931EC2201B0620009C6E8B /* navigation_back@2x.png */; };
 		26931EE4201B1275009C6E8B /* ZMMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26931ED2201B1275009C6E8B /* ZMMessageView.m */; };
@@ -125,6 +126,8 @@
 		264D74EE202C319E0018D236 /* QFInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QFInfo.h; sourceTree = "<group>"; };
 		264D74EF202C319E0018D236 /* QFInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QFInfo.m; sourceTree = "<group>"; };
 		264D74F1202C35830018D236 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		26918E1D2050FE8A004D190C /* HolidayMolde.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HolidayMolde.h; path = "/Users/lyngame/Desktop/NewiOSOfQFNU/NewiOSOfQFNU/NewiOSOfQFNU/Main(首页)/Model/HolidayMolde.h"; sourceTree = "<absolute>"; };
+		26918E1E2050FE8B004D190C /* HolidayMolde.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HolidayMolde.m; path = "/Users/lyngame/Desktop/NewiOSOfQFNU/NewiOSOfQFNU/NewiOSOfQFNU/Main(首页)/Model/HolidayMolde.m"; sourceTree = "<absolute>"; };
 		26931EC1201B0620009C6E8B /* navigation_back_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigation_back_white@2x.png"; sourceTree = "<group>"; };
 		26931EC2201B0620009C6E8B /* navigation_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigation_back@2x.png"; sourceTree = "<group>"; };
 		26931ED1201B1275009C6E8B /* ZMMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMMessageView.h; sourceTree = "<group>"; };
@@ -392,6 +395,8 @@
 		264D74D4202BEAFA0018D236 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				26918E1D2050FE8A004D190C /* HolidayMolde.h */,
+				26918E1E2050FE8B004D190C /* HolidayMolde.m */,
 				264D74D5202BEAFA0018D236 /* MainButtonData.plist */,
 				264D74D6202BEAFA0018D236 /* MainButtonModel.h */,
 				264D74D7202BEAFA0018D236 /* MainButtonModel.m */,
@@ -925,6 +930,7 @@
 				26B1E798201726B5009CF9FC /* ZMRegisterViewController.m in Sources */,
 				26B1E79A201726B5009CF9FC /* ZMRegisterView.m in Sources */,
 				26931EE9201B1275009C6E8B /* ZMSetupView.m in Sources */,
+				26918E1F2050FE8B004D190C /* HolidayMolde.m in Sources */,
 				26931EE7201B1275009C6E8B /* ZMProfileView.m in Sources */,
 				26C6DB5F20104972006BE6FE /* AppDelegate.m in Sources */,
 				26931EF7201B24C3009C6E8B /* ZMColor.m in Sources */,

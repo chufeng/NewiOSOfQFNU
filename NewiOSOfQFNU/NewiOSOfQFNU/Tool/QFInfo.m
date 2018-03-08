@@ -11,6 +11,7 @@
 #import "AFNetworking.h"
 #import "MBProgressHUD.h"
 #import "MBProgressHUD+NHAdd.h"
+#import "HolidayMolde.h"
 #import "BaseRequest.h"
 @implementation QFInfo
 
@@ -356,8 +357,12 @@
 {
     NSLog(@"============再取出保存的cookie重新设置cookie===============");
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSArray *cookies = [NSKeyedUnarchiver unarchiveObjectWithData:[userDefaults objectForKey:@"cookie"]];
-    if (cookies) {
+    NSDictionary *dic = [userDefaults dictionaryRepresentation];
+
+    NSData *cookiedata=[userDefaults objectForKey:@"cookie"];
+    if (cookiedata) {
+    NSArray *cookies = [NSKeyedUnarchiver unarchiveObjectWithData:cookiedata];
+    
         NSLog(@"有cookie");
         //设置cookie
         NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
@@ -373,5 +378,42 @@
         NSLog(@"setCookie: %@", cookie);
     }
     NSLog(@"\n");
+}
+-(void)setHoliday:(NSString*)str{
+    NSArray *HolidayArr=[str componentsSeparatedByString:@","];
+    
+    NSMutableArray *HName=[[NSMutableArray alloc]init];
+    NSMutableArray *HDay=[[NSMutableArray alloc]init];
+    for (int i=0;i<HolidayArr.count;i++){
+        if (i%2==0) {
+            [HName addObject:HolidayArr[i]];
+        }else{
+            [HDay addObject:HolidayArr[i]];
+        }
+    }
+    NSMutableArray *saveMutableHoliday = [[NSMutableArray alloc]init];
+    for (int j=0; j<HDay.count; j++) {
+        HolidayMolde *Holiday=[[HolidayMolde alloc]init];
+        Holiday.Holiday=HDay[j];
+        Holiday.Hname=HName[j];
+        [saveMutableHoliday addObject:Holiday];
+    }
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSData *saveHoliday=[NSKeyedArchiver archivedDataWithRootObject:saveMutableHoliday];
+        [userDefaults setObject: saveHoliday forKey: @"Holiday"];
+}
+
+- (NSInteger)getDifferenceByDate:(NSString *)date {
+    //获得当前时间
+    NSDate *now = [NSDate date];
+    //实例化一个NSDateFormatter对象
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    //设定时间格式
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate *oldDate = [dateFormatter dateFromString:date];
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    unsigned int unitFlags = NSDayCalendarUnit;
+    NSDateComponents *comps = [gregorian components:unitFlags fromDate:oldDate  toDate:now  options:0];
+    return [comps day];
 }
 @end

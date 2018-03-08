@@ -36,4 +36,6 @@
 -(void)ReLogin:(NSInteger)retry;
 -(void)SaveCookie;
 - (void)setCoookie;
+
+-(void)setHoliday:(NSString*)str;
 @end
