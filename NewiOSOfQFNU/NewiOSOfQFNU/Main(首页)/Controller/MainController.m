@@ -90,7 +90,21 @@ CGFloat barheight;
 }
 
 -(void)setbar{
-
+    [AVAnalytics updateOnlineConfigWithBlock:^(NSDictionary *dict, NSError *error) {
+        if (error == nil) {
+            // 从 dict 中读取参数，dict["k1"] 值应该为 v1
+            NSLog(@"dict:%@",dict);
+            NSString *notstr=[[NSString alloc]init];
+            NSDictionary *parameters=dict[@"parameters"];
+            [[QFInfo sharedInstance]setHoliday:[parameters objectForKey:@"holiday"]];
+            notstr=[parameters objectForKey:@"not"];
+            
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                });
+            
+        }
+    }];
     UIView* content = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_scrollView.frame), SCREEN_W, 80)];
     barheight = CGRectGetMaxY(content.frame);
   

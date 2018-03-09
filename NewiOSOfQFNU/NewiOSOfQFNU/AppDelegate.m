@@ -42,7 +42,7 @@
                     [self ShowNotice:notstr];
                 });
             }
-    }
+                }
     }];
     //此处加载用户sessionToken
     [[ZMUserInfo shareUserInfo] loadUserInfoFromSandbox];
