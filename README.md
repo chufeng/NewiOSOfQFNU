@@ -2,7 +2,7 @@
 [![Support](https://img.shields.io/badge/support-iOS%208%2B%20-blue.svg?style=flat)](https://www.apple.com/nl/ios/)
 ![](https://img.shields.io/badge/lanuage-Objective--C-brightgreen.svg)
 ![](https://img.shields.io/badge/pod-1.0.0-red.svg)
-![](https://img.shields.io/cpan/l/Config-Augeas.svg)
+![](https://img.shields.io/badge/license-LGPL3.0-yellowgreen.svg)
 
 > 曲园教务App是由曲园团队开发，为曲师大学生开发的产品，志于帮助同学们更加便捷的体验校园生活
 
