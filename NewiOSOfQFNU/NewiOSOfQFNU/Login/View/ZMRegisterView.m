@@ -2,7 +2,7 @@
 //  ZMRegisterView.m
 //  ZMBCY
 //
-//  Created by ZOMAKE on 2018/1/6.
+//  Created by Chufeng on 2018/1/6.
 //  Copyright © 2018年 Brance. All rights reserved.
 //
 

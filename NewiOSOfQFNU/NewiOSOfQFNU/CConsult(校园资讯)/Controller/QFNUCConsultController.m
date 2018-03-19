@@ -31,8 +31,8 @@
     // trackerStyle:跟踪器的样式
     SPPageMenu *pageMenu = [SPPageMenu pageMenuWithFrame:CGRectMake(0, 64 + KStatusBarHeight, kScreenWidth, pageMenuH) trackerStyle:SPPageMenuTrackerStyleLineAttachment];
     pageMenu.permutationWay = SPPageMenuPermutationWayNotScrollEqualWidths;
-    pageMenu.selectedItemTitleColor =   [ZMColor blackColor];
-    pageMenu.unSelectedItemTitleColor = [ZMColor appSupportColor];
+    pageMenu.selectedItemTitleColor =   [QFColor blackColor];
+    pageMenu.unSelectedItemTitleColor = [QFColor appSupportColor];
     // 传递数组，默认选中第1个
     [pageMenu setItems:self.dataArr selectedItemIndex:0];
     // 设置代理

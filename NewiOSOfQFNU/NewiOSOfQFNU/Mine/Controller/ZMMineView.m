@@ -8,7 +8,7 @@
 
 #import "ZMMineView.h"
 #import "ZMMineLoginViewCell.h"
-#import "ZMColor.h"
+#import "QFColor.h"
 @interface ZMMineView()<UITableViewDataSource,UITableViewDelegate>
 
 
@@ -20,7 +20,7 @@
 
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
-        self.backgroundColor = [ZMColor whiteColor];
+        self.backgroundColor = [QFColor whiteColor];
         [self setupUI];
     }
     return self;
@@ -28,7 +28,7 @@
 
 - (void)setupUI{
     _tableView = [YYTableView new];
-    _tableView.backgroundColor = [ZMColor appGraySpaceColor];
+    _tableView.backgroundColor = [QFColor appGraySpaceColor];
     _tableView.dataSource = self;
     _tableView.delegate =   self;
     [self addSubview:_tableView];
@@ -37,7 +37,7 @@
         make.bottom.mas_equalTo(self.mas_bottom).with.offset(0);
     }];
     UIView *headView = [UIView new];
-    headView.backgroundColor = [ZMColor whiteColor];
+    headView.backgroundColor = [QFColor whiteColor];
     headView.size = CGSizeMake(kScreenWidth, 64);
     _tableView.tableHeaderView = headView;
     
@@ -84,7 +84,7 @@
     if (!cell) {
         cell = [[YYTableViewCell alloc] initWithStyle:0 reuseIdentifier:@"cell"];
     }
-    cell.backgroundColor = [ZMColor appGraySpaceColor];
+    cell.backgroundColor = [QFColor appGraySpaceColor];
     return cell;
 }
 

@@ -5,12 +5,12 @@
 //  Created by ZOMAKE on 2018/1/8.
 //  Copyright © 2018年 Brance. All rights reserved.
 //
-#import "ZMColor.h"
+#import "QFColor.h"
 #import "ZMMineLoginViewCell.h"
 #import "BaseNavigationController.h"
 #import "ZMProfileViewController.h"
 #import "ZMRegisterViewController.h"
-#import "ZMLoginViewController.h"
+#import "QFLoginViewController.h"
 #import <LeanCloudFeedback/LeanCloudFeedback.h>
 #import "ZMUserInfo.h"
 #import "QFNUAboutUsController.h"
@@ -61,7 +61,7 @@
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        self.backgroundColor = [ZMColor appGraySpaceColor];
+        self.backgroundColor = [QFColor appGraySpaceColor];
     }
     return self;
 }
@@ -181,7 +181,7 @@
     if (!_nickNameLabel) {
         _nickNameLabel = [UILabel new];
         _nickNameLabel.font = [UIFont systemFontOfSize:18];
-        _nickNameLabel.textColor = [ZMColor blackColor];
+        _nickNameLabel.textColor = [QFColor blackColor];
         [self.mainView addSubview:_nickNameLabel];
         [_nickNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.thumbImageView.mas_right).with.offset(10);
@@ -196,7 +196,7 @@
     if (!_signLabel) {
         _signLabel = [UILabel new];
         _signLabel.font = [UIFont systemFontOfSize:13];
-        _signLabel.textColor = [ZMColor appSupportColor];
+        _signLabel.textColor = [QFColor appSupportColor];
         [self.mainView addSubview:_signLabel];
         [_signLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.thumbImageView.mas_right).with.offset(10);
@@ -217,9 +217,9 @@
         _loginButton.titleLabel.font = [UIFont systemFontOfSize:15];
         _loginButton.layer.masksToBounds = YES;
         _loginButton.layer.cornerRadius = 3;
-        _loginButton.backgroundColor = [ZMColor appMainColor];
+        _loginButton.backgroundColor = [QFColor appMainColor];
         [_loginButton setTitle:@"登录" forState:UIControlStateNormal];
-        [_loginButton setTitleColor:[ZMColor whiteColor] forState:UIControlStateNormal];
+        [_loginButton setTitleColor:[QFColor whiteColor] forState:UIControlStateNormal];
         [self addSubview:_loginButton];
         [_loginButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(20);
@@ -238,11 +238,11 @@
         _registerButton.titleLabel.font = [UIFont systemFontOfSize:15];
         _registerButton.layer.masksToBounds = YES;
         _registerButton.layer.cornerRadius = 3;
-        _registerButton.layer.borderColor = [ZMColor appMainColor].CGColor;
+        _registerButton.layer.borderColor = [QFColor appMainColor].CGColor;
         _registerButton.layer.borderWidth = 0.5;
-        _registerButton.backgroundColor = [ZMColor whiteColor];
+        _registerButton.backgroundColor = [QFColor whiteColor];
         [_registerButton setTitle:@"注册" forState:UIControlStateNormal];
-        [_registerButton setTitleColor:[ZMColor appMainColor] forState:UIControlStateNormal];
+        [_registerButton setTitleColor:[QFColor appMainColor] forState:UIControlStateNormal];
         [self addSubview:_registerButton];
         [_registerButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.mas_equalTo(-20);
@@ -273,7 +273,7 @@
     if (!_albumLabel) {
         _albumLabel = [UILabel new];
         _albumLabel.textAlignment = NSTextAlignmentCenter;
-        _albumLabel.textColor = [ZMColor appSupportColor];
+        _albumLabel.textColor = [QFColor appSupportColor];
         _albumLabel.font = [UIFont systemFontOfSize:13];
         _albumLabel.text = @"相册";
         [self.mainView addSubview:_albumLabel];
@@ -292,7 +292,7 @@
         _albumCountLabel = [UILabel new];
         _albumCountLabel.textAlignment = NSTextAlignmentCenter;
         _albumCountLabel.font = [UIFont systemFontOfSize:13];
-        _albumCountLabel.textColor = [ZMColor blackColor];
+        _albumCountLabel.textColor = [QFColor blackColor];
         _albumCountLabel.text = @"0";
         [self.mainView addSubview:_albumCountLabel];
         [_albumCountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -307,7 +307,7 @@
     if (!_followLabel) {
         _followLabel = [UILabel new];
         _followLabel.textAlignment = NSTextAlignmentCenter;
-        _followLabel.textColor = [ZMColor appSupportColor];
+        _followLabel.textColor = [QFColor appSupportColor];
         _followLabel.font = [UIFont systemFontOfSize:13];
         _followLabel.text = @"关注";
         [self.mainView addSubview:_followLabel];
@@ -326,7 +326,7 @@
         _followCountLabel = [UILabel new];
         _followCountLabel.textAlignment = NSTextAlignmentCenter;
         _followCountLabel.font = [UIFont systemFontOfSize:13];
-        _followCountLabel.textColor = [ZMColor blackColor];
+        _followCountLabel.textColor = [QFColor blackColor];
         [self.mainView addSubview:_followCountLabel];
         [_followCountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.mas_equalTo(self.followLabel);
@@ -340,7 +340,7 @@
     if (!_fansLabel) {
         _fansLabel = [UILabel new];
         _fansLabel.textAlignment = NSTextAlignmentCenter;
-        _fansLabel.textColor = [ZMColor appSupportColor];
+        _fansLabel.textColor = [QFColor appSupportColor];
         _fansLabel.font = [UIFont systemFontOfSize:13];
         _fansLabel.text = @"粉丝";
         [self.mainView addSubview:_fansLabel];
@@ -359,7 +359,7 @@
         _fansCountLabel = [UILabel new];
         _fansCountLabel.textAlignment = NSTextAlignmentCenter;
         _fansCountLabel.font = [UIFont systemFontOfSize:13];
-        _fansCountLabel.textColor = [ZMColor blackColor];
+        _fansCountLabel.textColor = [QFColor blackColor];
         [self.mainView addSubview:_fansCountLabel];
         [_fansCountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.mas_equalTo(self.fansLabel);
@@ -372,7 +372,7 @@
 - (UILabel *)lineLabel1{
     if (!_lineLabel1) {
         _lineLabel1 = [UILabel new];
-        _lineLabel1.backgroundColor = [ZMColor appSupportColor];
+        _lineLabel1.backgroundColor = [QFColor appSupportColor];
         [self.mainView addSubview:_lineLabel1];
         [self.mainView bringSubviewToFront:_lineLabel1];
         [_lineLabel1 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -388,7 +388,7 @@
 - (UILabel *)lineLabel2{
     if (!_lineLabel2) {
         _lineLabel2 = [UILabel new];
-        _lineLabel2.backgroundColor = [ZMColor appSupportColor];
+        _lineLabel2.backgroundColor = [QFColor appSupportColor];
         [self.mainView addSubview:_lineLabel2];
         [self.mainView bringSubviewToFront:_lineLabel2];
         [_lineLabel2 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -403,7 +403,7 @@
 
 #pragma mark - 跳转登录
 - (void)clickLoginButton:(UIButton *)btn{
-    ZMLoginViewController *vc = [[ZMLoginViewController alloc] init];
+    QFLoginViewController *vc = [[QFLoginViewController alloc] init];
     //如果登录视图需要push的话就需要包装导航控制器
     BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:vc];
 //        [self.viewController.navigationController pushViewController:vc animated:YES];
@@ -425,7 +425,7 @@
 - (UIView *)mainView{
     if (!_mainView) {
         self.mainView = [[UIView alloc] init];
-        self.mainView.backgroundColor = [ZMColor appGraySpaceColor];
+        self.mainView.backgroundColor = [QFColor appGraySpaceColor];
         [self.contentView addSubview:self.mainView];
         [self.mainView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.bottom.mas_equalTo(0);
@@ -438,7 +438,7 @@
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        self.backgroundColor = [ZMColor appGraySpaceColor];
+        self.backgroundColor = [QFColor appGraySpaceColor];
         [self setupUI];
     }
     return self;
@@ -463,11 +463,11 @@
         UIButton *btn = [self viewWithTag:i*10];
         if (!btn) {
             btn = [UIButton buttonWithType:UIButtonTypeCustom];
-            btn.backgroundColor = [ZMColor whiteColor];
+            btn.backgroundColor = [QFColor whiteColor];
             btn.titleLabel.font = [UIFont systemFontOfSize:13];
             [btn setTitle:[textArray objectAtIndex:i-1] forState:UIControlStateNormal];
             [btn setImage:[UIImage imageNamed:[imageArray objectAtIndex:i-1]] forState:UIControlStateNormal];
-            [btn setTitleColor:[ZMColor appSupportColor] forState:UIControlStateNormal];
+            [btn setTitleColor:[QFColor appSupportColor] forState:UIControlStateNormal];
             [self.mainView addSubview:btn];
             btn.adjustsImageWhenHighlighted = NO;
             [btn mas_makeConstraints:^(MASConstraintMaker *make) {

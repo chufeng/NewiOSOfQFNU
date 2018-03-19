@@ -9,7 +9,7 @@
 #import "ZMSetupView.h"
 #import "ZMSetupViewCell.h"
 #import "YYTableView.h"
-#import "ZMColor.h"
+#import "QFColor.h"
 #import "ZMUserInfo.h"
 @interface ZMSetupView()<UITableViewDataSource,UITableViewDelegate>
 
@@ -30,7 +30,7 @@
 - (void)setupUI{
     self.dataArray = @[@"清除缓存",@"关于我们",@"服务条款",@"意见反馈",@"评价我们"];
     _tableView = [[YYTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-    _tableView.backgroundColor = [ZMColor appGraySpaceColor];
+    _tableView.backgroundColor = [QFColor appGraySpaceColor];
     _tableView.dataSource = self;
     _tableView.delegate =   self;
     [self addSubview:_tableView];
@@ -44,9 +44,9 @@
         view.size = CGSizeMake(kScreenWidth, 60);
         UIButton *loginOutBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         loginOutBtn.titleLabel.font = [UIFont systemFontOfSize:15];
-        loginOutBtn.backgroundColor = [ZMColor whiteColor];
+        loginOutBtn.backgroundColor = [QFColor whiteColor];
         [loginOutBtn setTitle:@"退出登录" forState:UIControlStateNormal];
-        [loginOutBtn setTitleColor:[ZMColor blackColor] forState:UIControlStateNormal];
+        [loginOutBtn setTitleColor:[QFColor blackColor] forState:UIControlStateNormal];
         [view addSubview:loginOutBtn];
         [loginOutBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.mas_equalTo(0);
@@ -72,7 +72,7 @@
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *head = [UIView new];
-    head.backgroundColor = [ZMColor appGraySpaceColor];
+    head.backgroundColor = [QFColor appGraySpaceColor];
     return head;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{

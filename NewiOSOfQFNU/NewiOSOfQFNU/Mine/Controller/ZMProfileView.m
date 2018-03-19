@@ -35,7 +35,7 @@
         _signTextView = [UITextView new];
         _signTextView.font = [UIFont systemFontOfSize:15];
         _signTextView.returnKeyType = UIReturnKeyDone;
-        _signTextView.textColor = [ZMColor appSupportColor];
+        _signTextView.textColor = [QFColor appSupportColor];
         _signTextView.delegate = self;
         _signTextView.size = CGSizeMake(kScreenWidth-24, 140);
         _signTextView.x = 12;
@@ -50,7 +50,7 @@
         _placeText = [UILabel new];
         _placeText.font = [UIFont systemFontOfSize:15];
         _placeText.text = @"输入你的二次元属性吧";
-        _placeText.textColor = [ZMColor appSupportColor];
+        _placeText.textColor = [QFColor appSupportColor];
         _placeText.contentMode = UIViewContentModeTop;
         [self.signTextView addSubview:_placeText];
         [_placeText mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -80,7 +80,7 @@
 - (void)setupUI{
     self.dataArray = @[@"昵称",@"性别",@"邮箱"];
     _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
-    _tableView.backgroundColor = [ZMColor appGraySpaceColor];
+    _tableView.backgroundColor = [QFColor appGraySpaceColor];
     _tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     _tableView.dataSource = self;
     _tableView.delegate =   self;
@@ -91,7 +91,7 @@
     }];
     //头部视图
     UIView *headView = [UIView new];
-    headView.backgroundColor = [ZMColor appGraySpaceColor];
+    headView.backgroundColor = [QFColor appGraySpaceColor];
     headView.size = CGSizeMake(kScreenWidth, 150);
     self.thumbImageView = [UIImageView new];
     self.thumbImageView.userInteractionEnabled = YES;
@@ -175,7 +175,7 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     if (section == 1) {
         UIView *head = [UIView new];
-        head.backgroundColor = [ZMColor appGraySpaceColor];
+        head.backgroundColor = [QFColor appGraySpaceColor];
         return head;
     }
     return nil;

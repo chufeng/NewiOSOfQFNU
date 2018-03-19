@@ -41,16 +41,16 @@
 		26931EEC201B1275009C6E8B /* ZMSetupViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26931EE3201B1275009C6E8B /* ZMSetupViewCell.m */; };
 		26931EEF201B242F009C6E8B /* ZMMineLoginViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26931EED201B242E009C6E8B /* ZMMineLoginViewCell.m */; };
 		26931EF6201B24C3009C6E8B /* YYTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26931EF0201B24C2009C6E8B /* YYTableViewCell.m */; };
-		26931EF7201B24C3009C6E8B /* ZMColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 26931EF1201B24C2009C6E8B /* ZMColor.m */; };
+		26931EF7201B24C3009C6E8B /* QFColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 26931EF1201B24C2009C6E8B /* QFColor.m */; };
 		26931EF8201B24C3009C6E8B /* YYTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26931EF4201B24C2009C6E8B /* YYTableView.m */; };
 		26931EFB201B25BA009C6E8B /* ZMUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 26931EFA201B25B9009C6E8B /* ZMUserInfo.m */; };
 		26931EFE201B2661009C6E8B /* ZMBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26931EFC201B2660009C6E8B /* ZMBaseModel.m */; };
 		26931F02201B2714009C6E8B /* UIImage+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 26931F01201B2713009C6E8B /* UIImage+Common.m */; };
 		2696CAEA203FB27F00885D5E /* logoschool.png in Resources */ = {isa = PBXBuildFile; fileRef = 2696CAE9203FB27E00885D5E /* logoschool.png */; };
 		26B1E78920171958009CF9FC /* BaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B1E78720171958009CF9FC /* BaseRequest.m */; };
-		26B1E797201726B5009CF9FC /* ZMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B1E78F201726B5009CF9FC /* ZMLoginViewController.m */; };
+		26B1E797201726B5009CF9FC /* QFLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B1E78F201726B5009CF9FC /* QFLoginViewController.m */; };
 		26B1E798201726B5009CF9FC /* ZMRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B1E791201726B5009CF9FC /* ZMRegisterViewController.m */; };
-		26B1E799201726B5009CF9FC /* ZMLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B1E794201726B5009CF9FC /* ZMLoginView.m */; };
+		26B1E799201726B5009CF9FC /* QFLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B1E794201726B5009CF9FC /* QFLoginView.m */; };
 		26B1E79A201726B5009CF9FC /* ZMRegisterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B1E796201726B5009CF9FC /* ZMRegisterView.m */; };
 		26B1E79D2017279F009CF9FC /* ZMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B1E79B2017279F009CF9FC /* ZMViewController.m */; };
 		26B1E7A0201727E0009CF9FC /* ZMNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B1E79F201727E0009CF9FC /* ZMNavView.m */; };
@@ -151,9 +151,9 @@
 		26931EED201B242E009C6E8B /* ZMMineLoginViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMMineLoginViewCell.m; sourceTree = "<group>"; };
 		26931EEE201B242E009C6E8B /* ZMMineLoginViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMMineLoginViewCell.h; sourceTree = "<group>"; };
 		26931EF0201B24C2009C6E8B /* YYTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYTableViewCell.m; sourceTree = "<group>"; };
-		26931EF1201B24C2009C6E8B /* ZMColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMColor.m; sourceTree = "<group>"; };
+		26931EF1201B24C2009C6E8B /* QFColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QFColor.m; sourceTree = "<group>"; };
 		26931EF2201B24C2009C6E8B /* YYTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYTableViewCell.h; sourceTree = "<group>"; };
-		26931EF3201B24C2009C6E8B /* ZMColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMColor.h; sourceTree = "<group>"; };
+		26931EF3201B24C2009C6E8B /* QFColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QFColor.h; sourceTree = "<group>"; };
 		26931EF4201B24C2009C6E8B /* YYTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYTableView.m; sourceTree = "<group>"; };
 		26931EF5201B24C2009C6E8B /* YYTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYTableView.h; sourceTree = "<group>"; };
 		26931EF9201B25B9009C6E8B /* ZMUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMUserInfo.h; sourceTree = "<group>"; };
@@ -166,12 +166,12 @@
 		26B1E78720171958009CF9FC /* BaseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseRequest.m; sourceTree = "<group>"; };
 		26B1E78820171958009CF9FC /* BaseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseRequest.h; sourceTree = "<group>"; };
 		26B1E78A20171CB1009CF9FC /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		26B1E78E201726B5009CF9FC /* ZMLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMLoginViewController.h; sourceTree = "<group>"; };
-		26B1E78F201726B5009CF9FC /* ZMLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMLoginViewController.m; sourceTree = "<group>"; };
+		26B1E78E201726B5009CF9FC /* QFLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QFLoginViewController.h; sourceTree = "<group>"; };
+		26B1E78F201726B5009CF9FC /* QFLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QFLoginViewController.m; sourceTree = "<group>"; };
 		26B1E790201726B5009CF9FC /* ZMRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMRegisterViewController.h; sourceTree = "<group>"; };
 		26B1E791201726B5009CF9FC /* ZMRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMRegisterViewController.m; sourceTree = "<group>"; };
-		26B1E793201726B5009CF9FC /* ZMLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMLoginView.h; sourceTree = "<group>"; };
-		26B1E794201726B5009CF9FC /* ZMLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMLoginView.m; sourceTree = "<group>"; };
+		26B1E793201726B5009CF9FC /* QFLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QFLoginView.h; sourceTree = "<group>"; };
+		26B1E794201726B5009CF9FC /* QFLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QFLoginView.m; sourceTree = "<group>"; };
 		26B1E795201726B5009CF9FC /* ZMRegisterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMRegisterView.h; sourceTree = "<group>"; };
 		26B1E796201726B5009CF9FC /* ZMRegisterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMRegisterView.m; sourceTree = "<group>"; };
 		26B1E79B2017279F009CF9FC /* ZMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZMViewController.m; sourceTree = "<group>"; };
@@ -308,8 +308,8 @@
 				26931EF4201B24C2009C6E8B /* YYTableView.m */,
 				26931EF2201B24C2009C6E8B /* YYTableViewCell.h */,
 				26931EF0201B24C2009C6E8B /* YYTableViewCell.m */,
-				26931EF3201B24C2009C6E8B /* ZMColor.h */,
-				26931EF1201B24C2009C6E8B /* ZMColor.m */,
+				26931EF3201B24C2009C6E8B /* QFColor.h */,
+				26931EF1201B24C2009C6E8B /* QFColor.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -492,8 +492,8 @@
 		26B1E78D201726B5009CF9FC /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				26B1E78E201726B5009CF9FC /* ZMLoginViewController.h */,
-				26B1E78F201726B5009CF9FC /* ZMLoginViewController.m */,
+				26B1E78E201726B5009CF9FC /* QFLoginViewController.h */,
+				26B1E78F201726B5009CF9FC /* QFLoginViewController.m */,
 				26B1E790201726B5009CF9FC /* ZMRegisterViewController.h */,
 				26B1E791201726B5009CF9FC /* ZMRegisterViewController.m */,
 			);
@@ -503,8 +503,8 @@
 		26B1E792201726B5009CF9FC /* View */ = {
 			isa = PBXGroup;
 			children = (
-				26B1E793201726B5009CF9FC /* ZMLoginView.h */,
-				26B1E794201726B5009CF9FC /* ZMLoginView.m */,
+				26B1E793201726B5009CF9FC /* QFLoginView.h */,
+				26B1E794201726B5009CF9FC /* QFLoginView.m */,
 				26B1E795201726B5009CF9FC /* ZMRegisterView.h */,
 				26B1E796201726B5009CF9FC /* ZMRegisterView.m */,
 			);
@@ -906,11 +906,11 @@
 				264D74EC202C1F680018D236 /* NJKWebViewProgress.m in Sources */,
 				26931F02201B2714009C6E8B /* UIImage+Common.m in Sources */,
 				264D74E4202BEAFB0018D236 /* MainButtonModel.m in Sources */,
-				26B1E799201726B5009CF9FC /* ZMLoginView.m in Sources */,
+				26B1E799201726B5009CF9FC /* QFLoginView.m in Sources */,
 				26931EFB201B25BA009C6E8B /* ZMUserInfo.m in Sources */,
 				2600C1ED2015B50B002A67F8 /* QFNUMainViewController.m in Sources */,
 				264D74E0202BEAFB0018D236 /* TQMultistageTableView.m in Sources */,
-				26B1E797201726B5009CF9FC /* ZMLoginViewController.m in Sources */,
+				26B1E797201726B5009CF9FC /* QFLoginViewController.m in Sources */,
 				264D74F0202C319E0018D236 /* QFInfo.m in Sources */,
 				26C6DB6220104972006BE6FE /* ViewController.m in Sources */,
 				264D74DD202BEAFB0018D236 /* LeftSortsController.m in Sources */,
@@ -933,7 +933,7 @@
 				26918E1F2050FE8B004D190C /* HolidayMolde.m in Sources */,
 				26931EE7201B1275009C6E8B /* ZMProfileView.m in Sources */,
 				26C6DB5F20104972006BE6FE /* AppDelegate.m in Sources */,
-				26931EF7201B24C3009C6E8B /* ZMColor.m in Sources */,
+				26931EF7201B24C3009C6E8B /* QFColor.m in Sources */,
 				26931EEB201B1275009C6E8B /* ZMProfileViewCell.m in Sources */,
 				26B1E7A0201727E0009CF9FC /* ZMNavView.m in Sources */,
 				2600C1EC2015B50B002A67F8 /* BaseNavigationController.m in Sources */,

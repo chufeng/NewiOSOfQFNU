@@ -1,14 +1,14 @@
 //
-//  ZMLoginView.h
-//  ZMBCY
+//  QFLoginView.h
+//  QFSF
 //
-//  Created by ZOMAKE on 2018/1/5.
+//  Created by Chufeng on 2018/1/5.
 //  Copyright © 2018年 Brance. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface ZMLoginView : UIView
+@interface QFLoginView : UIView
 
 - (void)setupUI;
 

@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "ZMLoginViewController.h"
+#import "QFLoginViewController.h"
 #import "BaseNavigationController.h"
 @interface ViewController ()
 
@@ -22,7 +22,7 @@
 
 #pragma mark - 跳转登录
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    ZMLoginViewController *vc = [[ZMLoginViewController alloc] init];
+    QFLoginViewController *vc = [[QFLoginViewController alloc] init];
     //如果登录视图需要push的话就需要包装导航控制器
     BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:vc];
     [self presentViewController:nav animated:YES completion:^{

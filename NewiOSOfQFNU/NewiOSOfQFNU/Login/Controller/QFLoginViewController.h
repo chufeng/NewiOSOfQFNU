@@ -1,5 +1,5 @@
 //
-//  ZMLoginViewController.h
+//  QFLoginViewController.h
 //  ZMBCY
 //
 //  Created by ZOMAKE on 2018/1/5.
@@ -8,6 +8,6 @@
 
 #import "ZMViewController.h"
 
-@interface ZMLoginViewController : ZMViewController
+@interface QFLoginViewController : ZMViewController
 
 @end

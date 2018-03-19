@@ -6,9 +6,9 @@
 //  Copyright © 2017年 Brance. All rights reserved.
 //
 
-#import "ZMColor.h"
+#import "QFColor.h"
 
-@implementation ZMColor
+@implementation QFColor
 
 + (UIColor *)colorWithRed:(CGFloat)red withGreen:(CGFloat)green withBlue:(CGFloat)blue withAlpha:(CGFloat)alpha{
     return [UIColor colorWithRed:red/255.0 green:green/255.0 blue:blue/255.0 alpha:alpha];

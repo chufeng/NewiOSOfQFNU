@@ -41,7 +41,7 @@
 - (UILabel *)nameLabel{
     if (!_nameLabel) {
         _nameLabel = [UILabel new];
-        _nameLabel.textColor = [ZMColor blackColor];
+        _nameLabel.textColor = [QFColor blackColor];
         _nameLabel.font = [UIFont systemFontOfSize:15];
         [self.mainView addSubview:_nameLabel];
         [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -57,7 +57,7 @@
         _rightTextLabel = [UILabel new];
         _rightTextLabel.font = [UIFont systemFontOfSize:15];
         _rightTextLabel.textAlignment = NSTextAlignmentRight;
-        _rightTextLabel.textColor = [ZMColor appSupportColor];
+        _rightTextLabel.textColor = [QFColor appSupportColor];
         [self.mainView addSubview:_rightTextLabel];
         [_rightTextLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.nameLabel.mas_right).with.offset(20);
@@ -71,7 +71,7 @@
 - (UIImageView *)bottomLine{
     if (!_bottomLine) {
         _bottomLine = [UIImageView new];
-        _bottomLine.image = [YYImage imageWithColor:[ZMColor appBottomLineColor]];
+        _bottomLine.image = [YYImage imageWithColor:[QFColor appBottomLineColor]];
         [self.mainView addSubview:_bottomLine];
         [_bottomLine mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.bottom.mas_equalTo(0);
@@ -85,7 +85,7 @@
 - (UIImageView *)topLine{
     if (!_topLine) {
         _topLine = [UIImageView new];
-        _topLine.image = [YYImage imageWithColor:[ZMColor appBottomLineColor]];
+        _topLine.image = [YYImage imageWithColor:[QFColor appBottomLineColor]];
         [self.mainView addSubview:_topLine];
         [_topLine mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.top.mas_equalTo(0);

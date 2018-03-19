@@ -1,12 +1,12 @@
 //
-//  ZMLoginView.m
-//  ZMBCY
+//  QFLoginView.m
+//  QFSF
 //
-//  Created by ZOMAKE on 2018/1/5.
+//  Created by Chufeng on 2018/1/5.
 //  Copyright © 2018年 Brance. All rights reserved.
 //
 
-#import "ZMLoginView.h"
+#import "QFLoginView.h"
 #import "ZMRegisterViewController.h"
 #import "BaseNavigationController.h"
 #import <Masonry.h>
@@ -17,7 +17,7 @@
 #import <AFNetworking.h>
 #import <AFNetworking/AFURLSessionManager.h>
 #import <MBProgressHUD+NHAdd.h>
-@interface ZMLoginView()<UITextFieldDelegate>
+@interface QFLoginView()<UITextFieldDelegate>
 {
         NSString *iscaptcha;
     UIView *captchaMainView;
@@ -42,7 +42,7 @@
 @property (nonatomic, strong) UILabel       *bottomLine3;
 @end
 
-@implementation ZMLoginView
+@implementation QFLoginView
 
 - (UIView *)mainView{
     if (!_mainView) {
@@ -137,7 +137,7 @@
     self.userNameField = [[UITextField alloc] init];
     self.userNameField.delegate=self;
     self.userNameField.font = [UIFont systemFontOfSize:15];
-    NSAttributedString *userNameString = [[NSAttributedString alloc] initWithString:@"用户名" attributes:@{NSForegroundColorAttributeName:[ZMColor appLightGrayColor],NSFontAttributeName:            self.userNameField.font}];
+    NSAttributedString *userNameString = [[NSAttributedString alloc] initWithString:@"用户名" attributes:@{NSForegroundColorAttributeName:[QFColor appLightGrayColor],NSFontAttributeName:            self.userNameField.font}];
     self.userNameField.attributedPlaceholder = userNameString;
     self.userNameField.textColor = [UIColor whiteColor];
     self.userNameField.clearButtonMode=UITextFieldViewModeWhileEditing;
@@ -176,7 +176,7 @@
     self.passwordField.delegate=self;
     self.passwordField.font = [UIFont systemFontOfSize:15];
     self.passwordField.textColor = [UIColor whiteColor];
-    NSAttributedString *passwordString = [[NSAttributedString alloc] initWithString:@"密码" attributes:@{NSForegroundColorAttributeName:[ZMColor appLightGrayColor],
+    NSAttributedString *passwordString = [[NSAttributedString alloc] initWithString:@"密码" attributes:@{NSForegroundColorAttributeName:[QFColor appLightGrayColor],
                     NSFontAttributeName:self.userNameField.font}];
     self.passwordField.attributedPlaceholder = passwordString;
     self.passwordField.clearButtonMode=UITextFieldViewModeWhileEditing;
@@ -215,7 +215,7 @@
     self.captchaField = [[UITextField alloc] init];
     self.captchaField.font = [UIFont systemFontOfSize:15];
     self.captchaField.textColor = [UIColor whiteColor];
-    NSAttributedString *captchaString = [[NSAttributedString alloc] initWithString:@"验证码" attributes:@{NSForegroundColorAttributeName:[ZMColor appLightGrayColor],
+    NSAttributedString *captchaString = [[NSAttributedString alloc] initWithString:@"验证码" attributes:@{NSForegroundColorAttributeName:[QFColor appLightGrayColor],
                                                                                                        NSFontAttributeName:self.userNameField.font}];
     self.captchaField.attributedPlaceholder = captchaString;
     self.captchaField.clearButtonMode=UITextFieldViewModeWhileEditing;
@@ -290,7 +290,7 @@
     self.loginButton.titleLabel.font = [UIFont systemFontOfSize:15];
     self.loginButton.layer.masksToBounds = YES;
     self.loginButton.layer.cornerRadius = 20;
-    self.loginButton.backgroundColor = [ZMColor colorWithHexString:@"#55667D"];
+    self.loginButton.backgroundColor = [QFColor colorWithHexString:@"#55667D"];
     [self.loginButton setTitle:@"登录" forState:UIControlStateNormal];
     [self.mainView addSubview:self.loginButton];
     [self.loginButton mas_makeConstraints:^(MASConstraintMaker *make) {

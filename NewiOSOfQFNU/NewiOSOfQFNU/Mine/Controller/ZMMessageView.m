@@ -21,7 +21,7 @@
 
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
-        self.backgroundColor = [ZMColor appGraySpaceColor];
+        self.backgroundColor = [QFColor appGraySpaceColor];
         [self setupUI];
     }
     return self;
@@ -31,7 +31,7 @@
     self.dataArray = @[@"互动",@"人气",@"聊天",@"公告"];
     self.imageArray = @[@"message_comment",@"message_like",@"message_privateLetter",@"message_announcement"];
     _tableView = [YYTableView new];
-    _tableView.backgroundColor = [ZMColor appGraySpaceColor];
+    _tableView.backgroundColor = [QFColor appGraySpaceColor];
     _tableView.dataSource = self;
     _tableView.delegate =   self;
     [self addSubview:_tableView];

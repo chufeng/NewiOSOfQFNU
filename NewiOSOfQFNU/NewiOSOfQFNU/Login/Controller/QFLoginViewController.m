@@ -1,21 +1,21 @@
 //
-//  ZMLoginViewController.m
+//  QFLoginViewController.m
 //  ZMBCY
 //
 //  Created by ZOMAKE on 2018/1/5.
 //  Copyright © 2018年 Brance. All rights reserved.
 //
 
-#import "ZMLoginViewController.h"
-#import "ZMLoginView.h"
+#import "QFLoginViewController.h"
+#import "QFLoginView.h"
 #import <Masonry.h>
-@interface ZMLoginViewController ()
+@interface QFLoginViewController ()
 
-@property (nonatomic, strong) ZMLoginView       *loginView;
+@property (nonatomic, strong) QFLoginView       *loginView;
 
 @end
 
-@implementation ZMLoginViewController
+@implementation QFLoginViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -33,7 +33,7 @@
 }
 
 - (void)setupMainView{
-    self.loginView = [[ZMLoginView alloc] initWithFrame:CGRectZero];
+    self.loginView = [[QFLoginView alloc] initWithFrame:CGRectZero];
     [self.view addSubview:self.loginView];
     [self.loginView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.mas_equalTo(0);

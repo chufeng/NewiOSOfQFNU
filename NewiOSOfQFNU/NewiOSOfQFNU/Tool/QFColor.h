@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ZMColor : NSObject
+@interface QFColor : NSObject
 
 
 
