@@ -240,11 +240,11 @@
     }];
     self.bottomLine3.hidden=YES;
     //首先得拿到照片的路径，也就是下边的string参数，转换为NSData型。
-    NSData* imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://ids.qfnu.edu.cn/authserver/captcha.html"]];
+    NSData* imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"https://csdnimg.cn/cdn/content-toolbar/football.gif"]];
     //然后就是添加照片语句，记得使用imageWithData:方法，不是imageWithName:。
     
 //    self.imageview.image=resultImage;
-    UIGestureRecognizer *touchimage=[[UIGestureRecognizer alloc]initWithTarget:self action:@selector(touchImageview)];
+    UIGestureRecognizer *touchimage=[[UIGestureRecognizer alloc]initWithTarget:self action:@selector(touchImageview:)];
     self.imageview.userInteractionEnabled = YES;
     [self.imageview addGestureRecognizer:touchimage];
 //    [self.mainView addSubview:self.imageview];

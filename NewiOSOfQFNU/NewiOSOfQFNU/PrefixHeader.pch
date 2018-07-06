@@ -10,7 +10,7 @@
 #define PrefixHeader_pch
 #import <Masonry.h>
 #import "QFInfo.h"
-#import "ZMColor.h"
+#import "QFColor.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "UIView+extension.h"
 #import <YYKit/YYKit.h>

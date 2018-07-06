@@ -27,7 +27,6 @@
 		264D74ED202C1F680018D236 /* NJKWebViewProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 264D74EB202C1F670018D236 /* NJKWebViewProgressView.m */; };
 		264D74F0202C319E0018D236 /* QFInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 264D74EF202C319E0018D236 /* QFInfo.m */; };
 		264D74F2202C35830018D236 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 264D74F1202C35830018D236 /* MessageUI.framework */; };
-		26918E1F2050FE8B004D190C /* HolidayMolde.m in Sources */ = {isa = PBXBuildFile; fileRef = 26918E1E2050FE8B004D190C /* HolidayMolde.m */; };
 		26931EC3201B0620009C6E8B /* navigation_back_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26931EC1201B0620009C6E8B /* navigation_back_white@2x.png */; };
 		26931EC4201B0620009C6E8B /* navigation_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26931EC2201B0620009C6E8B /* navigation_back@2x.png */; };
 		26931EE4201B1275009C6E8B /* ZMMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26931ED2201B1275009C6E8B /* ZMMessageView.m */; };
@@ -69,6 +68,7 @@
 		26C6DB7720104973006BE6FE /* NewiOSOfQFNUTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C6DB7620104973006BE6FE /* NewiOSOfQFNUTests.m */; };
 		26C6DB8220104973006BE6FE /* NewiOSOfQFNUUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C6DB8120104973006BE6FE /* NewiOSOfQFNUUITests.m */; };
 		26E11A24202AED3E0042737E /* login_alert_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26E11A23202AED3E0042737E /* login_alert_cancel@2x.png */; };
+		CCBB463220EF668A00C9C8EB /* HolidayMolde.m in Sources */ = {isa = PBXBuildFile; fileRef = CCBB463020EF668A00C9C8EB /* HolidayMolde.m */; };
 		CD9D038F6BD564D92AF8E7FF /* libPods-NewiOSOfQFNU.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D8F6C1E7675E848EC824A1E /* libPods-NewiOSOfQFNU.a */; };
 		D8AAD88B610CB783F350C592 /* libPods-NewiOSOfQFNUTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C8B1B1EB8522FB185B2F13A4 /* libPods-NewiOSOfQFNUTests.a */; };
 /* End PBXBuildFile section */
@@ -126,8 +126,6 @@
 		264D74EE202C319E0018D236 /* QFInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QFInfo.h; sourceTree = "<group>"; };
 		264D74EF202C319E0018D236 /* QFInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QFInfo.m; sourceTree = "<group>"; };
 		264D74F1202C35830018D236 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		26918E1D2050FE8A004D190C /* HolidayMolde.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HolidayMolde.h; path = "/Users/lyngame/Desktop/NewiOSOfQFNU/NewiOSOfQFNU/NewiOSOfQFNU/Main(首页)/Model/HolidayMolde.h"; sourceTree = "<absolute>"; };
-		26918E1E2050FE8B004D190C /* HolidayMolde.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = HolidayMolde.m; path = "/Users/lyngame/Desktop/NewiOSOfQFNU/NewiOSOfQFNU/NewiOSOfQFNU/Main(首页)/Model/HolidayMolde.m"; sourceTree = "<absolute>"; };
 		26931EC1201B0620009C6E8B /* navigation_back_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigation_back_white@2x.png"; sourceTree = "<group>"; };
 		26931EC2201B0620009C6E8B /* navigation_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigation_back@2x.png"; sourceTree = "<group>"; };
 		26931ED1201B1275009C6E8B /* ZMMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZMMessageView.h; sourceTree = "<group>"; };
@@ -210,6 +208,8 @@
 		A3CFD5F1DB2E0CA55448B0A8 /* libPods-NewiOSOfQFNUUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NewiOSOfQFNUUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7219B57E9FF741A2C90DB2F /* Pods-NewiOSOfQFNUUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewiOSOfQFNUUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NewiOSOfQFNUUITests/Pods-NewiOSOfQFNUUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C8B1B1EB8522FB185B2F13A4 /* libPods-NewiOSOfQFNUTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NewiOSOfQFNUTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CCBB463020EF668A00C9C8EB /* HolidayMolde.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HolidayMolde.m; sourceTree = "<group>"; };
+		CCBB463120EF668A00C9C8EB /* HolidayMolde.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HolidayMolde.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -395,8 +395,8 @@
 		264D74D4202BEAFA0018D236 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				26918E1D2050FE8A004D190C /* HolidayMolde.h */,
-				26918E1E2050FE8B004D190C /* HolidayMolde.m */,
+				CCBB463120EF668A00C9C8EB /* HolidayMolde.h */,
+				CCBB463020EF668A00C9C8EB /* HolidayMolde.m */,
 				264D74D5202BEAFA0018D236 /* MainButtonData.plist */,
 				264D74D6202BEAFA0018D236 /* MainButtonModel.h */,
 				264D74D7202BEAFA0018D236 /* MainButtonModel.m */,
@@ -601,7 +601,6 @@
 				26C6DB5620104972006BE6FE /* Sources */,
 				26C6DB5720104972006BE6FE /* Frameworks */,
 				26C6DB5820104972006BE6FE /* Resources */,
-				4CE77DACD9094511E0FEAA3C /* [CP] Embed Pods Frameworks */,
 				6D32162FD05068D829F01D9C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -621,8 +620,6 @@
 				26C6DB6E20104973006BE6FE /* Sources */,
 				26C6DB6F20104973006BE6FE /* Frameworks */,
 				26C6DB7020104973006BE6FE /* Resources */,
-				F24061D78A67604D8076ADFA /* [CP] Embed Pods Frameworks */,
-				DF86AFFE61767BFF592CFA0E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -642,8 +639,6 @@
 				26C6DB7920104973006BE6FE /* Sources */,
 				26C6DB7A20104973006BE6FE /* Frameworks */,
 				26C6DB7B20104973006BE6FE /* Resources */,
-				73E6980994BFEB61EEF93CC7 /* [CP] Embed Pods Frameworks */,
-				00FD4291898CCEF820A8CFFD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -739,21 +734,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		00FD4291898CCEF820A8CFFD /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NewiOSOfQFNUUITests/Pods-NewiOSOfQFNUUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		150256EB248BDE3836511C9C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -770,21 +750,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4CE77DACD9094511E0FEAA3C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NewiOSOfQFNU/Pods-NewiOSOfQFNU-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4E84219F8708A4004FB807CC /* [CP] Check Pods Manifest.lock */ = {
@@ -826,26 +791,21 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AVOSCloud_Art.inc",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/DJRefresh.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/feedback_add_image@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/feedback_back@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/feedback_bg_1@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/feedback_bg_2@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/feedback_btn@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/feedback_btn_new@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/feedback_warning@2x.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/LeanCloudFeedback.strings",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NewiOSOfQFNU/Pods-NewiOSOfQFNU-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		73E6980994BFEB61EEF93CC7 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NewiOSOfQFNUUITests/Pods-NewiOSOfQFNUUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DB6A83D9098160EA2158A298 /* [CP] Check Pods Manifest.lock */ = {
@@ -864,36 +824,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DF86AFFE61767BFF592CFA0E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NewiOSOfQFNUTests/Pods-NewiOSOfQFNUTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F24061D78A67604D8076ADFA /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NewiOSOfQFNUTests/Pods-NewiOSOfQFNUTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -930,7 +860,7 @@
 				26B1E798201726B5009CF9FC /* ZMRegisterViewController.m in Sources */,
 				26B1E79A201726B5009CF9FC /* ZMRegisterView.m in Sources */,
 				26931EE9201B1275009C6E8B /* ZMSetupView.m in Sources */,
-				26918E1F2050FE8B004D190C /* HolidayMolde.m in Sources */,
+				CCBB463220EF668A00C9C8EB /* HolidayMolde.m in Sources */,
 				26931EE7201B1275009C6E8B /* ZMProfileView.m in Sources */,
 				26C6DB5F20104972006BE6FE /* AppDelegate.m in Sources */,
 				26931EF7201B24C3009C6E8B /* QFColor.m in Sources */,
